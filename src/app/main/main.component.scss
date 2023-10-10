@@ -1,0 +1,83 @@
+
+
+
+.component-card-list {
+  background-color: white;
+  border-radius: 20px;
+}
+.component-card {
+  width: 100%;
+}
+
+.component-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 7% 4%;
+}
+
+.component-item span{
+  font-size: 1.6rem;
+}
+
+.component-item p{
+  font-size: 0.9rem;
+  color: darkgrey;
+  padding-top: 8%;
+}
+
+.main-components{
+  width: 100%;
+}
+
+.component-card-header{
+  display: flex;
+  justify-content: space-between;
+  padding: 5% 0 0 0;
+  line-height: 2rem;
+}
+
+.component-item-wrapper:hover {
+  //background-color: var(--main-color-green-light);
+  box-shadow: 0px 0px 10px 0.5px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.component-item-wrapper a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.component-item-right {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.countryFlag {
+  font-size: 1.7rem;
+}
+
+
+
+.component-card-header i {
+  cursor: pointer;
+  font-size: 2rem;
+}
+
+li {
+  list-style: none;
+}
+.countrySign {
+  font-size: 1.2rem;
+  color: grey;
+}
+
+hr {
+  margin: auto;
+  width: 92%;
+  border: none; /* Убираем границу для браузера Firefox */
+  color: var(--main-bg-grey); /* Цвет линии для остальных браузеров */
+  background-color: var(--main-bg-grey); /* Цвет линии для браузера Firefox и Opera */
+  height: 2px; /* Толщина линии */
+}

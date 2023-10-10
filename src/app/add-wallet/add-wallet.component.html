@@ -1,0 +1,29 @@
+<!-- digital-wallet.component.html -->
+
+<h2>Открытие цифрового кошелька</h2>
+
+<form (ngSubmit)="onSubmit()">
+
+  <label for="country">Выберите валюту:</label>
+  <div class="select-wrapper">
+    <select class="select" id="country" name="country" [(ngModel)]="selectedCurrency" (change)="updateBanks($event)">
+      <option *ngFor="let country of countriesEntries()" [value]="country">{{ countries.get(country).flag + " " + countries.get(country).currencyName}}</option>
+    </select>
+  </div>
+
+  <br>
+
+  <label for="bank">Выберите банк-провайдер:</label>
+  <div class="select-wrapper">
+    <select [disabled]="this.selectedCurrency == ''" class="select"  id="bank" name="bank" [(ngModel)]="selectedBank" (change)="onBank($event)">
+      <option *ngFor="let bank of banks.get(selectedCurrency)" [value]="bank">{{ bank }}</option>
+    </select>
+  </div>
+
+  <br>
+  <label>
+    <input type="checkbox" (change)="updateConsentAgreement()"> Я соглашаюсь <a href="#"> с условиями </a>
+  </label>
+  <br>
+  <input [disabled]="this.selectedCurrency == '' || this.selectedBank == '' || !consentAgreement" type="submit" value="Создать">
+</form>

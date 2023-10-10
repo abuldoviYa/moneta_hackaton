@@ -1,0 +1,28 @@
+.screen {
+  width: 100%;
+  max-width: 425px;
+  min-width: 320px;
+  min-height: 100vh;
+  max-height: 950px;
+  //align-items: center;
+  //justify-content: center;
+  margin: 0;
+  background-color: var(--main-bg-grey);
+}
+
+.paddings {
+  padding: 7% 5%;
+}
+
+.bottom-menu {
+  position: fixed;
+  width: 100%;
+  max-width: 425px;
+  bottom: 0;
+  text-align: center;
+}
+
+.check {
+  width: 100%;
+}
+

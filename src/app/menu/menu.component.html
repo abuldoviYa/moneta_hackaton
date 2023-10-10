@@ -1,0 +1,8 @@
+<!-- bottom-menu.component.html -->
+<nav class="nav-menu">
+  <ul>
+    <li *ngFor="let item of menuItems" routerLink="{{item.link}}" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" (click)="onItemClick(item)">
+      <i  class="material-icons" >{{ item.icon }}</i>
+    </li>
+  </ul>
+</nav>

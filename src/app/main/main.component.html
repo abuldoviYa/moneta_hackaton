@@ -1,0 +1,45 @@
+<!-- main-page.component.html -->
+<div class="main-components">
+  <div class="title"><h1>Монета</h1></div>
+
+    <div class="component-card">
+        <div *ngIf="wallets && wallets.length > 0">
+            <div class="component-card-header">
+                <h2>Цифровые кошельки</h2>
+                <a [routerLink]="['/addWallet']"><i class="material-icons">add_circle_outline</i></a>
+            </div>
+            <div class="component-card-list">
+
+
+                <ul>
+                    <div class="component-item-wrapper" *ngFor="let wallet of wallets; let i = index">
+                        <a href="#" [ngClass]="{notactive: i>2}">
+                            <li class="component-item">
+                                <div class="component-item-left">
+                                    <span>{{ wallet.balance }} </span>
+                                    <span class="countrySign">{{countries?.get(wallet.country).currencySign}}</span>
+                                    <p>Цифровой кошелек</p>
+                                </div>
+
+                                <div class="component-item-right">
+                                    <div class="countryFlag">{{countries?.get(wallet.country).flag}}</div>
+                                    <div>{{countries?.get(wallet.country).currencyTicker}}</div>
+                                </div>
+                            </li>
+                        </a>
+                        <hr *ngIf="i<1">
+                    </div>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div *ngIf="bankAccounts && bankAccounts.length > 0">
+        <h2>Fiat Currency Bank Accounts</h2>
+        <ul>
+            <li *ngFor="let account of bankAccounts">
+                {{ account.name }} - {{ account.balance }}
+            </li>
+        </ul>
+    </div>
+</div>

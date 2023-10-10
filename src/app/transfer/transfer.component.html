@@ -1,0 +1,99 @@
+<h1>Перевод</h1>
+
+<form (ngSubmit)="onSendTransfer()">
+  <div class="source_first">
+    <label for="source">Откуда:</label>
+    <div class="select-wrapper">
+    <select class="select" (change)="onSource($event)" name="source" id="source" required>
+      <option disabled selected style="display:none">Выберите тип</option>
+      <option value="digitalWallet">Цифровой кошелек</option>
+      <option value="card">Банковская карта</option>
+    </select></div>
+  </div>
+
+
+  <div *ngIf="sourceSecond == 'digitalWallet'" class="source_second_wallet">
+    <br>
+    <label for="source_second_wallet_field">Выберите кошелек:</label>
+    <div class="select-wrapper">
+    <select class="select"  (change)="onSourceAccount($event)" name="source_second_wallet_field" id="source_second_wallet_field"
+            required>
+      <option disabled selected style="display:none">Доступные кошельки</option>
+      <option *ngFor="let wallet of wallets"
+              value="{{wallet.walletNumber}}">{{countries.get(wallet.country).currencyName}}</option>
+    </select>
+    </div>
+  </div>
+
+
+  <div *ngIf="sourceSecond == 'card'" class="source_second_card">
+    <br>
+    <label for="source_second_card_field">Выберите карту:</label>
+    <div class="select-wrapper">
+    <select class="select"  name="source_second_card_field" id="source_second_card_field" required>
+      <option value="1">Карта 1</option>
+      <option value="2">Карта 2</option>
+    </select>
+      </div>
+  </div>
+
+  <div class="target_first" >
+    <br>
+    <label for="target">Куда:</label>
+    <div class="select-wrapper">
+    <select [disabled]="sourceValue == null" class="select"  (change)="onTarget($event)" name="target" id="target" required>
+      <option disabled selected style="display:none">Выберите тип</option>
+      <option value="digitalWallet">Цифровой кошелек</option>
+      <option value="card">Банковская карта</option>
+    </select></div></div>
+  <div *ngIf="targetSecond == 'digitalWallet'" class="target_second_wallet">
+    <br>
+    <label for="target_second_wallet_field">Выберите кошелек:</label>
+    <div class="select-wrapper">
+    <select class="select"  (change)="onTargetAccount($event)" name="target_second_wallet_field" id="target_second_wallet_field"
+            required>
+      <option hidden [value]="">Доступные кошельки</option>
+
+      <ng-container *ngFor="let wallet of wallets">
+        <option *ngIf="sourceValue != wallet.walletNumber"
+                value="{{wallet.walletNumber}}">{{countries.get(wallet.country).currencyName}}</option>
+      </ng-container>
+    </select>
+    </div>
+  </div>
+
+
+  <div *ngIf="targetSecond == 'card'" class="target_second_card">
+    <br>
+    <label for="target_second_card_field">Выберите карту:</label>
+    <div class="select-wrapper">
+    <select class="select" name="target_second_card_field" id="target_second_card_field" required>
+      <option value="1">Карта 1</option>
+      <option value="2">Карта 2</option>
+    </select>
+    </div>
+  </div>
+
+  <div *ngIf="targetSecond != null && sourceSecond != null" class="target_second_card">
+    <br>
+    <p *ngIf="targetValue!= null && sourceValue != null">Доступно на кошельке {{sourceWallet.balance}} {{countries.get(sourceWallet!.country).currencySign}}</p>
+    <p *ngIf="targetValue!= null && sourceValue != null">Курс перевода: {{currencyToShow}}</p>
+    <p *ngIf="targetValue!= null && sourceValue != null">Комиссия: {{feeToShow! * 100}}%</p>
+
+  </div>
+
+  <div *ngIf="targetValue!= null && sourceValue != null">
+    <br>
+    <div class="input-wrapper">
+      <input class="input" type="number" (input)="onValue($event)">
+    </div>
+    <p>Деньги, которые будут зачислены на
+      счет {{targetCurrency}} {{countries.get(targetWallet.country).currencySign}}</p>
+    <p>Комиссия за перевод {{fee}} {{countries.get(sourceWallet.country).currencySign}}</p>
+    <p>Всего будет списано {{targetSum}} {{countries.get(sourceWallet.country).currencySign}}</p>
+  </div>
+
+  <input [disabled]="this.targetValue== null || this.sourceValue == null || isNaN(this.targetSum!)" type="submit"
+         value="Перевести">
+
+</form>
