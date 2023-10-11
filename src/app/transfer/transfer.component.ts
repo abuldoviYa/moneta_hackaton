@@ -2,6 +2,7 @@ import {Component} from '@angular/core';
 import {ApiService} from "../api.service";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {Router} from "@angular/router";
+import {HistoryService} from "../services/history.service";
 
 @Component({
   selector: 'app-transfer',
@@ -10,7 +11,7 @@ import {Router} from "@angular/router";
 })
 export class TransferComponent {
 
-  constructor(private apiService: ApiService, private snackBar: MatSnackBar, private router: Router) {
+  constructor(private apiService: ApiService, private snackBar: MatSnackBar, private router: Router, private history: HistoryService) {
 
   }
 
@@ -73,6 +74,7 @@ export class TransferComponent {
   feeToShow?: number;
 
   onValue(value: any) {
+
     if (this.erAndFee == null || this.sourceWallet.walletNumber != this.sourceValue || this.targetWallet.walletNumber != this.targetValue) {
       this.erAndFee = this.apiService.getERandFee(this.sourceWallet, this.targetWallet);
       this.currencyToShow = this.erAndFee![0]
@@ -92,7 +94,9 @@ export class TransferComponent {
     {
       if (this.makeTransfer()) {
         this.openSnackBar('Перевод совершен успешно!', true);
+        this.history.addToHistory(this.sourceWallet, this.targetWallet, this.targetSum!, this.targetCurrency!)
         this.router.navigate(['/']);
+
       } else {
         this.openSnackBar('Недостаточно средств на счёте', false);
       }
@@ -116,4 +120,6 @@ export class TransferComponent {
   }
 
   protected readonly isNaN = isNaN;
+
+  protected readonly console = console;
 }

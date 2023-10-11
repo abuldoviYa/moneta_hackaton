@@ -57,4 +57,11 @@ export class MainComponent implements OnInit{
       this.apiService.initializeWallets();
     }
   }
+
+    protected readonly Math = Math;
+  showAllWallets:boolean = false;
+
+  onShowAllWallets(): void {
+    this.showAllWallets = !this.showAllWallets;
+}
 }

@@ -1,0 +1,72 @@
+<div class="component-card">
+  <div >
+
+    <div class="component-card-header">
+      <h2>Доступные карты</h2>
+      <a [routerLink]="['/addCard']"><i class="material-icons">add_circle_outline</i></a>
+    </div>
+    <div *ngIf="!cards" >
+      <h2>У вас еще нет карт</h2>
+    </div>
+    <div *ngIf="cards && cards.length > 0" class="component-card-list">
+
+
+      <ul>
+        <div class="component-item-wrapper" *ngFor="let card of cards.slice(0,2); let i = index">
+          <a href="#" [ngClass]="{notactive: i>2}">
+            <li class="component-item">
+              <div class="component-item-left">
+                <span>{{ Math.round(card.balance*100)/100 }} </span>
+                <span class="countrySign">{{countries?.get(card.country).currencySign}}</span>
+                <p>{{card.type == "DIGITAL" ? "Виртуальная карта": "Карта"}}</p>
+                <p>Банк: {{card.bank}}</p>
+              </div>
+
+              <div class="component-item-right">
+                <div>
+                <div class="countryFlag">{{countries?.get(card.country).flag}}</div>
+<!--                <div>{{countries?.get(card.country).currencyTicker}}</div>-->
+                </div>
+                <div>
+                  <img class="card-system" src="/assets/{{card.system.trim()}}.png" />
+<!--                  <p>{{card.system}}</p>-->
+                </div>
+              </div>
+            </li>
+          </a>
+          <hr *ngIf="i<1">
+        </div>
+        <div *ngIf="showAllCards">
+          <hr>
+          <div class="component-item-wrapper" *ngFor="let card of cards.slice(2); let i = index">
+            <a href="#" [ngClass]="{notactive: i>2}">
+              <li class="component-item">
+                <div class="component-item-left">
+                  <span>{{ Math.round(card.balance*100)/100 }} </span>
+                  <span class="countrySign">{{countries?.get(card.country).currencySign}}</span>
+                  <p>Виртуальная карта</p>
+                </div>
+
+                <div class="component-item-right">
+                  <div>
+                    <div class="countryFlag">{{countries?.get(card.country).flag}}</div>
+                    <!--                <div>{{countries?.get(card.country).currencyTicker}}</div>-->
+                  </div>
+                  <div>
+                    <img class="card-system" src="/assets/{{card.system.trim()}}.png" />
+                    <!--                  <p>{{card.system}}</p>-->
+                  </div>
+                </div>
+              </li>
+            </a>
+            <hr *ngIf="i<cards.slice(2).length-1">
+          </div>
+        </div>
+      </ul>
+    </div>
+
+
+    <button *ngIf="cards && cards.length > 0" class="btn btn-grey width100" (click)="onShowAllCards()">{{ showAllCards ? 'Скрыть карты' : 'Показать все карты'}}</button>
+
+  </div>
+</div>

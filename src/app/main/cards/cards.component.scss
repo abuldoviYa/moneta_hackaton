@@ -55,10 +55,6 @@
   justify-content: space-between;
 }
 
-.component-item-left p {
-  padding-bottom: 0;
-}
-
 .countryFlag {
   font-size: 1.7rem;
 }
@@ -90,4 +86,11 @@ hr {
 li {
   display: flex;
   justify-content: space-between;
+}
+p {
+  margin: 0 0;
+}
+
+.card-system {
+  width: 75%;
 }

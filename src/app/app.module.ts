@@ -10,11 +10,18 @@ import { ProfileComponent } from './profile/profile.component';
 import {RouterOutlet} from "@angular/router";
 import { MenuComponent } from './menu/menu.component';
 import { AddWalletComponent } from './add-wallet/add-wallet.component';
-import {FormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {CommonModule} from "@angular/common";
 import {ApiService} from "./api.service";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatSnackBar} from "@angular/material/snack-bar";
+import { HistoryComponent } from './history/history.component';
+import {MatDatepickerModule} from "@angular/material/datepicker";
+import {MAT_DATE_FORMATS, MAT_DATE_LOCALE, MatNativeDateModule} from "@angular/material/core";
+import {MatFormFieldModule} from "@angular/material/form-field";
+import {MatInputModule} from "@angular/material/input";
+import { CardsComponent } from './main/cards/cards.component';
+import { AddCardComponent } from './add-card/add-card.component';
 
 @NgModule({
   declarations: [
@@ -24,17 +31,25 @@ import {MatSnackBar} from "@angular/material/snack-bar";
     TransferComponent,
     ProfileComponent,
     MenuComponent,
-    AddWalletComponent
+    AddWalletComponent,
+    HistoryComponent,
+    CardsComponent,
+    AddCardComponent
   ],
-    imports: [
-        BrowserModule,
-        AppRoutingModule,
-        RouterOutlet,
-        FormsModule,
-      CommonModule,
-      BrowserAnimationsModule
-    ],
-  providers: [ApiService, MatSnackBar],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    RouterOutlet,
+    FormsModule,
+    CommonModule,
+    BrowserAnimationsModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatFormFieldModule,
+    MatInputModule,
+    ReactiveFormsModule
+  ],
+  providers: [ApiService, MatSnackBar, MatDatepickerModule,MatNativeDateModule, {provide: MAT_DATE_LOCALE, useValue: "ru-RU"} ],
   bootstrap: [AppComponent]
 })
 export class AppModule {

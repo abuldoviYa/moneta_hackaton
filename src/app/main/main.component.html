@@ -3,20 +3,24 @@
   <div class="title"><h1>Монета</h1></div>
 
     <div class="component-card">
-        <div *ngIf="wallets && wallets.length > 0">
+        <div >
+
             <div class="component-card-header">
                 <h2>Цифровые кошельки</h2>
                 <a [routerLink]="['/addWallet']"><i class="material-icons">add_circle_outline</i></a>
             </div>
-            <div class="component-card-list">
+          <div *ngIf="!wallets" >
+            <h2>У вас еще нет кошельков</h2>
+          </div>
+            <div *ngIf="wallets && wallets.length > 0" class="component-card-list">
 
 
                 <ul>
-                    <div class="component-item-wrapper" *ngFor="let wallet of wallets; let i = index">
+                    <div class="component-item-wrapper" *ngFor="let wallet of wallets.slice(0,2); let i = index">
                         <a href="#" [ngClass]="{notactive: i>2}">
                             <li class="component-item">
                                 <div class="component-item-left">
-                                    <span>{{ wallet.balance }} </span>
+                                    <span>{{ Math.round(wallet.balance*100)/100 }} </span>
                                     <span class="countrySign">{{countries?.get(wallet.country).currencySign}}</span>
                                     <p>Цифровой кошелек</p>
                                 </div>
@@ -29,11 +33,35 @@
                         </a>
                         <hr *ngIf="i<1">
                     </div>
+                  <div *ngIf="showAllWallets">
+                    <hr>
+                  <div class="component-item-wrapper" *ngFor="let wallet of wallets.slice(2); let i = index">
+                    <a href="#" [ngClass]="{notactive: i>2}">
+                      <li class="component-item">
+                        <div class="component-item-left">
+                          <span>{{ Math.round(wallet.balance*100)/100 }} </span>
+                          <span class="countrySign">{{countries?.get(wallet.country).currencySign}}</span>
+                          <p>Цифровой кошелек</p>
+                        </div>
+
+                        <div class="component-item-right">
+                          <div class="countryFlag">{{countries?.get(wallet.country).flag}}</div>
+                          <div>{{countries?.get(wallet.country).currencyTicker}}</div>
+                        </div>
+                      </li>
+                    </a>
+                    <hr *ngIf="i<wallets.slice(2).length-1">
+                  </div>
+                  </div>
                 </ul>
             </div>
-        </div>
+
+          <button *ngIf="wallets && wallets.length > 0" class="btn btn-grey width100" (click)="onShowAllWallets()">{{ showAllWallets ? 'Скрыть кошельки' : 'Показать все кошельки'}}</button>
+
+          </div>
     </div>
 
+  <app-cards></app-cards>
     <div *ngIf="bankAccounts && bankAccounts.length > 0">
         <h2>Fiat Currency Bank Accounts</h2>
         <ul>

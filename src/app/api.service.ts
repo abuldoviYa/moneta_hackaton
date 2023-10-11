@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import {Card} from "./card";
 
 
 @Injectable({
@@ -9,11 +10,7 @@ export class ApiService {
 
 
   wallets = [
-    {
-      country: "CHINA",
-      walletNumber: "0044",
-      balance: 1000,
-    },
+
     {
       country: "RUSSIA",
       walletNumber: "0035",
@@ -25,14 +22,15 @@ export class ApiService {
   }
 
   initializeWallets(): void {
+    console.log("asd" + this.wallets)
     localStorage.setItem("wallets", JSON.stringify(this.wallets))
-    console.log("asd")
+
   }
 
   addNewWallet(wallet: any): boolean {
 
     let wallets = localStorage.getItem("wallets")
-    if(wallets==null){
+    if(wallets==null || wallets == 'null'){
       let storeData: any[] = [];
       storeData.push(wallet)
       localStorage.setItem("wallets", JSON.stringify(storeData))
@@ -97,9 +95,9 @@ export class ApiService {
   // }
 
   getAvailablecountries(): Map<string, any> { return new Map([
-    ['CHINA', {name: 'Китай', currencySign: '¥', currencyName: 'Юань', currencyTicker: 'CNY', flag: '🇨🇳'}],
-    ['RUSSIA', {name: 'Россия', currencySign: '₽', currencyName: 'Рубль',currencyTicker: 'RUB',flag: '🇷🇺'}],
-    ['KAZAKHSTAN', {name: 'Казахстан', currencySign: '₸', currencyName: 'Тенге',currencyTicker: 'KZT',flag: '🇰🇿'}]
+    ['CHINA', {name: 'Китай', currencySign: '¥', currencyName: 'Юань', currencyTicker: 'CNY', flag: '🇨🇳', system: "UnionPay"}],
+    ['RUSSIA', {name: 'Россия', currencySign: '₽', currencyName: 'Рубль',currencyTicker: 'RUB',flag: '🇷🇺', system: "MIR"}],
+    ['KAZAKHSTAN', {name: 'Казахстан', currencySign: '₸', currencyName: 'Тенге',currencyTicker: 'KZT',flag: '🇰🇿', system: "Visa"}]
   ]);
   }
 
@@ -120,5 +118,22 @@ export class ApiService {
   }
 
 
-
+  addNewCard(card: Card) {
+    let cards = localStorage.getItem("cards")
+    if(cards==null || cards == 'null'){
+      let storeData: any[] = [];
+      storeData.push(card)
+      localStorage.setItem("cards", JSON.stringify(storeData))
+      return true
+    } else {
+      let storeData: any[] = JSON.parse(cards);
+      if(!storeData.find(x=>x.bank == card.bank)){
+        console.log(storeData.find(x=>console.log(x.country)))
+        storeData.push(card)
+        localStorage.setItem("cards", JSON.stringify(storeData))
+        return true
+      }
+      return false
+    }
+  }
 }

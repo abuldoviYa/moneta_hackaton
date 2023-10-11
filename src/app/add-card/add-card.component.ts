@@ -1,23 +1,24 @@
 import {Component, OnInit} from '@angular/core';
 import {ApiService} from "../api.service";
-import {Wallet} from "../wallet";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {Router} from "@angular/router";
+import {Card} from "../card";
 
 @Component({
-  selector: 'app-add-wallet',
-  templateUrl: './add-wallet.component.html',
-  styleUrls: ['./add-wallet.component.scss']
+  selector: 'app-add-card',
+  templateUrl: './add-card.component.html',
+  styleUrls: ['./add-card.component.scss']
 })
-export class AddWalletComponent implements OnInit{
+export class AddCardComponent implements OnInit {
 
-  constructor(private apiService: ApiService, private snackBar: MatSnackBar,private router: Router) {
-    console.log('AddWalletComponent - ApiService:', apiService);
+  constructor(private apiService: ApiService, private snackBar: MatSnackBar, private router: Router) {
+    console.log('AddCardComponent - ApiService:', apiService);
   }
+
   countries = this.apiService.getAvailablecountries();
   banks = this.apiService.getAvailableBanks()
 
-  selectedCurrency: string = "";
+  selectedCountry: string = "";
   selectedBank: string = "";
   consentAgreement: boolean = false;
 
@@ -25,19 +26,20 @@ export class AddWalletComponent implements OnInit{
     this.selectedBank = event.target.value;
   }
 
-  onCountry(currency: string): void {
-    this.selectedCurrency = currency;
+  onCountry(country: string): void {
+    this.selectedCountry = country;
   }
+
   updateBanks(event: any): void {
     this.onCountry(event.target.value)
   }
 
   onSubmit(): void {
-    if (this.postNewWallet()) {
-      this.openSnackBar('Кошелек успешно создан!', true);
+    if (this.postNewCard()) {
+      this.openSnackBar('Карта успешно создана!', true);
       this.router.navigate(['/']);
     } else {
-      this.openSnackBar('Такой кошелек уже существует', false);
+      this.openSnackBar('Карта в этом банке уже открыта', false);
     }
   }
 
@@ -45,8 +47,9 @@ export class AddWalletComponent implements OnInit{
     this.consentAgreement = !this.consentAgreement;
   }
 
-  postNewWallet (): boolean {
-      return this.apiService.addNewWallet({country: this.selectedCurrency, walletNumber: Math.floor(Math.random()*1000), balance : 1000})
+  postNewCard(): boolean {
+    let card: Card = new Card(this.selectedCountry, this.selectedBank,Math.floor(Math.random() * 10000).toString(), 1000, 'DIGITAL', this.countries.get(this.selectedCountry).system)
+    return this.apiService.addNewCard(card)
   }
 
   openSnackBar(message: string, bool: boolean) {
@@ -59,14 +62,14 @@ export class AddWalletComponent implements OnInit{
   }
 
   ngOnInit(): void {
-    if(localStorage.getItem('wallets')==null){
-      this.apiService.initializeWallets();
-    }
+    // if (localStorage.getItem('cards') == null) {
+    //   this.apiService.initializeCards();
+    // }
     this.countries = this.apiService.getAvailablecountries();
     this.banks = this.apiService.getAvailableBanks()
 
-    this.selectedCurrency = "";
-    this.selectedBank= "";
+    this.selectedCountry = "";
+    this.selectedBank = "";
     this.consentAgreement = false;
   }
 

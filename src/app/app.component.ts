@@ -17,6 +17,7 @@ export class AppComponent implements OnInit{
   consent: boolean = false;
   ngOnInit(): void {
     let wallets = this.apiService.getDigitalWallets()
+    this.apiService.initializeWallets()
     localStorage.setItem("wallets", JSON.stringify(wallets))
     if(localStorage.getItem("consent") != null){
       this.consent = true;

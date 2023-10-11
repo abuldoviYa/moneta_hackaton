@@ -52,7 +52,7 @@
     <div class="select-wrapper">
     <select class="select"  (change)="onTargetAccount($event)" name="target_second_wallet_field" id="target_second_wallet_field"
             required>
-      <option hidden [value]="">Доступные кошельки</option>
+      <option disabled selected style="display:none">Доступные кошельки</option>
 
       <ng-container *ngFor="let wallet of wallets">
         <option *ngIf="sourceValue != wallet.walletNumber"
@@ -85,12 +85,12 @@
   <div *ngIf="targetValue!= null && sourceValue != null">
     <br>
     <div class="input-wrapper">
-      <input class="input" type="number" (input)="onValue($event)">
+      <input class="input" type="text" min="1" max="1000000" maxlength="7" (input)="onValue($event)">
     </div>
     <p>Деньги, которые будут зачислены на
       счет {{targetCurrency}} {{countries.get(targetWallet.country).currencySign}}</p>
     <p>Комиссия за перевод {{fee}} {{countries.get(sourceWallet.country).currencySign}}</p>
-    <p>Всего будет списано {{targetSum}} {{countries.get(sourceWallet.country).currencySign}}</p>
+    <p>Всего будет списано {{targetSum == null || isNaN(targetSum!)? 0 : targetSum}} {{countries.get(sourceWallet.country).currencySign}}</p>
   </div>
 
   <input [disabled]="this.targetValue== null || this.sourceValue == null || isNaN(this.targetSum!)" type="submit"
