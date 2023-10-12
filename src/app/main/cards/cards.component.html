@@ -13,7 +13,7 @@
 
       <ul>
         <div class="component-item-wrapper" *ngFor="let card of cards.slice(0,2); let i = index">
-          <a href="#" [ngClass]="{notactive: i>2}">
+          <a [routerLink]="['card', card.cardNumber]" [ngClass]="{notactive: i>2}">
             <li class="component-item">
               <div class="component-item-left">
                 <span>{{ Math.round(card.balance*100)/100 }} </span>
@@ -39,12 +39,13 @@
         <div *ngIf="showAllCards">
           <hr>
           <div class="component-item-wrapper" *ngFor="let card of cards.slice(2); let i = index">
-            <a href="#" [ngClass]="{notactive: i>2}">
+            <a [routerLink]="['card', card.cardNumber]" [ngClass]="{notactive: i>2}">
               <li class="component-item">
                 <div class="component-item-left">
                   <span>{{ Math.round(card.balance*100)/100 }} </span>
                   <span class="countrySign">{{countries?.get(card.country).currencySign}}</span>
-                  <p>Виртуальная карта</p>
+                  <p>{{card.type == "DIGITAL" ? "Виртуальная карта": "Карта"}}</p>
+                  <p>Банк: {{card.bank}}</p>
                 </div>
 
                 <div class="component-item-right">
@@ -66,7 +67,7 @@
     </div>
 
 
-    <button *ngIf="cards && cards.length > 0" class="btn btn-grey width100" (click)="onShowAllCards()">{{ showAllCards ? 'Скрыть карты' : 'Показать все карты'}}</button>
+    <button *ngIf="cards && cards.length > 2" class="btn btn-grey width100" (click)="onShowAllCards()">{{ showAllCards ? 'Скрыть карты' : 'Показать все карты'}}</button>
 
   </div>
 </div>

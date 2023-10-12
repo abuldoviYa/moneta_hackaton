@@ -23,7 +23,7 @@ export class AppComponent implements OnInit{
       this.consent = true;
 
     }
-    console.log('app')
+
   }
 
 }

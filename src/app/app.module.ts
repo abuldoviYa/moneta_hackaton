@@ -22,6 +22,9 @@ import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
 import { CardsComponent } from './main/cards/cards.component';
 import { AddCardComponent } from './add-card/add-card.component';
+import { CardPageComponent } from './card-page/card-page.component';
+import { WalletPageComponent } from './wallet-page/wallet-page.component';
+import { CardPageUiComponent } from './card-page/card-page-ui/card-page-ui.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +37,10 @@ import { AddCardComponent } from './add-card/add-card.component';
     AddWalletComponent,
     HistoryComponent,
     CardsComponent,
-    AddCardComponent
+    AddCardComponent,
+    CardPageComponent,
+    WalletPageComponent,
+    CardPageUiComponent
   ],
   imports: [
     BrowserModule,
@@ -47,7 +53,7 @@ import { AddCardComponent } from './add-card/add-card.component';
     MatNativeDateModule,
     MatFormFieldModule,
     MatInputModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
   providers: [ApiService, MatSnackBar, MatDatepickerModule,MatNativeDateModule, {provide: MAT_DATE_LOCALE, useValue: "ru-RU"} ],
   bootstrap: [AppComponent]

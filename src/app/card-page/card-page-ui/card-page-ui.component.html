@@ -1,0 +1,16 @@
+<div class="card" (click)="cardClicked()" [@cardFlip]="data.state">
+  <div class="face back">
+    <div class="inner">
+      <h1>{{card?.bank}}</h1>
+      <h2>{{card?.country}}</h2>
+      {{card?.balance}}
+      {{card?.system}}
+    </div>
+
+  </div>
+  <div class="face front">
+    <div class="inner">
+
+    </div>
+  </div>
+</div>

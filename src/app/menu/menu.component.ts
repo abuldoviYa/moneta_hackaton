@@ -22,7 +22,6 @@ export class MenuComponent implements OnInit{
   onItemClick(item: any) {
     this.router.navigate([item.link])
 
-    console.log(`Clicked on ${item.label}`);
   }
 
   ngOnInit(): void {

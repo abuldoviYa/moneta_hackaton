@@ -3,6 +3,7 @@ import {ApiService} from "../api.service";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {Router} from "@angular/router";
 import {Card} from "../card";
+import {Title} from "@angular/platform-browser";
 
 @Component({
   selector: 'app-add-card',
@@ -11,7 +12,9 @@ import {Card} from "../card";
 })
 export class AddCardComponent implements OnInit {
 
-  constructor(private apiService: ApiService, private snackBar: MatSnackBar, private router: Router) {
+  constructor(private apiService: ApiService, private snackBar: MatSnackBar, private router: Router, private titleService:Title) {
+    this.titleService.setTitle("Добавить карту" + apiService.title);
+
     console.log('AddCardComponent - ApiService:', apiService);
   }
 

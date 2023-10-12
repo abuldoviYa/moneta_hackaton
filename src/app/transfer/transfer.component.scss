@@ -1,3 +1,37 @@
 label {
   font-size: 1rem;
 }
+
+.target {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 1rem 0 0 0;
+  padding: 1rem 0;
+  background-color: white;
+  border-radius: 10px;
+}
+
+.target p{
+  font-size: 1rem;
+  color: grey;
+}
+
+.target span{
+  font-size: 2rem;
+}
+
+.full {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.info p{
+  font-size: 0.8rem;
+}
+
+.info span{
+  font-size: 1.3rem;
+}

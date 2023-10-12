@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {HistoryService} from "../services/history.service";
 import {FormControl, FormGroup} from "@angular/forms";
+import {Title} from "@angular/platform-browser";
+import {ApiService} from "../api.service";
 
 
 @Component({
@@ -14,7 +16,8 @@ export class HistoryComponent implements OnInit{
     start: new FormControl<Date | null>(null),
     end: new FormControl<Date | null>(null),
   });
-  constructor(private history: HistoryService) {
+  constructor(private history: HistoryService, private titleService:Title, private apiService: ApiService) {
+    this.titleService.setTitle("История" + apiService.title);
 
   }
 
@@ -44,6 +47,9 @@ export class HistoryComponent implements OnInit{
 
 
       return true;
+    }).sort(function(a,b){
+
+      return b.date.getTime()- a.date.getTime()
     });
 
   }

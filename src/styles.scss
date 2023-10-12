@@ -8,6 +8,9 @@
   --main-color-green-light: rgba(201, 255, 196, 0.45);
   --main-color-dark-grey: #595959;
 }
+html {
+  scroll-behavior: smooth;
+}
 
 body {
   font-family: "Helvetica", sans-serif;
@@ -126,7 +129,7 @@ input[type="submit"], button[type="submit"] {
   /* Your styles here */
   background-color: #4CAF50; /* Green background */
   color: white; /* White text color */
-  padding: 0.8rem 1.3rem; /* Padding for better appearance */
+  padding: 1.2rem 1.5rem; /* Padding for better appearance */
   border: none; /* No border */
   border-radius: 5px; /* Optional: Rounded corners */
   cursor: pointer; /* Cursor style */
@@ -152,6 +155,14 @@ input[type="submit"]:disabled {
   width: 100%;
 }
 
+.width47 {
+  width: 47%;
+}
+
+.width30 {
+  width: 30%;
+}
+
 .btn {
   display: inline-block;
   font-weight: 400;
@@ -171,18 +182,25 @@ input[type="submit"]:disabled {
 }
 
 .btn-grey:not(:disabled):not(.disabled):active, .show>.btn-secondary.dropdown-toggle {
-  color: #fff;
-  background-color: #545b62;
-  border-color: #4e555b;
+  color: #2e3138;
+  background: #c8ccd4;
+  border-color: #c8ccd4;
 }
 
 .btn:hover {
-  box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.1);
+  color: #2e3138;
+  background: #d9dbe0;
+  //box-shadow: 0 0 4px 1px rgba(0, 0, 0, 0.05);
 }
 
 
 .btn-grey {
-  color: #fff;
-  background-color: var(--main-color-dark-grey);
-  border-color: #6c757d;
+  color: #2e3138;
+  background-color: #d5d7dd;
+  //border-color: #6c757d;
+}
+
+input[type="checkbox"] {
+  transform: scale(1.4);
+  margin-right: 0.5rem;
 }

@@ -21,4 +21,6 @@ export class CardsComponent {
   onShowAllCards(): void {
     this.showAllCards = !this.showAllCards;
   }
+
+
 }

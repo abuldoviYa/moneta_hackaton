@@ -56,18 +56,11 @@
                 </ul>
             </div>
 
-          <button *ngIf="wallets && wallets.length > 0" class="btn btn-grey width100" (click)="onShowAllWallets()">{{ showAllWallets ? 'Скрыть кошельки' : 'Показать все кошельки'}}</button>
+          <button *ngIf="wallets && wallets.length > 2" class="btn btn-grey width100" (click)="onShowAllWallets()">{{ showAllWallets ? 'Скрыть кошельки' : 'Показать все кошельки'}}</button>
 
           </div>
     </div>
 
   <app-cards></app-cards>
-    <div *ngIf="bankAccounts && bankAccounts.length > 0">
-        <h2>Fiat Currency Bank Accounts</h2>
-        <ul>
-            <li *ngFor="let account of bankAccounts">
-                {{ account.name }} - {{ account.balance }}
-            </li>
-        </ul>
-    </div>
+
 </div>

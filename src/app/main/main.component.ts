@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {ApiService} from "../api.service";
+import {Title} from "@angular/platform-browser";
 
 @Component({
   selector: 'app-main',
@@ -7,9 +8,9 @@ import {ApiService} from "../api.service";
   styleUrls: ['./main.component.scss'],
 })
 export class MainComponent implements OnInit{
-  constructor(private apiService: ApiService) {
-    console.log('MainComponent - ApiService:', apiService);
-    console.log(localStorage.getItem('wallets'))
+  constructor(private apiService: ApiService, private titleService:Title) {
+    this.titleService.setTitle("Главная" + apiService.title);
+
   }
 
   wallets?: any[] = JSON.parse(localStorage.getItem("wallets")!);

@@ -3,6 +3,7 @@ import {ApiService} from "../api.service";
 import {Wallet} from "../wallet";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {Router} from "@angular/router";
+import {Title} from "@angular/platform-browser";
 
 @Component({
   selector: 'app-add-wallet',
@@ -11,7 +12,9 @@ import {Router} from "@angular/router";
 })
 export class AddWalletComponent implements OnInit{
 
-  constructor(private apiService: ApiService, private snackBar: MatSnackBar,private router: Router) {
+  constructor(private apiService: ApiService, private snackBar: MatSnackBar,private router: Router, private titleService:Title) {
+    this.titleService.setTitle("Добавить кошелек" + apiService.title);
+
     console.log('AddWalletComponent - ApiService:', apiService);
   }
   countries = this.apiService.getAvailablecountries();
