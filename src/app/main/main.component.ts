@@ -10,7 +10,6 @@ import {Title} from "@angular/platform-browser";
 export class MainComponent implements OnInit{
   constructor(private apiService: ApiService, private titleService:Title) {
     this.titleService.setTitle("Главная" + apiService.title);
-
   }
 
   wallets?: any[] = JSON.parse(localStorage.getItem("wallets")!);

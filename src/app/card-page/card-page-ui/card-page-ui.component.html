@@ -1,14 +1,23 @@
 <div class="card" (click)="cardClicked()" [@cardFlip]="data.state">
   <div class="face back">
     <div class="inner">
-      <h1>{{card?.bank}}</h1>
-      <h2>{{card?.country}}</h2>
-      {{card?.balance}}
-      {{card?.system}}
+      <div class="info-wrapper">
+        <img class="card-chip" style="pointer-events: none" ngSrc="assets/card-chip.png" width="50" height="50">
+      <div class="left-container">
+        <h1>{{card?.bank}}</h1>
+        <h2>{{card?.country}}</h2>
+
+      </div>
+      <div class="right-container">
+          <div></div>
+        <img style="pointer-events: none" ngSrc="assets/{{card?.system}}.png" width="60" height="60">
+      </div>
+      </div>
     </div>
 
   </div>
   <div class="face front">
+    <div class="black-line"></div>
     <div class="inner">
 
     </div>

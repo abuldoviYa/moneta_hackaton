@@ -8,6 +8,8 @@ import {AddCardComponent} from "./add-card/add-card.component";
 import {WalletPageComponent} from "./wallet-page/wallet-page.component";
 import {CardsComponent} from "./main/cards/cards.component";
 import {CardPageComponent} from "./card-page/card-page.component";
+import {TestApiService} from "./test-api.service";
+import {TestonlypageComponent} from "./testonlypage/testonlypage.component";
 
 const routes: Routes = [
   { path: '', component: MainComponent },
@@ -17,6 +19,7 @@ const routes: Routes = [
   { path: 'history', component: HistoryComponent },
   { path: 'wallet/:id', component: WalletPageComponent},
   { path: 'card/:id', component: CardPageComponent},
+  { path: 'eee', component: TestonlypageComponent},
 ];
 
 @NgModule({

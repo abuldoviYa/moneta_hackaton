@@ -1,5 +1,13 @@
 
+.title {
+  display: flex;
+  flex-direction: row;
 
+}
+.title h1 {
+  line-height: 50px;
+  font-size: 2rem;
+}
 
 .component-card-list {
   background-color: white;

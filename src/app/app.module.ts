@@ -11,7 +11,7 @@ import {RouterOutlet} from "@angular/router";
 import { MenuComponent } from './menu/menu.component';
 import { AddWalletComponent } from './add-wallet/add-wallet.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
-import {CommonModule} from "@angular/common";
+import {CommonModule, NgOptimizedImage} from "@angular/common";
 import {ApiService} from "./api.service";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatSnackBar} from "@angular/material/snack-bar";
@@ -25,6 +25,8 @@ import { AddCardComponent } from './add-card/add-card.component';
 import { CardPageComponent } from './card-page/card-page.component';
 import { WalletPageComponent } from './wallet-page/wallet-page.component';
 import { CardPageUiComponent } from './card-page/card-page-ui/card-page-ui.component';
+import { TestonlypageComponent } from './testonlypage/testonlypage.component';
+import {HttpClientModule} from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -40,21 +42,24 @@ import { CardPageUiComponent } from './card-page/card-page-ui/card-page-ui.compo
     AddCardComponent,
     CardPageComponent,
     WalletPageComponent,
-    CardPageUiComponent
+    CardPageUiComponent,
+    TestonlypageComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    RouterOutlet,
-    FormsModule,
-    CommonModule,
-    BrowserAnimationsModule,
-    MatDatepickerModule,
-    MatNativeDateModule,
-    MatFormFieldModule,
-    MatInputModule,
-    ReactiveFormsModule,
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        RouterOutlet,
+        FormsModule,
+        CommonModule,
+        BrowserAnimationsModule,
+        MatDatepickerModule,
+        MatNativeDateModule,
+        MatFormFieldModule,
+        MatInputModule,
+        ReactiveFormsModule,
+        NgOptimizedImage,
+        HttpClientModule,
+    ],
   providers: [ApiService, MatSnackBar, MatDatepickerModule,MatNativeDateModule, {provide: MAT_DATE_LOCALE, useValue: "ru-RU"} ],
   bootstrap: [AppComponent]
 })

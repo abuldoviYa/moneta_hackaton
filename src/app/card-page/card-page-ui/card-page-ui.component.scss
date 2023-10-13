@@ -7,8 +7,43 @@
   position: relative;
   transform-style: preserve-3d;
   background: rgb(80,80,80);
-  background: linear-gradient(311deg, rgba(80,80,80,1) 0%, rgba(55,55,55,1) 100%);
+  background: linear-gradient(131deg, rgba(80,80,80,1) 0%, rgba(55,55,55,1) 100%);
   color: white;
+
+}
+
+.card-chip {
+  position: absolute;
+  bottom: 40%;
+  left:10%
+}
+
+.card h2 {
+  margin-top: 0;
+  font-size: 0.9rem;
+  color: whitesmoke;
+  line-height: 0.9rem;
+}
+.card h1 {
+  margin-bottom: 0;
+}
+
+img {
+  aspect-ratio: 1/1;
+}
+
+
+.info-wrapper {
+  display: flex;
+  justify-content: space-between;
+  height: 100%;
+
+}
+
+.right-container {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
 }
 
 .face {
@@ -18,6 +53,8 @@
   height: 100%;
   border-radius: inherit;
   backface-visibility: hidden;
+
+
 
   > img {
     width: 100%;
@@ -32,5 +69,19 @@
 }
 
 .inner {
-  padding: 1rem 2rem;
+  height: 100%;
+  padding: 2rem;
+  box-sizing: border-box;
+}
+
+
+.left-container {
+
+}
+
+.black-line {
+  position: relative;
+  top: 8%;
+  background: #252525;
+  height: 22%;
 }
