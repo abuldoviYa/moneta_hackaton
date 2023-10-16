@@ -3,9 +3,18 @@
 
   <div class="wallet">
     <div class="wallet-body">
-      <p>Номер кошелька: {{ formatFullWalletNumber(wallet.digitalWalletNumber.toString()) }}</p>
-      <p>Баланс: {{ formatBalance(wallet.balance) }} {{ countries.get(wallet.country).currencySign }}</p>
-      <p>Дата создания: {{ wallet.dateCreated }}</p>
+      <h3>Номер кошелька: </h3>
+      <div class="input-wrapper">
+        <input disabled class="input" type="text" value="{{ formatFullWalletNumber(wallet.digitalWalletNumber.toString()) }}">
+      </div>
+      <h3>Баланс: </h3>
+      <div class="input-wrapper">
+        <input disabled class="input" type="text" value="{{ formatBalance(wallet.balance) }} {{ countries.get(wallet.country).currencySign }}">
+      </div>
+      <h3>Дата создания: </h3>
+      <div class="input-wrapper">
+        <input disabled class="input" type="text" value="{{ wallet.dateCreated }}">
+      </div>
     </div>
   </div>
 

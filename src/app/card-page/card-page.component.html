@@ -3,6 +3,12 @@
 <app-card-page-ui [card]="card"></app-card-page-ui>
 
 </div>
+<div class="bank-info">
+  <div class="input-wrapper">
+    <input disabled class="input" type="text" value="{{bankInfo}}">
+  </div>
+</div>
+
 
 <div *ngIf="!card">Такой карты не существует</div>
 
