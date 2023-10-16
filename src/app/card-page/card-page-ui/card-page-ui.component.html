@@ -4,22 +4,30 @@
       <div class="info-wrapper">
         <img class="card-chip" style="pointer-events: none" ngSrc="assets/card-chip.png" width="50" height="50">
       <div class="left-container">
-        <h1>{{card?.bank}}</h1>
+        <h1 class="bankName" >{{card?.bankName}}</h1>
         <h2>{{card?.country}}</h2>
 
       </div>
       <div class="right-container">
           <div></div>
-        <img style="pointer-events: none" ngSrc="assets/{{card?.system}}.png" width="60" height="60">
+        <img style="pointer-events: none" ngSrc="assets/{{card?.paymentSystem}}.svg" width="60" height="60">
       </div>
       </div>
     </div>
 
   </div>
   <div class="face front">
+
     <div class="black-line"></div>
     <div class="inner">
+      <div class="info-wrapper">
+        <div class="left-container">
 
+          </div>
+        <div class="right-container">
+          {{formatFullCardNumber(card?.cardNumber!)}}
+        </div>
+      </div>
     </div>
   </div>
 </div>

@@ -14,11 +14,11 @@
 
   <br>
 
-  <label for="bank">Выберите банк-провайдер:</label>
+  <label for="bank">Выберите банк:</label>
   <div class="select-wrapper">
     <select [disabled]="this.selectedCountry == ''" class="select"  id="bank" name="bank" [(ngModel)]="selectedBank" (change)="onBank($event)"   required>
       <option disabled selected style="display:none"  value="">Доступные банки</option>
-      <option *ngFor="let bank of banks.get(selectedCountry)" [value]="bank">{{ bank }}</option>
+      <option *ngFor="let bank of banks" [value]="bank.bankName">{{ banksMap.get(bank.bankName) }}</option>
     </select>
   </div>
 

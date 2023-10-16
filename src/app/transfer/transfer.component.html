@@ -1,5 +1,5 @@
 <h1>Перевод</h1>
-
+<div  *ngIf="wallets">
 <form (ngSubmit)="onSendTransfer()">
   <div class="source_first">
     <label for="source">Откуда:</label>
@@ -19,7 +19,7 @@
             required>
       <option disabled selected style="display:none">Доступные кошельки</option>
       <option *ngFor="let wallet of wallets"
-              value="{{wallet.walletNumber}}">{{countries.get(wallet.country).currencyName}}</option>
+              value="{{wallet.digitalWalletNumber}}">{{countries.get(wallet.centralBank).currencyName}}</option>
     </select>
     </div>
   </div>
@@ -33,7 +33,7 @@
               required>
         <option disabled selected style="display:none">Доступные карты</option>
         <option *ngFor="let card of cards"
-                value="{{card.cardNumber}}">{{card.bank + " " + countries.get(card.country).currencyName}}</option>
+                value="{{card.cardNumber}}">{{banks.get(card.bankName) + " (" + countries.get(card.country).currencyName + ")"}}</option>
       </select>
     </div>
       </div>
@@ -58,8 +58,8 @@
       <option disabled selected style="display:none">Доступные кошельки</option>
 
       <ng-container *ngFor="let wallet of wallets">
-        <option *ngIf="sourceValue != wallet.walletNumber"
-                value="{{wallet.walletNumber}}">{{countries.get(wallet.country).currencyName}}</option>
+        <option *ngIf="sourceValue != wallet.digitalWalletNumber"
+                value="{{wallet.digitalWalletNumber}}">{{countries.get(wallet.centralBank).currencyName}}</option>
       </ng-container>
     </select>
     </div>
@@ -76,7 +76,7 @@
 
         <ng-container *ngFor="let card of cards">
           <option *ngIf="sourceCountry != card.country"
-                  value="{{card.cardNumber}}">{{card.bank + " " + countries.get(card.country).currencyName}}</option>
+                  value="{{card.cardNumber}}">{{banks.get(card.bankName) + " (" + countries.get(card.country).currencyName +")"}}</option>
         </ng-container>
       </select>
     </div>
@@ -84,15 +84,15 @@
 
   <div *ngIf="targetSecond == 'digitalWallet' && sourceSecond == 'card'" class="target_second_card">
     <br>
-    <label for="target_second_card_field_diff">Выберите карту:</label>
+    <label for="target_second_card_field_diff1">Выберите карту:</label>
     <div class="select-wrapper">
-      <select class="select"  (change)="onTargetAccount($event)" name="target_second_card_field_diff" id="target_second_card_field_diff"
+      <select class="select"  (change)="onTargetAccount($event)" name="target_second_card_field_diff" id="target_second_card_field_diff1"
               required>
         <option disabled selected style="display:none">Доступные кошельки</option>
 
         <ng-container *ngFor="let wallet of wallets">
           <option *ngIf="sourceCountry == wallet.country"
-                  value="{{wallet.walletNumber}}">{{countries.get(wallet.country).currencyName}}</option>
+                  value="{{wallet.digitalWalletNumber}}">{{countries.get(wallet.centralBank).currencyName}}</option>
         </ng-container>
       </select>
     </div>
@@ -100,23 +100,19 @@
 
   <div *ngIf="targetSecond == 'card' && sourceSecond == 'digitalWallet'" class="target_second_card">
     <br>
-    <label for="target_second_card_field_diff">Выберите карту:</label>
+    <label for="target_second_card_field_diff2">Выберите карту:</label>
     <div class="select-wrapper">
-      <select class="select"  (change)="onTargetAccount($event)" name="target_second_card_field_diff" id="target_second_card_field_diff"
+      <select class="select"  (change)="onTargetAccount($event)" name="target_second_card_field_diff" id="target_second_card_field_diff2"
               required>
         <option disabled selected style="display:none">Доступные карты</option>
 
         <ng-container *ngFor="let card of cards">
           <option *ngIf="sourceCountry == card.country"
-                  value="{{card.cardNumber}}">{{card.bank + " " + countries.get(card.country).currencyName}}</option>
+                  value="{{card.cardNumber}}">{{banks.get(card.bankName) + " (" + countries.get(card.country).currencyName+")"}}</option>
         </ng-container>
       </select>
     </div>
   </div>
-
-
-
-
 
   <div
     *ngIf="targetSecond!=null
@@ -129,7 +125,7 @@
       <div class="full info">
         <div class="target width30">
           <p>Доступно</p>
-          <span>{{sourceWallet.balance}} {{countries.get(sourceWallet!.country).currencySign}}</span>
+          <span>{{mathRoundTwo(sourceWallet.balance)}} {{countries.get(sourceWallet!.country).currencySign}}</span>
         </div>
         <div class="target width30">
           <p>Курс перевода</p>
@@ -149,7 +145,7 @@
     <div>
       <br>
       <div class="input-wrapper">
-        <input class="input" type="text" min="1" placeholder="Введите сумму" max="1000000" maxlength="7" (input)="onValueNotEqual($event)">
+        <input class="input" type="tel" min="1" placeholder="Введите сумму" max="1000000" maxlength="7" (input)="onValueNotEqual($event)">
       </div>
       <div class="target">
         <p>Будет зачислено</p>
@@ -174,7 +170,7 @@
       </div>
       <div class="target width30">
         <p>Курс перевода</p>
-        <span>{{currencyToShow}}</span>
+        <span>{{mathRoundTwo(currencyToShow!)}}</span>
       </div>
       <div class="target width30">
         <p>Комиссия</p>
@@ -190,7 +186,7 @@
     <div>
       <br>
       <div class="input-wrapper">
-        <input class="input" type="text" min="1" placeholder="Введите сумму" max="1000000" maxlength="7" (input)="onValue($event)">
+        <input class="input" type="tel" min="1" placeholder="Введите сумму" max="1000000" maxlength="7" (input)="onValue($event)">
       </div>
       <div class="target">
         <p>Будет зачислено</p>
@@ -212,3 +208,7 @@
          value="Перевести">
 
 </form>
+</div>
+<div  *ngIf="!(wallets)">
+  <h3>Отсутствуют кошельки</h3>
+</div>

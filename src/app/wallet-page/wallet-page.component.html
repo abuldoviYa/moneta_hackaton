@@ -1,1 +1,17 @@
-<p>wallet-page works!</p>
+<div *ngIf="wallet">
+  <h1>Цифровой кошелек: {{ countries.get(wallet.country).currencyName }}</h1>
+
+  <div class="wallet">
+    <div class="wallet-body">
+      <p>Номер кошелька: {{ formatFullWalletNumber(wallet.digitalWalletNumber.toString()) }}</p>
+      <p>Баланс: {{ formatBalance(wallet.balance) }} {{ countries.get(wallet.country).currencySign }}</p>
+      <p>Дата создания: {{ wallet.dateCreated }}</p>
+    </div>
+  </div>
+
+  <!-- Additional features can be added here, e.g., transaction history, buttons for actions, etc. -->
+</div>
+
+<div *ngIf="!wallet">
+  <p>Loading...</p>
+</div>

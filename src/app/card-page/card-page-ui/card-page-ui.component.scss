@@ -15,21 +15,29 @@
 .card-chip {
   position: absolute;
   bottom: 40%;
-  left:10%
+  left:10%;
+  width: 13.125%;
+  height: 21%;
 }
 
 .card h2 {
   margin-top: 0;
-  font-size: 0.9rem;
+  font-size: 100%;
   color: whitesmoke;
-  line-height: 0.9rem;
+  line-height: 100%;
 }
 .card h1 {
   margin-bottom: 0;
 }
 
 img {
+
   aspect-ratio: 1/1;
+}
+
+.right-container {
+  font-size: 100%;
+  color: whitesmoke;
 }
 
 
@@ -70,7 +78,7 @@ img {
 
 .inner {
   height: 100%;
-  padding: 2rem;
+  padding: 8%;
   box-sizing: border-box;
 }
 

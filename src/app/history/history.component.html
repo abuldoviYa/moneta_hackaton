@@ -1,4 +1,4 @@
-<h1>История транзакций</h1>
+<h1>История операций</h1>
 <div *ngIf="transactions">
 
   <mat-form-field class="width100">
@@ -43,20 +43,20 @@
     <div class="transaction-wrapper">
       <li  *ngFor="let transaction of filteredTransactions">
         <div class="transaction">
-          <div class="col-3">{{ transaction.date.toLocaleDateString("ru-RU") + " " + transaction.date.toLocaleTimeString("ru-RU") }}</div>
+          <div class="col-3">{{ transaction.dateCreated.toLocaleDateString("ru-RU") + " " + transaction.dateCreated.toLocaleTimeString("ru-RU") }}</div>
 
           <div class="col-3">
             <label >Откуда</label>
-            <p>{{ transaction.from }}</p>
+            <p>{{ transaction.sourceAccountId }}</p>
             <label>Сколько</label>
-            <p>-{{ transaction.amountMinus }}</p>
+            <p>{{ transaction.amountTransferred + " " +transaction.currency }}</p>
 
           </div>
           <div class="col-3">
             <label >Куда</label>
-            <p>{{ transaction.to }}</p>
+            <p>{{ transaction.targetAccountId }}</p>
             <label>Сколько</label>
-            <p>{{ transaction.amountPlus }}</p>
+            <p></p>
           </div>
         </div>
       </li>

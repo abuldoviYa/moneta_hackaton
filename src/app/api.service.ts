@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {Card} from "./card";
+import {Card} from "./entities/card";
 
 
 @Injectable({
@@ -27,50 +27,22 @@ export class ApiService {
 
   }
 
-  addNewWallet(wallet: any): boolean {
+  getBanks(): Map<string, string> {
+    return new Map([
+      ['Green', 'Зеленый'],
+      ['СentrInvest', 'Центр-инвест'],
+      ['Blue', 'Синий'],
+      ['Red', 'Красный'],
+      ['Bank of China', 'Банк Китая'],
+      ['Industrial & Commercial Bank of China', 'Промышленный и Коммерческий Банк Китая'],
+      ['Agricultural Bank of China', 'Сельскохозяйственный Банк Китая'],
+      ['China Construction Bank', 'Строительный Банк Китая'],
+    ]);
 
-    let wallets = localStorage.getItem("wallets")
-    if(wallets==null || wallets == 'null'){
-      let storeData: any[] = [];
-      storeData.push(wallet)
-      localStorage.setItem("wallets", JSON.stringify(storeData))
-      return true
-    } else {
-      let storeData: any[] = JSON.parse(wallets);
-      if(!storeData.find(x=>x.country == wallet.country)){
-        console.log('selCur'+wallet.country)
-        console.log(storeData.find(x=>console.log(x.country)))
-        storeData.push(wallet)
-        localStorage.setItem("wallets", JSON.stringify(storeData))
-        return true
-      }
-      return false
-    }
-}
-
-  er: Map<string, number> = new Map([
-    ['CNY/RUB' , 13.91],
-    ['RUB/CNY', 0.073],
-    ['KZT/RUB' , 0.21],
-    ['RUB/KZT', 4.78],
-    ['CNY/KZT' , 65.43],
-    ['KZT/CNY', 0.015],
-  ])
-
-  fee: number = 0.008
-
-  getERandFee(walletFrom: any, walletTo: any, type: string): number[]|null {
-    console.log(walletTo.country)
-    let countries = this.getAvailablecountries();
-    let currencyFrom = countries.get(walletFrom.country).currencyTicker
-    let currencyTo = countries.get(walletTo.country).currencyTicker
-    let ticker = currencyFrom+"/"+currencyTo
-
-    if (this.er.get(ticker)){
-      return [this.er.get(ticker)!, this.fee]
-    }
-    return null
   }
+
+
+
 
   makeTransferNotEqual(walletFrom: any, walletTo: any, amountMinus: number, amountPlus: number, typeFrom: string): boolean {
     //amountPlus = amountMinus;
@@ -162,53 +134,22 @@ export class ApiService {
   }
 
 
-  // getAvailablecountries(): any[] {
-  //   return [
-  //     {name: 'Китай', currency: '¥', currencyName: 'CHN', flag: '🇨🇳'},
-  //     {name: 'Рубль', currency: '₽', currencyName: 'RUB',flag: '🇷🇺'}
-  //     ];
-  // }
-
   getAvailablecountries(): Map<string, any> { return new Map([
-    ['CHINA', {name: 'Китай', currencySign: '¥', currencyName: 'Юань', currencyTicker: 'CNY', flag: '🇨🇳', system: "UnionPay"}],
+    ['CHINA', {name: 'Китай', currencySign: '¥', currencyName: 'Юань', currencyTicker: 'CNY', flag: '🇨🇳', system: "UNION_PAY"}],
     ['RUSSIA', {name: 'Россия', currencySign: '₽', currencyName: 'Рубль',currencyTicker: 'RUB',flag: '🇷🇺', system: "MIR"}],
-    ['KAZAKHSTAN', {name: 'Казахстан', currencySign: '₸', currencyName: 'Тенге',currencyTicker: 'KZT',flag: '🇰🇿', system: "Visa"}]
+    ['UZBEKISTAN', {name: 'Узбекистан', currencySign: 'сўм', currencyName: 'Сўм', currencyTicker: 'UZS', flag: '🇺🇿', system: "UZ_CARD"}]
+    // ['KAZAKHSTAN', {name: 'Казахстан', currencySign: '₸', currencyName: 'Тенге',currencyTicker: 'KZT',flag: '🇰🇿', system: "UZ_CARD"}]
   ]);
   }
 
+
   setConsent() {
     localStorage.setItem("consent", "true")
+    localStorage.setItem("id", "4")
   }
 
   deleteConsent() {
     localStorage.removeItem("consent")
-  }
-
-
-  getAvailableBanks(): Map<string, string[]> { return new Map([
-    ['CHINA', ['Зеленый банк', 'Белый банк']],
-    ['KAZAKHSTAN', ['Желтый банк', 'Красный банк']],
-    ['RUSSIA', ['Центр-Инвест']]
-  ]);
-  }
-
-
-  addNewCard(card: Card) {
-    let cards = localStorage.getItem("cards")
-    if(cards==null || cards == 'null'){
-      let storeData: any[] = [];
-      storeData.push(card)
-      localStorage.setItem("cards", JSON.stringify(storeData))
-      return true
-    } else {
-      let storeData: any[] = JSON.parse(cards);
-      if(!storeData.find(x=>x.bank == card.bank)){
-        storeData.push(card)
-        localStorage.setItem("cards", JSON.stringify(storeData))
-        return true
-      }
-      return false
-    }
   }
 
   getCards(): any[] {

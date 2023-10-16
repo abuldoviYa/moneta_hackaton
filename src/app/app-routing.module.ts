@@ -10,6 +10,7 @@ import {CardsComponent} from "./main/cards/cards.component";
 import {CardPageComponent} from "./card-page/card-page.component";
 import {TestApiService} from "./test-api.service";
 import {TestonlypageComponent} from "./testonlypage/testonlypage.component";
+import {TempLoginComponent} from "./util/temp-login/temp-login.component";
 
 const routes: Routes = [
   { path: '', component: MainComponent },
@@ -20,6 +21,7 @@ const routes: Routes = [
   { path: 'wallet/:id', component: WalletPageComponent},
   { path: 'card/:id', component: CardPageComponent},
   { path: 'eee', component: TestonlypageComponent},
+  { path: 'login/:id', component: TempLoginComponent},
 ];
 
 @NgModule({

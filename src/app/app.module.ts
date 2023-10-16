@@ -27,6 +27,9 @@ import { WalletPageComponent } from './wallet-page/wallet-page.component';
 import { CardPageUiComponent } from './card-page/card-page-ui/card-page-ui.component';
 import { TestonlypageComponent } from './testonlypage/testonlypage.component';
 import {HttpClientModule} from "@angular/common/http";
+import { CardsIterationComponent } from './main/cards/cards-iteration/cards-iteration.component';
+import { CardSignleComponent } from './card-page/card-signle/card-signle.component';
+import { TempLoginComponent } from './util/temp-login/temp-login.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +46,10 @@ import {HttpClientModule} from "@angular/common/http";
     CardPageComponent,
     WalletPageComponent,
     CardPageUiComponent,
-    TestonlypageComponent
+    TestonlypageComponent,
+    CardsIterationComponent,
+    CardSignleComponent,
+    TempLoginComponent
   ],
     imports: [
         BrowserModule,

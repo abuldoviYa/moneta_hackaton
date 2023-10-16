@@ -1,0 +1,49 @@
+.component-item-right {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: space-between;
+}
+
+
+.countryFlag {
+  font-size: 2rem;
+}
+
+
+
+.countrySign {
+  font-size: 1.2rem;
+  color: grey;
+}
+
+.card-system {
+  width: 100%;
+}
+
+
+.component-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 7% 7%;
+}
+
+.component-item span{
+  font-size: 1.6rem;
+}
+
+.component-item p{
+  font-size: 0.9rem;
+  color: darkgrey;
+  padding-top: 0.4rem;
+  margin-bottom: 0;
+}
+
+.component-item-right-item {
+  text-align: right;
+
+}
+
+.component-item-right-item img {
+  width: 2.6rem;
+}

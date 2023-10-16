@@ -1,8 +1,8 @@
-import {Component, inject, Input} from '@angular/core';
+import {AfterViewInit, Component, ElementRef, inject, Input, ViewChild} from '@angular/core';
 import {CardData} from "../../interfaces/CardData";
 import {animate, state, style, transition, trigger} from "@angular/animations";
 import {ApiService} from "../../api.service";
-import {Card} from "../../card";
+import {Card} from "../../entities/card";
 import {ActivatedRoute} from "@angular/router";
 
 @Component({
@@ -26,7 +26,7 @@ import {ActivatedRoute} from "@angular/router";
     ])
   ]
 })
-export class CardPageUiComponent {
+export class CardPageUiComponent  {
   data: CardData = {
     imageId: "pDGNBK9A0sk",
     state: "default",
@@ -43,6 +43,28 @@ export class CardPageUiComponent {
       this.data.state = "default";
     }
   }
+
+  formatShortCardNumber(s: string){
+    return "·· " + s.substring(s.length-4)
+  }
+
+  formatFullCardNumber(cardNumber: string): string {
+    // Remove any non-numeric characters
+    const cleanedCardNumber = cardNumber.replace(/\D/g, '');
+
+    // Split the string into groups of 4 digits
+    const groups = cleanedCardNumber.match(/(\d{1,4})/g);
+
+    // Join the groups with space
+    const formattedCardNumber = groups ? groups.join(' ') : '';
+
+    return formattedCardNumber;
+  }
+
+
+
+
+
 
 
 }

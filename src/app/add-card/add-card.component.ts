@@ -2,8 +2,12 @@ import {Component, OnInit} from '@angular/core';
 import {ApiService} from "../api.service";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {Router} from "@angular/router";
-import {Card} from "../card";
 import {Title} from "@angular/platform-browser";
+import {Card} from "../entities/card";
+import {BackapiService} from "../backapi.service";
+import {Wallet} from "../entities/wallet";
+import {Bank} from "../entities/bank";
+import {CardPost} from "../entities/card-post";
 
 @Component({
   selector: 'app-add-card',
@@ -12,14 +16,16 @@ import {Title} from "@angular/platform-browser";
 })
 export class AddCardComponent implements OnInit {
 
-  constructor(private apiService: ApiService, private snackBar: MatSnackBar, private router: Router, private titleService:Title) {
+  constructor(private apiService: ApiService, private snackBar: MatSnackBar, private router: Router, private titleService:Title, private backApi: BackapiService) {
     this.titleService.setTitle("Добавить карту" + apiService.title);
 
     console.log('AddCardComponent - ApiService:', apiService);
   }
 
   countries = this.apiService.getAvailablecountries();
-  banks = this.apiService.getAvailableBanks()
+  banksMap = this.apiService.getBanks();
+  banks!: any[];
+  banksLoaded! :any[];
 
   selectedCountry: string = "";
   selectedBank: string = "";
@@ -31,6 +37,12 @@ export class AddCardComponent implements OnInit {
 
   onCountry(country: string): void {
     this.selectedCountry = country;
+    this.banks = this.filterBanks(this.banksLoaded)
+    console.log(this.banks)
+  }
+
+  filterBanks(banks: Bank[]): Bank[]{
+    return banks.filter(x=>x.country==this.selectedCountry)
   }
 
   updateBanks(event: any): void {
@@ -38,21 +50,29 @@ export class AddCardComponent implements OnInit {
   }
 
   onSubmit(): void {
-    if (this.postNewCard()) {
-      this.openSnackBar('Карта успешно создана!', true);
-      this.router.navigate(['/']);
-    } else {
-      this.openSnackBar('Карта в этом банке уже открыта', false);
-    }
+    this.postNewCard()
   }
 
   updateConsentAgreement() {
     this.consentAgreement = !this.consentAgreement;
   }
 
-  postNewCard(): boolean {
-    let card: Card = new Card(this.selectedCountry, this.selectedBank,Math.floor(Math.random() * 10000).toString(), 1000, 'DIGITAL', this.countries.get(this.selectedCountry).system)
-    return this.apiService.addNewCard(card)
+  postNewCard(): void {
+    let card: CardPost = new CardPost(-1, this.selectedBank, 1000)
+    this.backApi.addNewCard(card).subscribe(x => {
+      x.body.data ? this.handleSuccess() : this.handleError()
+    })
+  }
+
+  handleSuccess(): void {
+    this.openSnackBar('Карта успешно создана!', true);
+    setTimeout(() => {
+      this.router.navigate(['/']);
+    }, 500);  //5s
+  }
+
+  handleError(): void {
+    this.openSnackBar('Карта в этом банке уже открыта', false);
   }
 
   openSnackBar(message: string, bool: boolean) {
@@ -69,7 +89,9 @@ export class AddCardComponent implements OnInit {
     //   this.apiService.initializeCards();
     // }
     this.countries = this.apiService.getAvailablecountries();
-    this.banks = this.apiService.getAvailableBanks()
+    this.backApi.getBanks().subscribe(x=>{
+      this.banksLoaded=x.data
+    })
 
     this.selectedCountry = "";
     this.selectedBank = "";
@@ -79,4 +101,7 @@ export class AddCardComponent implements OnInit {
   countriesEntries() {
     return Array.from(this.countries.keys())
   }
+
+
+
 }

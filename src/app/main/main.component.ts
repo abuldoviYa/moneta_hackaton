@@ -1,6 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {ApiService} from "../api.service";
 import {Title} from "@angular/platform-browser";
+import {BackapiService} from "../backapi.service";
+import {catchError} from "rxjs";
+
 
 @Component({
   selector: 'app-main',
@@ -8,26 +11,17 @@ import {Title} from "@angular/platform-browser";
   styleUrls: ['./main.component.scss'],
 })
 export class MainComponent implements OnInit{
-  constructor(private apiService: ApiService, private titleService:Title) {
+  constructor(private apiService: ApiService, private titleService:Title, private backApi: BackapiService) {
     this.titleService.setTitle("Главная" + apiService.title);
   }
 
-  wallets?: any[] = JSON.parse(localStorage.getItem("wallets")!);
+
+
+  wallets?: any[];
 
   countries? = this.apiService.getAvailablecountries();
 
-    // Update the type based on your data model
-  bankAccounts?: any[]; // Update the type based on your data model
 
-  countryFlags = new Map<string, string>([
-    ["CHN", "🇨🇳"],
-    ["RUB", "🇷🇺"]
-  ]);
-
-  countrySign = new Map<string, string>([
-    ["CHN", "¥"],
-    ["RUB", "₽"]
-  ]);
 
 
 
@@ -53,9 +47,11 @@ export class MainComponent implements OnInit{
   protected readonly queueMicrotask = queueMicrotask;
 
   ngOnInit(): void {
-    if(localStorage.getItem('wallets')==null){
-      this.apiService.initializeWallets();
-    }
+    // if(localStorage.getItem('wallets')==null){
+    //   this.apiService.initializeWallets();
+    // }
+    this.backApi.getWallets().subscribe(x=>this.wallets = x.data);
+
   }
 
     protected readonly Math = Math;
@@ -64,4 +60,7 @@ export class MainComponent implements OnInit{
   onShowAllWallets(): void {
     this.showAllWallets = !this.showAllWallets;
 }
+
+  protected readonly localStorage = localStorage;
+
 }
