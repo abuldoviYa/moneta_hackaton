@@ -7,6 +7,8 @@ import {Title} from "@angular/platform-browser";
 import {BackapiService} from "../backapi.service";
 import {WalletPost} from "../entities/wallet-post";
 import {TransactionPost} from "../entities/transaction-post";
+import {MatButtonToggleGroup} from "@angular/material/button-toggle";
+import {MatButtonToggle} from "@angular/material/button-toggle";
 
 @Component({
   selector: 'app-transfer',
@@ -18,6 +20,7 @@ export class TransferComponent implements OnInit{
   constructor(private apiService: ApiService, private snackBar: MatSnackBar, private router: Router, private history: HistoryService, private titleService:Title, private backApi: BackapiService) {
     this.titleService.setTitle("Переводы" + apiService.title);
   }
+
 
   ngOnInit(): void {
      this.backApi.getWallets().subscribe(x=>this.wallets=x.data);
@@ -44,7 +47,7 @@ export class TransferComponent implements OnInit{
   targetValue?: number;
 
   onSource(value: any): void {
-    this.sourceSecond = value.target.value;
+    this.sourceSecond = value.value;
     this.sourceValue = undefined;
     this.sourceCountry = undefined;
     this.targetSecond = undefined;
@@ -53,7 +56,7 @@ export class TransferComponent implements OnInit{
   }
 
   onTarget(value: any): void {
-    this.targetSecond = value.target.value;
+    this.targetSecond = value.value;
     this.targetValue = undefined;
   }
 

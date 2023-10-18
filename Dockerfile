@@ -1,4 +1,4 @@
-FROM nginx:latest AS build
+FROM alexsuch/angular-cli AS build
 WORKDIR /app
 COPY package*.json ./
 RUN npm install

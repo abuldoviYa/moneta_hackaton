@@ -35,3 +35,18 @@ label {
 .info span{
   font-size: 1.3rem;
 }
+
+.buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+
+.button-icon {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  margin: 1rem;
+  border: 1px solid black;
+  border-radius: 10px;
+}

@@ -32,7 +32,10 @@ export class CardPageUiComponent  {
     state: "default",
   };
 
-  constructor() {
+  banks
+
+  constructor(private apiService: ApiService) {
+    this.banks = apiService.getBanks()
   }
   @Input()
   card!: Card | null

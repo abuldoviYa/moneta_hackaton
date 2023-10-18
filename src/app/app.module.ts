@@ -30,6 +30,7 @@ import {HttpClientModule} from "@angular/common/http";
 import { CardsIterationComponent } from './main/cards/cards-iteration/cards-iteration.component';
 import { CardSignleComponent } from './card-page/card-signle/card-signle.component';
 import { TempLoginComponent } from './util/temp-login/temp-login.component';
+import {MatButtonToggleModule} from "@angular/material/button-toggle";
 
 @NgModule({
   declarations: [
@@ -65,6 +66,7 @@ import { TempLoginComponent } from './util/temp-login/temp-login.component';
         ReactiveFormsModule,
         NgOptimizedImage,
         HttpClientModule,
+        MatButtonToggleModule,
     ],
   providers: [ApiService, MatSnackBar, MatDatepickerModule,MatNativeDateModule, {provide: MAT_DATE_LOCALE, useValue: "ru-RU"} ],
   bootstrap: [AppComponent]
