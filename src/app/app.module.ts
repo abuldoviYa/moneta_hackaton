@@ -31,6 +31,7 @@ import { CardsIterationComponent } from './main/cards/cards-iteration/cards-iter
 import { CardSignleComponent } from './card-page/card-signle/card-signle.component';
 import { TempLoginComponent } from './util/temp-login/temp-login.component';
 import {MatButtonToggleModule} from "@angular/material/button-toggle";
+import {MatSelectModule} from "@angular/material/select";
 
 @NgModule({
   declarations: [
@@ -52,22 +53,23 @@ import {MatButtonToggleModule} from "@angular/material/button-toggle";
     CardSignleComponent,
     TempLoginComponent
   ],
-    imports: [
-        BrowserModule,
-        AppRoutingModule,
-        RouterOutlet,
-        FormsModule,
-        CommonModule,
-        BrowserAnimationsModule,
-        MatDatepickerModule,
-        MatNativeDateModule,
-        MatFormFieldModule,
-        MatInputModule,
-        ReactiveFormsModule,
-        NgOptimizedImage,
-        HttpClientModule,
-        MatButtonToggleModule,
-    ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    RouterOutlet,
+    FormsModule,
+    CommonModule,
+    BrowserAnimationsModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatFormFieldModule,
+    MatInputModule,
+    ReactiveFormsModule,
+    NgOptimizedImage,
+    HttpClientModule,
+    MatButtonToggleModule,
+    MatSelectModule,
+  ],
   providers: [ApiService, MatSnackBar, MatDatepickerModule,MatNativeDateModule, {provide: MAT_DATE_LOCALE, useValue: "ru-RU"} ],
   bootstrap: [AppComponent]
 })

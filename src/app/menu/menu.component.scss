@@ -25,6 +25,11 @@ li {
   color: #595959;
 }
 
+li:active {
+  color: #595959;
+}
+
+
 li:hover {
   background-color: var(--main-bg-grey);
   color: #2f2f2f;

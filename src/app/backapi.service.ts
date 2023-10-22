@@ -66,9 +66,15 @@ export class BackapiService {
 
   makeTransaction(transaction: TransactionPost):Observable<any>  {
     transaction.userId = this.id
-    return this.httpClient.post<any>(this.host+"/transactions", transaction,{
-      observe: "response"
-    })
+    if (!transaction.isSourceWallet && !transaction.isTargetWallet) {
+      return this.httpClient.post<any>(this.host+"/quicktransactions", transaction,{
+        observe: "response"
+      })
+    } else {
+      return this.httpClient.post<any>(this.host+"/transactions", transaction,{
+        observe: "response"
+      })
+    }
   }
 
   getTransactions(): Observable<any> {

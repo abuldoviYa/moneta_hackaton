@@ -1,12 +1,51 @@
 @import 'material-icons/iconfont/material-icons.css';
 @import "@angular/material/prebuilt-themes/indigo-pink.css";
 
+
+$indigo-palette: (
+  50: #50b848,
+  100: #50b848,
+  200: #50b848,
+  300: #50b848,
+  400: #50b848,
+  500: #50b848,
+  600: #50b848,
+  700: #50b848,
+  800: #50b848,
+  900: #50b848);
+
 /* You can add global styles to this file, and also import other style files */
 :root {
   --main-bg-grey: #f5f5f5;
   --main-color-green: #50b848;
   --main-color-green-light: rgba(201, 255, 196, 0.45);
   --main-color-dark-grey: #595959;
+
+  //Select transfer
+  --mdc-filled-text-field-caret-color: #50b848;
+  --mdc-filled-text-field-focus-active-indicator-color: #50b848;
+  --mdc-filled-text-field-focus-label-text-color: #50b848;
+  --mat-option-selected-state-label-text-color: #50b848;
+  --mat-select-focused-arrow-color: #50b848;
+  //--mdc-filled-text-field-container-color: #FFFFFF;
+  --mat-select-trigger-text-size: 1.2rem;
+  --mat-option-label-text-siz:  1.2rem;
+  --mdc-filled-text-field-label-text-size: 1.2rem;
+
+
+
+  //Dates
+  --mat-datepicker-calendar-date-selected-state-background-color:#50b848;
+  --mat-datepicker-toggle-active-state-icon-color:#50b848;
+  --mat-datepicker-calendar-date-hover-state-background-color: rgba(80, 184, 72, 0.37);
+  --mat-datepicker-calendar-date-selected-disabled-state-background-color: rgba(80, 184, 72, 0.37);
+  --mat-datepicker-calendar-date-focus-state-background-color: rgba(80, 184, 72, 0.37);
+  --mat-datepicker-calendar-date-in-range-state-background-color:  rgba(80, 184, 72, 0.37);
+}
+
+//Select transfer (check)
+.mat-primary .mat-pseudo-checkbox-checked.mat-pseudo-checkbox-minimal::after, .mat-primary .mat-pseudo-checkbox-indeterminate.mat-pseudo-checkbox-minimal::after {
+  color: #50b848;
 }
 html {
   scroll-behavior: smooth;
@@ -16,6 +55,9 @@ body {
   font-family: "Helvetica", sans-serif;
   width: 100%;
   overflow-x: hidden;
+
+
+
   //display: flex;
   //align-items: center;
   //justify-content: center;

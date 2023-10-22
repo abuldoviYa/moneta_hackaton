@@ -42,21 +42,31 @@
   <ul *ngIf="transactions!=null">
     <div class="transaction-wrapper">
       <li  *ngFor="let transaction of filteredTransactions">
+
         <div class="transaction">
-          <div class="col-3">{{ transaction.dateCreated.toLocaleDateString("ru-RU") + " " + transaction.dateCreated.toLocaleTimeString("ru-RU") }}</div>
+          <div>{{ transaction.dateCreated.toLocaleDateString("ru-RU") + " " + transaction.dateCreated.toLocaleTimeString("ru-RU") }}</div>
+          <div class="transaction-numbers">
+            <div class="col-5 info-mini">
+              <div>
+              <label >Откуда</label>
+              <p>{{ transaction.sourceAccountId }}</p>
+              </div>
+              <div>
+              <label>Сколько</label>
+              <p>{{ transaction.amountTransferred + " " +transaction.currency }}</p>
+              </div>
 
-          <div class="col-3">
-            <label >Откуда</label>
-            <p>{{ transaction.sourceAccountId }}</p>
-            <label>Сколько</label>
-            <p>{{ transaction.amountTransferred + " " +transaction.currency }}</p>
-
+            </div>
+            <div class="col-5 info-mini">
+              <div>
+              <label >Куда</label>
+              <p>{{ transaction.targetAccountId }}</p>
+            </div>
+            <div>
+              <label>Сколько</label>
+              <p></p>
           </div>
-          <div class="col-3">
-            <label >Куда</label>
-            <p>{{ transaction.targetAccountId }}</p>
-            <label>Сколько</label>
-            <p></p>
+            </div>
           </div>
         </div>
       </li>

@@ -25,11 +25,11 @@
     <br>
     <mat-button-toggle-group name="fontStyle" id="source" style="width: 100%; font-size: 1.1rem" aria-label="Font Style" (change)="onSource($event)">
       <mat-button-toggle style="width: 50%; padding: 0.2rem" value="digitalWallet">
-        <img ngSrc="/assets/custom_icons/wallet-icon.svg" width="20" height="20" alt="">
+        <img ngSrc="/assets/custom_icons/wallet-icon.svg" width="30" height="30" alt="">
         Кошелек
       </mat-button-toggle>
       <mat-button-toggle style="width: 50%; padding: 0.2rem" value="card">
-        <img ngSrc="/assets/custom_icons/cards-icon.svg" width="20" height="20" alt="">
+        <img ngSrc="/assets/custom_icons/cards-icon.svg" width="30" height="30" alt="">
         Карта</mat-button-toggle>
     </mat-button-toggle-group>
   </div>
@@ -40,29 +40,51 @@
 <!--  </mat-button-toggle-group>-->
   <div *ngIf="sourceSecond == 'digitalWallet'" class="source_second_wallet">
     <br>
-    <label for="source_second_wallet_field">Выберите кошелек:</label>
-    <div class="select-wrapper">
-    <select class="select"  (change)="onSourceAccount($event)" name="source_second_wallet_field" id="source_second_wallet_field"
-            required>
-      <option disabled selected style="display:none">Доступные кошельки</option>
-      <option *ngFor="let wallet of wallets"
-              value="{{wallet.digitalWalletNumber}}">{{countries.get(wallet.centralBank).currencyName}}</option>
-    </select>
-    </div>
+<!--    <label for="source_second_wallet_field">Выберите кошелек:</label>-->
+<!--    <div class="select-wrapper">-->
+<!--    <select class="select"  (change)="onSourceAccount($event)" name="source_second_wallet_field" id="source_second_wallet_field"-->
+<!--            required>-->
+<!--      <option disabled selected style="display:none">Доступные кошельки</option>-->
+<!--      <option *ngFor="let wallet of wallets"-->
+<!--              value="{{wallet.digitalWalletNumber}}">{{countries.get(wallet.centralBank).currencyName}}</option>-->
+<!--    </select>     </div>-->
+    <mat-form-field style="width: 100%">
+      <mat-label>Доступные кошельки</mat-label>
+      <mat-select (selectionChange)="onSourceAccount($event)" panelClass="mat-select-custom" >
+        <ng-container *ngFor="let wallet of wallets">
+          <mat-option style="color: black" [value]="wallet.digitalWalletNumber">
+            {{countries.get(wallet.centralBank).currencyName}}
+          </mat-option>
+        </ng-container>
+      </mat-select>
+    </mat-form-field>
+
+
+
   </div>
 
 
   <div *ngIf="sourceSecond == 'card'" class="source_second_card">
     <br>
-    <label for="source_second_card_field">Выберите карту:</label>
-    <div class="select-wrapper">
-      <select class="select"  (change)="onSourceAccount($event)" name="source_second_card_field" id="source_second_card_field"
-              required>
-        <option disabled selected style="display:none">Доступные карты</option>
-        <option *ngFor="let card of cards"
-                value="{{card.cardNumber}}">{{banks.get(card.bankName) + " (" + countries.get(card.country).currencyName + ")"}}</option>
-      </select>
-    </div>
+<!--    <label for="source_second_card_field">Выберите карту:</label>-->
+<!--    <div class="select-wrapper">-->
+<!--      <select class="select"  (change)="onSourceAccount($event)" name="source_second_card_field" id="source_second_card_field"-->
+<!--              required>-->
+<!--        <option disabled selected style="display:none">Доступные карты</option>-->
+<!--        <option *ngFor="let card of cards"-->
+<!--                value="{{card.cardNumber}}">{{banks.get(card.bankName) + " (" + countries.get(card.country).currencyName + ")"}}</option>-->
+<!--      </select>-->
+<!--    </div>-->
+    <mat-form-field style="width: 100%">
+      <mat-label>Доступные карты</mat-label>
+      <mat-select (selectionChange)="onSourceAccount($event)" panelClass="mat-select-custom" >
+        <ng-container *ngFor="let card of cards">
+          <mat-option style="color: black" [value]="card.cardNumber">
+            {{banks.get(card.bankName) + " (" + countries.get(card.country).currencyName +")"}}
+          </mat-option>
+        </ng-container>
+      </mat-select>
+    </mat-form-field>
       </div>
 
   <div class="target_first" >
@@ -71,78 +93,118 @@
     <br>
     <mat-button-toggle-group [disabled]="(sourceValue == null)" style="width: 100%; font-size: 1.1rem" name="fontStyle" aria-label="Font Style" id="target" (change)="onTarget($event)" [(ngModel)]="targetSecond">
       <mat-button-toggle style="width: 50%; padding: 0.2rem" value="digitalWallet">
-        <img ngSrc="/assets/custom_icons/wallet-icon.svg" width="20" height="20" alt="">
+        <img ngSrc="/assets/custom_icons/wallet-icon.svg" width="30" height="30" alt="">
         Кошелек
       </mat-button-toggle>
       <mat-button-toggle style="width: 50%; padding: 0.2rem" value="card">
-        <img ngSrc="/assets/custom_icons/cards-icon.svg" width="20" height="20" alt="">
+        <img ngSrc="/assets/custom_icons/cards-icon.svg" width="30" height="30" alt="">
         Карта</mat-button-toggle>
     </mat-button-toggle-group></div>
 
 
   <div *ngIf="targetSecond == 'digitalWallet' && sourceSecond == 'digitalWallet'" class="target_second_wallet">
     <br>
-    <label for="target_second_wallet_field">Выберите кошелек:</label>
-    <div class="select-wrapper">
-    <select class="select"  (change)="onTargetAccount($event)" name="target_second_wallet_field" id="target_second_wallet_field"
-            required>
-      <option disabled selected style="display:none">Доступные кошельки</option>
 
-      <ng-container *ngFor="let wallet of wallets">
-        <option *ngIf="sourceValue != wallet.digitalWalletNumber"
-                value="{{wallet.digitalWalletNumber}}">{{countries.get(wallet.centralBank).currencyName}}</option>
-      </ng-container>
-    </select>
-    </div>
+    <mat-form-field style="width: 100%">
+      <mat-label>Доступные кошельки</mat-label>
+      <mat-select (selectionChange)="onTargetAccount($event)" panelClass="mat-select-custom" >
+        <ng-container *ngFor="let wallet of wallets">
+        <mat-option *ngIf="sourceValue != wallet.digitalWalletNumber" style="color: black" [value]="wallet.digitalWalletNumber">
+          {{countries.get(wallet.centralBank).currencyName}}
+        </mat-option>
+        </ng-container>
+      </mat-select>
+    </mat-form-field>
+<!--    <div class="select-wrapper">-->
+<!--    <select class="select"  (change)="onTargetAccount($event)" name="target_second_wallet_field" id="target_second_wallet_field"-->
+<!--            required>-->
+<!--      <option disabled selected style="display:none">Доступные кошельки</option>-->
+
+<!--      <ng-container *ngFor="let wallet of wallets">-->
+<!--        <option *ngIf="sourceValue != wallet.digitalWalletNumber"-->
+<!--                value="{{wallet.digitalWalletNumber}}">{{countries.get(wallet.centralBank).currencyName}}</option>-->
+<!--      </ng-container>-->
+<!--    </select>-->
+<!--    </div>-->
   </div>
 
 
   <div *ngIf="targetSecond == 'card' && sourceSecond == 'card'" class="target_second_card">
     <br>
-    <label for="target_second_card_field">Выберите карту:</label>
-    <div class="select-wrapper">
-      <select class="select"  (change)="onTargetAccount($event)" name="target_second_card_field" id="target_second_card_field"
-              required>
-        <option disabled selected style="display:none">Доступные карты</option>
+<!--    <label for="target_second_card_field">Выберите карту:</label>-->
+<!--    <div class="select-wrapper">-->
+<!--      <select class="select"  (change)="onTargetAccount($event)" name="target_second_card_field" id="target_second_card_field"-->
+<!--              required>-->
+<!--        <option disabled selected style="display:none">Доступные карты</option>-->
 
+<!--        <ng-container *ngFor="let card of cards">-->
+<!--          <option *ngIf="sourceCountry != card.country"-->
+<!--                  value="{{card.cardNumber}}">{{banks.get(card.bankName) + " (" + countries.get(card.country).currencyName +")"}}</option>-->
+<!--        </ng-container>-->
+<!--      </select>-->
+<!--    </div>-->
+    <mat-form-field style="width: 100%">
+      <mat-label>Доступные карты</mat-label>
+      <mat-select (selectionChange)="onTargetAccount($event)" panelClass="mat-select-custom" >
         <ng-container *ngFor="let card of cards">
-          <option *ngIf="sourceCountry != card.country"
-                  value="{{card.cardNumber}}">{{banks.get(card.bankName) + " (" + countries.get(card.country).currencyName +")"}}</option>
+          <mat-option *ngIf="sourceCountry != card.country" style="color: black" [value]="card.cardNumber">
+            {{banks.get(card.bankName) + " (" + countries.get(card.country).currencyName +")"}}
+          </mat-option>
         </ng-container>
-      </select>
-    </div>
+      </mat-select>
+    </mat-form-field>
   </div>
 
   <div *ngIf="targetSecond == 'digitalWallet' && sourceSecond == 'card'" class="target_second_card">
     <br>
-    <label for="target_second_card_field_diff1">Выберите карту:</label>
-    <div class="select-wrapper">
-      <select class="select"  (change)="onTargetAccount($event)" name="target_second_card_field_diff" id="target_second_card_field_diff1"
-              required>
-        <option disabled selected style="display:none">Доступные кошельки</option>
+<!--    <label for="target_second_card_field_diff1">Выберите карту:</label>-->
+<!--    <div class="select-wrapper">-->
+<!--      <select class="select"  (change)="onTargetAccount($event)" name="target_second_card_field_diff" id="target_second_card_field_diff1"-->
+<!--              required>-->
+<!--        <option disabled selected style="display:none">Доступные кошельки</option>-->
 
+<!--        <ng-container *ngFor="let wallet of wallets">-->
+<!--          <option *ngIf="sourceCountry == wallet.country"-->
+<!--                  value="{{wallet.digitalWalletNumber}}">{{countries.get(wallet.centralBank).currencyName}}</option>-->
+<!--        </ng-container>-->
+<!--      </select>-->
+<!--    </div>-->
+    <mat-form-field style="width: 100%">
+      <mat-label>Доступные кошельки</mat-label>
+      <mat-select (selectionChange)="onTargetAccount($event)" panelClass="mat-select-custom" >
         <ng-container *ngFor="let wallet of wallets">
-          <option *ngIf="sourceCountry == wallet.country"
-                  value="{{wallet.digitalWalletNumber}}">{{countries.get(wallet.centralBank).currencyName}}</option>
+          <mat-option *ngIf="sourceCountry == wallet.country" style="color: black" [value]="wallet.digitalWalletNumber">
+            {{countries.get(wallet.centralBank).currencyName}}
+          </mat-option>
         </ng-container>
-      </select>
-    </div>
+      </mat-select>
+    </mat-form-field>
   </div>
 
   <div *ngIf="targetSecond == 'card' && sourceSecond == 'digitalWallet'" class="target_second_card">
     <br>
-    <label for="target_second_card_field_diff2">Выберите карту:</label>
-    <div class="select-wrapper">
-      <select class="select"  (change)="onTargetAccount($event)" name="target_second_card_field_diff" id="target_second_card_field_diff2"
-              required>
-        <option disabled selected style="display:none">Доступные карты</option>
+<!--    <label for="target_second_card_field_diff2">Выберите карту:</label>-->
+<!--    <div class="select-wrapper">-->
+<!--      <select class="select"  (change)="onTargetAccount($event)" name="target_second_card_field_diff" id="target_second_card_field_diff2"-->
+<!--              required>-->
+<!--        <option disabled selected style="display:none">Доступные карты</option>-->
 
+<!--        <ng-container *ngFor="let card of cards">-->
+<!--          <option *ngIf="sourceCountry == card.country"-->
+<!--                  value="{{card.cardNumber}}">{{banks.get(card.bankName) + " (" + countries.get(card.country).currencyName+")"}}</option>-->
+<!--        </ng-container>-->
+<!--      </select>-->
+<!--    </div>-->
+    <mat-form-field style="width: 100%">
+      <mat-label>Доступные карты</mat-label>
+      <mat-select (selectionChange)="onTargetAccount($event)" panelClass="mat-select-custom" >
         <ng-container *ngFor="let card of cards">
-          <option *ngIf="sourceCountry == card.country"
-                  value="{{card.cardNumber}}">{{banks.get(card.bankName) + " (" + countries.get(card.country).currencyName+")"}}</option>
+          <mat-option *ngIf="sourceCountry == card.country" style="color: black" [value]="card.cardNumber">
+            {{banks.get(card.bankName) + " (" + countries.get(card.country).currencyName +")"}}
+          </mat-option>
         </ng-container>
-      </select>
-    </div>
+      </mat-select>
+    </mat-form-field>
   </div>
 
   <div
@@ -176,7 +238,7 @@
     <div>
       <br>
       <div class="input-wrapper">
-        <input class="input" type="tel" min="1" placeholder="Введите сумму" max="1000000" maxlength="7" (input)="onValueNotEqual($event)">
+        <input class="input" type="number" min="1" placeholder="Введите сумму" max="1000000" maxlength="7" (input)="onValueNotEqual($event)">
       </div>
       <div class="target">
         <p>Будет зачислено</p>
@@ -217,7 +279,7 @@
     <div>
       <br>
       <div class="input-wrapper">
-        <input class="input" type="tel" min="1" placeholder="Введите сумму" max="1000000" maxlength="7" (input)="onValue($event)">
+        <input class="input" type="number" min="1" placeholder="Введите сумму" max="1000000" maxlength="7" (input)="onValue($event)">
       </div>
       <div class="target">
         <p>Будет зачислено</p>
@@ -230,7 +292,7 @@
         </div>
       <div class="target width47">
         <p>Будет списано</p>
-        <span>{{targetSum == null || isNaN(targetSum!) ? '' : targetSum}} {{countries.get(sourceWallet.country).currencySign}}</span>
+        <span>{{targetSum == null || isNaN(targetSum!) ? '' : mathRoundTwo(targetSum!)}} {{countries.get(sourceWallet.country).currencySign}}</span>
       </div>
       </div>
     </div>

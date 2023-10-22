@@ -4,23 +4,46 @@
 
 <form (ngSubmit)="onSubmit()" #accountForm="ngForm">
 
-  <label for="country">Выберите страну:</label>
-  <div class="select-wrapper">
-    <select class="select" id="country" name="country" [(ngModel)]="selectedCountry" (change)="updateBanks($event)" required>
-      <option disabled selected  style="display:none" value="">Доступные валюты</option>
-      <option *ngFor="let country of countriesEntries()" [value]="country">{{ countries.get(country).flag + " " + countries.get(country).currencyName}}</option>
-    </select>
-  </div>
+<!--  <label for="country">Выберите страну:</label>-->
+<!--  <div class="select-wrapper">-->
+<!--    <select class="select" id="country" name="country" [(ngModel)]="selectedCountry" (change)="updateBanks($event)" required>-->
+<!--      <option disabled selected  style="display:none" value="">Доступные валюты</option>-->
+<!--      <option *ngFor="let country of countriesEntries()" [value]="country">{{ countries.get(country).flag + " " + countries.get(country).currencyName}}</option>-->
+<!--    </select>-->
+<!--  </div>-->
+
+  <mat-form-field style="width: 100%">
+    <mat-label>Доступные валюты</mat-label>
+    <mat-select (selectionChange)="updateBanks($event)" panelClass="mat-select-custom" >
+      <ng-container *ngFor="let country of countriesEntries()">
+        <mat-option style="color: black" [value]="country">
+          {{ countries.get(country).flag + " " + countries.get(country).currencyName}}
+        </mat-option>
+      </ng-container>
+    </mat-select>
+  </mat-form-field>
+
 
   <br>
 
-  <label for="bank">Выберите банк-провайдер:</label>
-  <div class="select-wrapper">
-    <select [disabled]="this.selectedCountry == ''" class="select"  id="bank" name="bank" [(ngModel)]="selectedBank" (change)="onBank($event)"   required>
-      <option disabled selected style="display:none"  value="">Доступные банки</option>
-      <option *ngFor="let bank of banks" [value]="bank.bankName">{{ banksMap.get(bank.bankName) }}</option>
-    </select>
-  </div>
+<!--  <label for="bank">Выберите банк-провайдер:</label>-->
+<!--  <div class="select-wrapper">-->
+<!--    <select [disabled]="this.selectedCountry == ''" class="select"  id="bank" name="bank" [(ngModel)]="selectedBank" (change)="onBank($event)"   required>-->
+<!--      <option disabled selected style="display:none"  value="">Доступные банки</option>-->
+<!--      <option *ngFor="let bank of banks" [value]="bank.bankName">{{ banksMap.get(bank.bankName) }}</option>-->
+<!--    </select>-->
+<!--  </div>-->
+
+  <mat-form-field style="width: 100%">
+    <mat-label>Доступные банки</mat-label>
+    <mat-select [disabled]="this.selectedCountry == ''" (selectionChange)="onBank($event)" panelClass="mat-select-custom" >
+      <ng-container *ngFor="let bank of banks">
+        <mat-option style="color: black" [value]="bank.bankName">
+          {{ banksMap.get(bank.bankName) }}
+        </mat-option>
+      </ng-container>
+    </mat-select>
+  </mat-form-field>
 
   <br>
   <label>

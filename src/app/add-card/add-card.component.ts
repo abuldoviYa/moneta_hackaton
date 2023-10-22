@@ -32,7 +32,7 @@ export class AddCardComponent implements OnInit {
   consentAgreement: boolean = false;
 
   onBank(event: any): void {
-    this.selectedBank = event.target.value;
+    this.selectedBank = event.value;
   }
 
   onCountry(country: string): void {
@@ -46,7 +46,7 @@ export class AddCardComponent implements OnInit {
   }
 
   updateBanks(event: any): void {
-    this.onCountry(event.target.value)
+    this.onCountry(event.value)
   }
 
   onSubmit(): void {

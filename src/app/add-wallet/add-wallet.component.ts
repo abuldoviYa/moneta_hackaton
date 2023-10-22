@@ -31,7 +31,7 @@ export class AddWalletComponent implements OnInit{
   consentAgreement: boolean = false;
 
   onBank(event: any): void {
-    this.selectedBank = event.target.value;
+    this.selectedBank = event.value;
   }
 
   onCountry(country: string): void {
@@ -45,7 +45,7 @@ export class AddWalletComponent implements OnInit{
     return banks.filter(x=>x.country==this.selectedCountry)
   }
   updateBanks(event: any): void {
-    this.onCountry(event.target.value)
+    this.onCountry(event.value)
   }
 
   onSubmit(): void {

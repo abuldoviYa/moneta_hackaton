@@ -9,6 +9,8 @@ import {WalletPost} from "../entities/wallet-post";
 import {TransactionPost} from "../entities/transaction-post";
 import {MatButtonToggleGroup} from "@angular/material/button-toggle";
 import {MatButtonToggle} from "@angular/material/button-toggle";
+import {MatSelect} from "@angular/material/select";
+import {MatOption} from "@angular/material/core";
 
 @Component({
   selector: 'app-transfer',
@@ -61,7 +63,7 @@ export class TransferComponent implements OnInit{
   }
 
   onSourceAccount(value: any): void {
-    this.sourceValue = value.target.value;
+    this.sourceValue = value.value;
     this.targetSecond = undefined;
     this.targetValue = undefined;
     if(this.sourceSecond == 'card'){
@@ -82,7 +84,8 @@ export class TransferComponent implements OnInit{
     let oldSource = this.sourceWallet;
     let oldTarget = this.targetWallet
 
-    this.targetValue = value.target.value;
+    this.targetValue = value.value;
+    console.log(value.value)
 
     if(this.targetSecond == 'card'){
       this.targetCountry = this.cards.find(x=>x.cardNumber == this.targetValue).country
@@ -161,7 +164,12 @@ export class TransferComponent implements OnInit{
   onValue(value: any) {
     console.log(this.sourceWallet)
     console.log(this.targetWallet)
-    this.amountTransfered = value.target.value
+    let num = value.target.value
+    if(num.endsWith(".")) {
+      num += "0"
+    }
+    console.log(value.target.value)
+    this.amountTransfered = num
     if(this.sourceSecond==this.targetSecond){
     if ((this.currencyToShow == null && this.feeToShow == null) || this.sourceWallet.walletNumber != this.sourceValue || this.targetWallet.walletNumber != this.targetValue) {
 
