@@ -1,26 +1,75 @@
 <div *ngIf="wallet">
   <h1>Цифровой кошелек: {{ countries.get(wallet.country).currencyName }}</h1>
 
-  <div class="wallet">
+
+  <div>
+    <div class="country-logo">
+      <div class="flag-wrapper">
+        <img src="{{ countries.get(wallet.country).flag }}" alt="">
+      </div>
+
+    </div>
+    <div class="balance">
+      <p>{{ formatBalance(wallet.balance) }} {{ countries.get(wallet.country).currencySign }}</p>
+    </div>
+    <div class="balance-label">
+      <p>Баланс</p>
+    </div>
+  </div>
+  <div class="buttons">
+    <mat-button-toggle-group name="fontStyle" id="source" style="width: 100%; font-size: 1.1rem" aria-label="Font Style" [value] = "pageState"  >
+
+      <mat-button-toggle (click)="onState('info')" value="info" style="width: 33.333%; padding: 0.2rem" >
+        <!--        <img ngSrc="/assets/custom_icons/cards-icon.svg" width="30" height="30" alt="">-->
+        <i class="material-icons" >account_balance_wallet</i>
+        <p style="margin: 0">Кошелек</p>
+      </mat-button-toggle>
+      <mat-button-toggle (click)="onState('history')" value="history" style="width: 33.333%; padding: 0.2rem" >
+        <!--        <img ngSrc="/assets/custom_icons/cards-icon.svg" width="30" height="30" alt="">-->
+        <i class="material-icons" >history</i>
+        <p style="margin: 0">История</p>
+      </mat-button-toggle>
+      <mat-button-toggle style="width: 33.333%; padding: 0.2rem" (click)="onTransfer()" >
+        <i class="material-icons" >swap_horiz</i>
+        <p style="margin: 0">Перевести</p>
+      </mat-button-toggle>
+    </mat-button-toggle-group>
+  </div>
+  <div class="wallet" *ngIf="pageState == 'info'">
     <div class="wallet-body">
-      <h3>Номер кошелька: </h3>
+      <h3>Номер кошелька </h3>
       <div class="input-wrapper">
-        <input disabled class="input" type="text" value="{{ formatFullWalletNumber(wallet.digitalWalletNumber.toString()) }}">
+        <input disabled class="input" type="text"
+               value="{{ formatFullWalletNumber(wallet.digitalWalletNumber.toString()) }}">
       </div>
-      <h3>Баланс: </h3>
+
+      <h3>Страна </h3>
       <div class="input-wrapper">
-        <input disabled class="input" type="text" value="{{ formatBalance(wallet.balance) }} {{ countries.get(wallet.country).currencySign }}">
+        <input disabled class="input" type="text"
+               value="{{countries.get(wallet.country).name}}">
       </div>
-      <h3>Дата создания: </h3>
+
+      <h3>Дата создания </h3>
       <div class="input-wrapper">
         <input disabled class="input" type="text" value="{{ wallet.dateCreated }}">
       </div>
+
+      <h3>Статус </h3>
+      <div class="input-wrapper">
+        <input disabled class="input" type="text"
+               value="{{wallet.state}}">
+      </div>
+
     </div>
   </div>
+  <div *ngIf="pageState == 'history'">
+    <app-history-pages-manager [walletNumber]="wallet.digitalWalletNumber"></app-history-pages-manager>
+  </div>
+
 
   <!-- Additional features can be added here, e.g., transaction history, buttons for actions, etc. -->
 </div>
 
 <div *ngIf="!wallet">
-  <p>Loading...</p>
+  <p>Загрузка...</p>
 </div>

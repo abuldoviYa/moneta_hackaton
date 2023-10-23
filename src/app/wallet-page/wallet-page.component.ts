@@ -2,7 +2,7 @@ import {Component, inject, OnInit} from '@angular/core';
 import {ApiService} from "../api.service";
 import {Title} from "@angular/platform-browser";
 import {BackapiService} from "../backapi.service";
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {Wallet} from "../entities/wallet";
 
 @Component({
@@ -15,10 +15,16 @@ export class WalletPageComponent implements OnInit {
   private route;
   countries = this.apiService.getAvailablecountries();
 
-  constructor(private apiService: ApiService, private titleService:Title, private backApi: BackapiService) {
+  constructor(private apiService: ApiService, private titleService:Title, private backApi: BackapiService, private router: Router) {
     this.titleService.setTitle("Карта " + apiService.title);
     this.route=inject(ActivatedRoute);
     this.walletId = parseInt(this.route.snapshot.paramMap.get('id')!)
+  }
+
+  pageState = "history"
+
+  onState(state:string){
+    this.pageState = state
   }
 
   wallet!: Wallet
@@ -36,7 +42,7 @@ export class WalletPageComponent implements OnInit {
   }
 
   formatBalance(balance: number){
-    return Math.round(balance*100)/100
+    return (Math.round(balance*100)/100).toLocaleString("ru-RU").replaceAll('.', ' ')
   }
 
 
@@ -64,5 +70,10 @@ export class WalletPageComponent implements OnInit {
       })
 
     }
+  }
+
+  onTransfer(){
+    this.router.navigate(['/transfer'], {queryParams: { sourceWallet: 'true', sourceWalletId: this.wallet.id }});
+    console.log("click")
   }
 }

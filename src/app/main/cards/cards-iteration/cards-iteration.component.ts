@@ -19,6 +19,10 @@ export class CardsIterationComponent {
 
   banks = this.apiService.getBanks();
 
+  formatNumber(balance: number){
+    return (Math.round(balance*100)/100).toLocaleString("ru-RU").replaceAll('.', ' ')
+  }
+
     protected readonly Math = Math;
   protected readonly console = console;
 }

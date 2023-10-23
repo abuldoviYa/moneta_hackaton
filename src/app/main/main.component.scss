@@ -76,8 +76,20 @@
 
 .countryFlag {
   font-size: 1.7rem;
+  height: 1.5rem;
+  width: 1.5rem;
+  display: flex;
+  justify-content: center;
+  border-radius: 50%;
+  background-color: gainsboro;
+  padding: 0.1rem;
 }
-
+.countryFlag img{
+  width: 100%;
+  aspect-ratio: 1/1;
+  display: block;
+  margin: 0;
+}
 
 
 .component-card-header i {

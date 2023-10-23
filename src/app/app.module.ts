@@ -32,6 +32,8 @@ import { CardSignleComponent } from './card-page/card-signle/card-signle.compone
 import { TempLoginComponent } from './util/temp-login/temp-login.component';
 import {MatButtonToggleModule} from "@angular/material/button-toggle";
 import {MatSelectModule} from "@angular/material/select";
+import {MatButtonModule} from "@angular/material/button";
+import { HistoryPagesManagerComponent } from './history-pages-manager/history-pages-manager.component';
 
 @NgModule({
   declarations: [
@@ -51,25 +53,27 @@ import {MatSelectModule} from "@angular/material/select";
     TestonlypageComponent,
     CardsIterationComponent,
     CardSignleComponent,
-    TempLoginComponent
+    TempLoginComponent,
+    HistoryPagesManagerComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    RouterOutlet,
-    FormsModule,
-    CommonModule,
-    BrowserAnimationsModule,
-    MatDatepickerModule,
-    MatNativeDateModule,
-    MatFormFieldModule,
-    MatInputModule,
-    ReactiveFormsModule,
-    NgOptimizedImage,
-    HttpClientModule,
-    MatButtonToggleModule,
-    MatSelectModule,
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        RouterOutlet,
+        FormsModule,
+        CommonModule,
+        BrowserAnimationsModule,
+        MatDatepickerModule,
+        MatNativeDateModule,
+        MatFormFieldModule,
+        MatInputModule,
+        ReactiveFormsModule,
+        NgOptimizedImage,
+        HttpClientModule,
+        MatButtonToggleModule,
+        MatSelectModule,
+        MatButtonModule,
+    ],
   providers: [ApiService, MatSnackBar, MatDatepickerModule,MatNativeDateModule, {provide: MAT_DATE_LOCALE, useValue: "ru-RU"} ],
   bootstrap: [AppComponent]
 })

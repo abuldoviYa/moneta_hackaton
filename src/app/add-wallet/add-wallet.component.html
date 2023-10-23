@@ -17,7 +17,7 @@
     <mat-select (selectionChange)="updateBanks($event)" panelClass="mat-select-custom" >
       <ng-container *ngFor="let country of countriesEntries()">
         <mat-option style="color: black" [value]="country">
-          {{ countries.get(country).flag + " " + countries.get(country).currencyName}}
+          <div class="countryFlagAlt"><img src=" {{ countries.get(country).flag}}">{{" " + countries.get(country).currencyName}}</div>
         </mat-option>
       </ng-container>
     </mat-select>

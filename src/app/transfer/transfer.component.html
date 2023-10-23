@@ -23,7 +23,7 @@
   <div class="source_first">
     <label for="source">Откуда:</label>
     <br>
-    <mat-button-toggle-group name="fontStyle" id="source" style="width: 100%; font-size: 1.1rem" aria-label="Font Style" (change)="onSource($event)">
+    <mat-button-toggle-group name="fontStyle" id="source" style="width: 100%; font-size: 1.1rem" aria-label="Font Style" (change)="onSource($event)" [value]="sourceSecond" >
       <mat-button-toggle style="width: 50%; padding: 0.2rem" value="digitalWallet">
         <img ngSrc="/assets/custom_icons/wallet-icon.svg" width="30" height="30" alt="">
         Кошелек
@@ -50,7 +50,7 @@
 <!--    </select>     </div>-->
     <mat-form-field style="width: 100%">
       <mat-label>Доступные кошельки</mat-label>
-      <mat-select (selectionChange)="onSourceAccount($event)" panelClass="mat-select-custom" >
+      <mat-select (selectionChange)="onSourceAccount($event)" [value]="sourceValue" panelClass="mat-select-custom" >
         <ng-container *ngFor="let wallet of wallets">
           <mat-option style="color: black" [value]="wallet.digitalWalletNumber">
             {{countries.get(wallet.centralBank).currencyName}}
@@ -77,7 +77,7 @@
 <!--    </div>-->
     <mat-form-field style="width: 100%">
       <mat-label>Доступные карты</mat-label>
-      <mat-select (selectionChange)="onSourceAccount($event)" panelClass="mat-select-custom" >
+      <mat-select (selectionChange)="onSourceAccount($event)" [value]="sourceValue" panelClass="mat-select-custom" >
         <ng-container *ngFor="let card of cards">
           <mat-option style="color: black" [value]="card.cardNumber">
             {{banks.get(card.bankName) + " (" + countries.get(card.country).currencyName +")"}}
@@ -242,7 +242,7 @@
       </div>
       <div class="target">
         <p>Будет зачислено</p>
-        <span>{{targetCurrency}} {{countries.get(targetWallet.country).currencySign}}</span>
+        <span>{{formatNumber(targetCurrency!)}} {{countries.get(targetWallet.country).currencySign}}</span>
       </div>
     </div>
   </div>
@@ -259,11 +259,11 @@
       <div class="full info">
       <div class="target width30">
         <p>Доступно</p>
-        <span>{{mathRoundTwo(sourceWallet.balance)}} {{countries.get(sourceWallet!.country).currencySign}}</span>
+        <span>{{formatNumber(sourceWallet.balance)}} {{countries.get(sourceWallet!.country).currencySign}}</span>
       </div>
       <div class="target width30">
         <p>Курс перевода</p>
-        <span>{{mathRoundTwo(currencyToShow!)}}</span>
+        <span>{{formatNumber(currencyToShow!)}}</span>
       </div>
       <div class="target width30">
         <p>Комиссия</p>
@@ -283,16 +283,16 @@
       </div>
       <div class="target">
         <p>Будет зачислено</p>
-        <span>{{targetCurrency}} {{countries.get(targetWallet.country).currencySign}}</span>
+        <span>{{formatNumber(targetCurrency!)}} {{countries.get(targetWallet.country).currencySign}}</span>
       </div>
       <div class="full">
         <div class="target width47">
           <p>Комиссия</p>
-          <span>{{fee}} {{countries.get(sourceWallet.country).currencySign}}</span>
+          <span>{{formatNumber(fee!)}} {{countries.get(sourceWallet.country).currencySign}}</span>
         </div>
       <div class="target width47">
         <p>Будет списано</p>
-        <span>{{targetSum == null || isNaN(targetSum!) ? '' : mathRoundTwo(targetSum!)}} {{countries.get(sourceWallet.country).currencySign}}</span>
+        <span>{{targetSum == null || isNaN(targetSum!) ? '' : formatNumber(targetSum!)}} {{countries.get(sourceWallet.country).currencySign}}</span>
       </div>
       </div>
     </div>

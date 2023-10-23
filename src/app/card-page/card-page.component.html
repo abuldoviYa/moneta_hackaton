@@ -2,6 +2,7 @@
 <div *ngIf="card">
 <app-card-page-ui [card]="card"></app-card-page-ui>
 
+  <button><a [routerLink]="['/transfer']" [queryParams]="{ sourceWallet: 'false', sourceWalletId: card.id  }" >Перевести</a></button>
 </div>
 <!--<div class="bank-info">-->
 <!--  <div class="input-wrapper">-->

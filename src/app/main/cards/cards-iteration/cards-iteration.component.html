@@ -1,7 +1,7 @@
 <a [routerLink]="['card', card.id]">
   <li class="component-item">
     <div class="component-item-left">
-      <span>{{ Math.round(card.balance*100)/100 }} </span>
+      <span>{{formatNumber(card.balance)}} </span>
       <span class="countrySign">{{countries?.get(card.country).currencySign}}</span>
       <p>Карта</p>
       <p>{{banks.get(card.bankName)}}</p>
@@ -9,7 +9,7 @@
 
     <div class="component-item-right">
       <div class="component-item-right-item">
-        <div class="countryFlag">{{countries?.get(card.country).flag}}</div>
+        <div class="countryFlag"><img src=" {{countries?.get(card.country).flag}}"></div>
         <!--                <div>{{countries?.get(card.country).currencyTicker}}</div>-->
       </div>
       <div class="component-item-right-item">

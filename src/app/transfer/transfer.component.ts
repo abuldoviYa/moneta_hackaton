@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ApiService} from "../api.service";
 import {MatSnackBar} from "@angular/material/snack-bar";
-import {Router} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {HistoryService} from "../services/history.service";
 import {Title} from "@angular/platform-browser";
 import {BackapiService} from "../backapi.service";
@@ -19,15 +19,40 @@ import {MatOption} from "@angular/material/core";
 })
 export class TransferComponent implements OnInit{
 
-  constructor(private apiService: ApiService, private snackBar: MatSnackBar, private router: Router, private history: HistoryService, private titleService:Title, private backApi: BackapiService) {
+  constructor(private apiService: ApiService, private snackBar: MatSnackBar, private router: Router, private history: HistoryService, private titleService:Title, private backApi: BackapiService, private route: ActivatedRoute) {
     this.titleService.setTitle("Переводы" + apiService.title);
   }
 
 
   ngOnInit(): void {
-     this.backApi.getWallets().subscribe(x=>this.wallets=x.data);
-    this.backApi.getCards().subscribe(x=>this.cards=x.data);
+    let sourceWallet = this.route.snapshot.queryParamMap.get('sourceWallet');
+    let sourceWalletId = this.route.snapshot.queryParamMap.get('sourceWalletId');
+    let isQuery = sourceWallet && sourceWalletId
+    if (isQuery){
+      this.sourceSecond = sourceWallet == 'true'? "digitalWallet" : "card"
     }
+
+     this.backApi.getWallets().subscribe(x=> {
+       if(isQuery && sourceWallet == 'true'){
+         let k = x.data.find((s: { id: string | null; }) => s.id == sourceWalletId)
+         this.sourceValue = k.digitalWalletNumber
+         this.sourceCountry = k.country
+       }
+       this.wallets=x.data
+       }
+     );
+     this.backApi.getCards().subscribe(x=>{
+         if(isQuery && sourceWallet == 'false'){
+           let k = x.data.find((s: { id: string | null; }) => s.id == sourceWalletId)
+           this.sourceValue = k.cardNumber
+           this.sourceCountry = k.country
+         }
+         this.cards=x.data
+     }
+
+     );
+    }
+
 
   wallets!: any[]
   cards!: any[]
@@ -137,6 +162,14 @@ export class TransferComponent implements OnInit{
         this.currencyToShow = x.body.data.exchangeRate;
         this.feeToShow = x.body.data.feeRate;
     })
+  }
+
+  formatNumber(balance: number){
+    let k = ""
+    if (balance){
+      k = (Math.round(balance*100)/100).toLocaleString("ru-RU").replaceAll('.', ' ')
+    }
+    return k
   }
 
 

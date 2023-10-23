@@ -15,29 +15,29 @@
     <mat-error *ngIf="range.controls.end.hasError('matEndDateInvalid')">Ошибка формата</mat-error>
   </mat-form-field>
 
-<!--  <div>-->
-<!--    <label for="startDate">Начало периода:</label>-->
+  <!--  <div>-->
+  <!--    <label for="startDate">Начало периода:</label>-->
 
 
 
 
-<!--    <input-->
-<!--      type="date"-->
-<!--      id="startDate"-->
+  <!--    <input-->
+  <!--      type="date"-->
+  <!--      id="startDate"-->
 
-<!--      [value]="startDate"-->
-<!--      (change)="filterTransactions()"-->
-<!--    />-->
-<!--  </div>-->
-<!--  <div>-->
-<!--    <label for="endDate">Конец периода:</label>-->
-<!--    <input-->
-<!--      type="date"-->
-<!--      id="endDate"-->
-<!--      value="{{endDate}}"-->
-<!--      [(ngModel)]="endDate"-->
-<!--      (change)="filterTransactions()"-->
-<!--    />-->
+  <!--      [value]="startDate"-->
+  <!--      (change)="filterTransactions()"-->
+  <!--    />-->
+  <!--  </div>-->
+  <!--  <div>-->
+  <!--    <label for="endDate">Конец периода:</label>-->
+  <!--    <input-->
+  <!--      type="date"-->
+  <!--      id="endDate"-->
+  <!--      value="{{endDate}}"-->
+  <!--      [(ngModel)]="endDate"-->
+  <!--      (change)="filterTransactions()"-->
+  <!--    />-->
 
   <ul *ngIf="transactions!=null">
     <div class="transaction-wrapper" >
@@ -52,20 +52,20 @@
                 <div><a [routerLink]="wallets[0].link"><p class="number">{{ wallets[0].number }}</p></a></div>
               </div>
               <div class="info-mini-inner">
-<!--                <div><label>Сколько</label></div>-->
+                <!--                <div><label>Сколько</label></div>-->
                 <div><p class="amount">{{ "-" + transaction.amountTransferred + " " +wallets[0].currency }}</p></div>
               </div>
 
             </div>
             <div class="col-5 info-mini target-block">
               <div class="info-mini-inner">
-              <label >Куда</label>
-              <a [routerLink]="wallets[1].link"><p class="number">{{ wallets[1].number }}</p></a>
+                <label >Куда</label>
+                <a [routerLink]="wallets[1].link"><p class="number">{{ wallets[1].number }}</p></a>
               </div>
-            <div class="info-mini-inner">
-<!--              <label>Сколько</label>-->
-              <div><p class="amount">{{ transaction.amountTransferred + " " + wallets[1].currency }}</p></div>
-          </div>
+              <div class="info-mini-inner">
+                <!--              <label>Сколько</label>-->
+                <div><p class="amount">{{ transaction.amountTransferred + " " + wallets[1].currency }}</p></div>
+              </div>
             </div>
           </div>
         </div>

@@ -1,7 +1,8 @@
 export class Card {
 
 
-  constructor(userId: number, country: string, bank: string, cardNumber: string, balance: number, system: string) {
+  constructor(userId: number, country: string, bank: string, cardNumber: string, balance: number, system: string, id: number) {
+    this.id = id;
     this.country = country;
     this.bankName = bank;
     this.cardNumber = cardNumber;
@@ -10,6 +11,8 @@ export class Card {
     this.paymentSystem = system;
     this.userId = userId;
   }
+
+  id: number;
   country: string
   bankName: string
   cardNumber: string

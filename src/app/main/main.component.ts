@@ -5,6 +5,7 @@ import {BackapiService} from "../backapi.service";
 import {catchError} from "rxjs";
 
 
+
 @Component({
   selector: 'app-main',
   templateUrl: './main.component.html',
@@ -18,6 +19,7 @@ export class MainComponent implements OnInit{
 
 
   wallets?: any[];
+
 
   countries? = this.apiService.getAvailablecountries();
 
@@ -52,6 +54,10 @@ export class MainComponent implements OnInit{
     // }
     this.backApi.getWallets().subscribe(x=>this.wallets = x.data);
 
+  }
+
+  formatNumber(balance: number){
+    return (Math.round(balance*100)/100).toLocaleString("ru-RU").replaceAll('.', ' ')
   }
 
     protected readonly Math = Math;

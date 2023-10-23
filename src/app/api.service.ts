@@ -135,9 +135,9 @@ export class ApiService {
 
 
   getAvailablecountries(): Map<string, any> { return new Map([
-    ['CHINA', {name: 'Китай', currencySign: '¥', currencyName: 'Юань', currencyTicker: 'CNY', flag: '🇨🇳', system: "UNION_PAY"}],
-    ['RUSSIA', {name: 'Россия', currencySign: '₽', currencyName: 'Рубль',currencyTicker: 'RUB',flag: '🇷🇺', system: "MIR"}],
-    ['UZBEKISTAN', {name: 'Узбекистан', currencySign: 'сўм', currencyName: 'Сўм', currencyTicker: 'UZS', flag: '🇺🇿', system: "UZ_CARD"}]
+    ['CHINA', {name: 'Китай', currencySign: '¥', currencyName: 'Юань', currencyTicker: 'CNY', flag: '/assets/circle_countries/cn.svg', system: "UNION_PAY"}],
+    ['RUSSIA', {name: 'Россия', currencySign: '₽', currencyName: 'Рубль',currencyTicker: 'RUB',flag: '/assets/circle_countries/ru.svg', system: "MIR"}],
+    ['UZBEKISTAN', {name: 'Узбекистан', currencySign: 'сўм', currencyName: 'Сўм', currencyTicker: 'UZS', flag: '/assets/circle_countries/uz.svg', system: "UZ_CARD"}]
     // ['KAZAKHSTAN', {name: 'Казахстан', currencySign: '₸', currencyName: 'Тенге',currencyTicker: 'KZT',flag: '🇰🇿', system: "UZ_CARD"}]
   ]);
   }

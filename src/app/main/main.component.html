@@ -9,7 +9,8 @@
                 <a [routerLink]="['/addWallet']"><i class="material-icons">add_circle_outline</i></a>
             </div>
           <div *ngIf="!wallets" >
-            <h3>У вас еще нет кошельков</h3>
+            <h3 style="margin-bottom: 0">У вас еще нет кошельков</h3>
+            <a class="btn btn-grey width100" [routerLink]="['/addWallet']">Добавить кошелек</a>
           </div>
             <div *ngIf="wallets && wallets.length > 0" class="component-card-list">
 
@@ -19,13 +20,13 @@
                         <a [routerLink]="['wallet', wallet.id]" [ngClass]="{notactive: i>2}">
                             <li class="component-item">
                                 <div class="component-item-left">
-                                    <span>{{ Math.round(wallet.balance*100)/100 }} </span>
+                                    <span>{{formatNumber(wallet.balance) }} </span>
                                     <span class="countrySign">{{countries?.get(wallet.centralBank).currencySign}}</span>
                                     <p>Цифровой кошелек</p>
                                 </div>
 
                                 <div class="component-item-right">
-                                    <div class="countryFlag">{{countries?.get(wallet.centralBank).flag}}</div>
+                                    <div class="countryFlag"><img src=" {{countries?.get(wallet.centralBank).flag}}"></div>
                                     <div>{{countries?.get(wallet.centralBank).currencyTicker}}</div>
                                 </div>
                             </li>
@@ -38,13 +39,13 @@
                     <a [routerLink]="['wallet', wallet.id]" [ngClass]="{notactive: i>2}">
                       <li class="component-item">
                         <div class="component-item-left">
-                          <span>{{ Math.round(wallet.balance*100)/100 }} </span>
+                          <span>{{formatNumber(wallet.balance) }} </span>
                           <span class="countrySign">{{countries?.get(wallet.centralBank).currencySign}}</span>
                           <p>Цифровой кошелек</p>
                         </div>
 
                         <div class="component-item-right">
-                          <div class="countryFlag">{{countries?.get(wallet.centralBank).flag}}</div>
+                          <div class="countryFlag"><img src=" {{countries?.get(wallet.centralBank).flag}}"></div>
                           <div>{{countries?.get(wallet.country).currencyTicker}}</div>
                         </div>
                       </li>

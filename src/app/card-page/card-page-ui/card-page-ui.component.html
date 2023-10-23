@@ -4,7 +4,7 @@
       <div class="info-wrapper">
         <img class="card-chip" style="pointer-events: none" ngSrc="assets/card-chip.png" width="50" height="50">
       <div class="left-container">
-        <h1 class="bankName" >{{banks.get(card?.bankName!)}}</h1>
+        <h1 class="bankName" style="font-size: {{(125 + card?.bankName?.length!/5)}}%;   line-height: {{(125 + card?.bankName?.length!/5)}}%; ">{{banks.get(card?.bankName!)}}</h1>
 <!--        <h2>{{card?.country}}</h2>-->
 
       </div>

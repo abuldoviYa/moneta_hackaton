@@ -1,19 +1,24 @@
-import {Component, OnInit} from '@angular/core';
-import {HistoryService} from "../services/history.service";
+import {Component, Input, OnInit} from '@angular/core';
 import {FormControl, FormGroup} from "@angular/forms";
+import {HistoryService} from "../services/history.service";
 import {Title} from "@angular/platform-browser";
 import {ApiService} from "../api.service";
 import {BackapiService} from "../backapi.service";
-import {TransactionInfo} from "../entities/transaction-info";
 import {map} from "rxjs";
-
+import {TransactionInfo} from "../entities/transaction-info";
 
 @Component({
-  selector: 'app-history',
-  templateUrl: './history.component.html',
-  styleUrls: ['./history.component.scss']
+  selector: 'app-history-pages-manager',
+  templateUrl: './history-pages-manager.component.html',
+  styleUrls: ['./history-pages-manager.component.scss']
 })
-export class HistoryComponent implements OnInit{
+export class HistoryPagesManagerComponent implements OnInit{
+
+  @Input()
+  cardNumber: number | undefined
+
+  @Input()
+  walletNumber: number | undefined
 
   wallets?: any[]
   cards?: any[]
@@ -24,33 +29,10 @@ export class HistoryComponent implements OnInit{
     end: new FormControl<Date | null>(null),
   });
   constructor(private history: HistoryService, private titleService:Title, private apiService: ApiService, private backApi: BackapiService) {
+    console.log(this.walletNumber)
     this.titleService.setTitle("История" + apiService.title);
-    this.backApi.getTransactions().pipe(
-      map((data: any) => {
-        let tempTransactions = data.data;
-        // Map date strings to JavaScript Date objects
-        tempTransactions.forEach((temp: any) => {
 
-          temp.dateCreated = this.parseDate(temp.dateCreated);
-        });
 
-        // Sort transactions by date
-        tempTransactions.sort((a:any , b:any) => b.dateCreated - a.dateCreated);
-
-        return tempTransactions;
-      })).subscribe(x => {
-      this.transactions = x
-
-      this.backApi.getWallets().subscribe(x=>this.wallets = x.data);
-      this.backApi.getCards().subscribe(x=>this.cards = x.data);
-
-      const today = new Date();
-      today.setHours(0, 0, 0, 0);
-
-      this.filteredTransactions = x.filter(
-        (transaction: any) => transaction.dateCreated >= today
-      );
-    })
   }
 
   getNameAndLink(transaction: any): any[] {
@@ -127,27 +109,52 @@ export class HistoryComponent implements OnInit{
     })
       .sort(function(a,b){
 
-      return b.dateCreated.getTime()- a.dateCreated.getTime()
-    });
+        return b.dateCreated.getTime()- a.dateCreated.getTime()
+      });
 
   }
 
   protected readonly console = console;
 
   ngOnInit(): void {
-    //this.transactions = this.history.getHistory();
-    // if(this.transactions!=null){
-    //   let date1 =  new Date();
-    //   date1.setDate(date1.getDate() - 1)
-    //   let date2 = new Date();
-    //   date2.setDate(date2.getDate() + 1)
-    //   this.range.value.start = date1
-    //   this.range.value.end = date2
-    //   //this.filteredTransactions = this.transactions.map(x=>x.date = new Date(x.date));
-    //   this.filterTransactions()
-    //
-    // }
+    console.log(this.walletNumber)
+    let k
+    if (this.cardNumber) {
+      k = this.backApi.getTransactionsByCard(this.cardNumber)
+    } else if (this.walletNumber) {
+      k = this.backApi.getTransactionsByWallet(this.walletNumber)
+    }
+    if (k) {
+      k.pipe(
+        map((data: any) => {
+          let tempTransactions = data.data;
+          // Map date strings to JavaScript Date objects
+          tempTransactions.forEach((temp: any) => {
+
+            temp.dateCreated = this.parseDate(temp.dateCreated);
+          });
+
+          // Sort transactions by date
+          tempTransactions.sort((a:any , b:any) => b.dateCreated - a.dateCreated);
+
+          return tempTransactions;
+        })).subscribe(x => {
+        this.transactions = x
+
+          this.backApi.getCards().subscribe(x=>this.cards = x.data);
+
+          this.backApi.getWallets().subscribe(x=>this.wallets = x.data);
 
 
+
+
+        const today = new Date();
+        today.setHours(0, 0, 0, 0);
+
+        this.filteredTransactions = x.filter(
+          (transaction: any) => transaction.dateCreated >= today
+        );
+      })
+    }
   }
 }

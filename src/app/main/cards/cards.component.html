@@ -6,7 +6,8 @@
       <a [routerLink]="['/addCard']"><i class="material-icons">add_circle_outline</i></a>
     </div>
     <div *ngIf="!cards" >
-      <h3>У вас еще нет карт</h3>
+      <h3 style="margin-bottom: 0">У вас еще нет карт</h3>
+      <a class="btn btn-grey width100" [routerLink]="['/addCard']">Добавить карту</a>
     </div>
     <div *ngIf="cards && cards.length > 0" class="component-card-list">
 

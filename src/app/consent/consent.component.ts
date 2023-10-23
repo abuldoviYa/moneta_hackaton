@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import {ApiService} from "../api.service";
 import {Title} from "@angular/platform-browser";
+import {BackapiService} from "../backapi.service";
 
 @Component({
   selector: 'app-consent',
@@ -10,12 +11,12 @@ import {Title} from "@angular/platform-browser";
 export class ConsentComponent {
 
   agreed: boolean = false;
-  constructor(private apiService: ApiService, private titleService:Title) {
+  constructor(private apiService: ApiService, private titleService:Title, private backApi: BackapiService) {
     this.titleService.setTitle("Соглашение" + apiService.title);
 
   }
   submitForm() {
-    this.apiService.setConsent()
-    window.location.reload();
+    this.backApi.setConsent()
+    // window.location.reload();
   }
 }
