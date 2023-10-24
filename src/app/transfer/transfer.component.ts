@@ -165,6 +165,7 @@ export class TransferComponent implements OnInit{
   }
 
   formatNumber(balance: number){
+    if (balance == 0) {return "0"}
     let k = ""
     if (balance){
       k = (Math.round(balance*100)/100).toLocaleString("ru-RU").replaceAll('.', ' ')

@@ -6,13 +6,16 @@
         <div class="info-wrapper">
           <img class="card-chip" style="pointer-events: none" ngSrc="assets/card-chip.png" width="50" height="50">
           <div class="left-container">
-            <h1 class="bankName" style="font-size: {{card?.bankName?.length!>30 ? (120 + card?.bankName?.length!/5) : 140}}%;   line-height: {{(140 + card?.bankName?.length!/5)}}%; ">{{banks.get(card?.bankName!)}}</h1>
+            <h1 class="bankName" style="font-size: {{card?.bankName?.length!>30 ? (120 + card?.bankName?.length!/5) : 150}}%;   line-height: {{(140 + card?.bankName?.length!/5)}}%; ">{{banks.get(card?.bankName!)}}</h1>
             <!--        <h2>{{card?.country}}</h2>-->
-
+            <div>
+              <div class="client-name-header">Card Holder</div>
+              <div class="client-name">IVAN  IVANOV</div>
+            </div>
           </div>
           <div class="right-container">
             <div></div>
-            <img style="pointer-events: none" ngSrc="assets/{{card?.paymentSystem}}.svg" width="60" height="60">
+            <img style="pointer-events: none; width: 4rem" src="assets/{{card?.paymentSystem}}.svg" >
           </div>
         </div>
       </div>

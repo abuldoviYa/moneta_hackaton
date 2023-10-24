@@ -34,7 +34,7 @@ export class ApiService {
       ['Blue', 'Синий'],
       ['Red', 'Красный'],
       ['Bank of China', 'Банк Китая'],
-      ['Industrial & Commercial Bank of China', 'Промышленный и Коммерческий Банк Китая'],
+      ['Industrial & Commercial Bank of China', 'ICBC Банк'],
       ['Agricultural Bank of China', 'Сельскохозяйственный Банк Китая'],
       ['China Construction Bank', 'Строительный Банк Китая'],
     ]);

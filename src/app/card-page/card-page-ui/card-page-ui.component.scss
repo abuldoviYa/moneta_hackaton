@@ -1,6 +1,3 @@
-:root {
-  --card-text-color: #b1b9c3;
-}
 
 .card {
   box-shadow: 10px 10px 43px -18px rgba(0, 0, 0, 0.75);
@@ -12,7 +9,7 @@
   transform-style: preserve-3d;
   background: rgb(80,80,80);
   background: linear-gradient(131deg, rgba(80,80,80,1) 0%, rgba(55,55,55,1) 100%);
-  color: white;
+  color: var(--card-text-color);;
 
 }
 
@@ -36,11 +33,12 @@
 }
 .card h1 {
   margin-bottom: 0;
+  color: var(--card-text-color);
 }
 
 img {
 
-  aspect-ratio: 1/1;
+  //aspect-ratio: 1/1;
 }
 
 .right-container {
@@ -100,7 +98,9 @@ img {
 
 
 .left-container {
-
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .black-line {
@@ -296,4 +296,14 @@ input:disabled {
   line-height: .8rem;
   padding: 0.3rem 0 0 0;
   margin: 0;
+}
+
+.client-name-header {
+  color: var(--card-text-color);
+  font-size: .9rem;
+}
+
+.client-name {
+  color: var(--card-text-color);
+  font-size: 1.4rem;
 }

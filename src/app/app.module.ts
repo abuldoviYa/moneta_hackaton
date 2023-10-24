@@ -35,6 +35,8 @@ import {MatSelectModule} from "@angular/material/select";
 import {MatButtonModule} from "@angular/material/button";
 import { HistoryPagesManagerComponent } from './history-pages-manager/history-pages-manager.component';
 import {ClipboardModule} from "@angular/cdk/clipboard";
+import {MatDialogModule} from "@angular/material/dialog";
+import {DialogBoxSmsComponent} from "./card-page/card-page-ui/dialog-box-sms/dialog-box-sms.component";
 
 @NgModule({
   declarations: [
@@ -55,7 +57,8 @@ import {ClipboardModule} from "@angular/cdk/clipboard";
     CardsIterationComponent,
     CardSignleComponent,
     TempLoginComponent,
-    HistoryPagesManagerComponent
+    HistoryPagesManagerComponent,
+    DialogBoxSmsComponent
   ],
     imports: [
         BrowserModule,
@@ -75,9 +78,12 @@ import {ClipboardModule} from "@angular/cdk/clipboard";
         MatSelectModule,
         MatButtonModule,
         ClipboardModule,
+        MatDialogModule
     ],
   providers: [ApiService, MatSnackBar, MatDatepickerModule,MatNativeDateModule, {provide: MAT_DATE_LOCALE, useValue: "ru-RU"} ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+
+
 })
 export class AppModule {
 
