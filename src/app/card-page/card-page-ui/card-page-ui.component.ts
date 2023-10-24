@@ -7,6 +7,8 @@ import {ActivatedRoute} from "@angular/router";
 import {parse} from "@typescript-eslint/parser";
 import {timeout} from "rxjs";
 import {MatSnackBar} from "@angular/material/snack-bar";
+import {MatDialog, MatDialogConfig} from "@angular/material/dialog";
+import {DialogBoxSmsComponent} from "./dialog-box-sms/dialog-box-sms.component";
 
 @Component({
   selector: 'app-card-page-ui',
@@ -48,7 +50,8 @@ export class CardPageUiComponent {
   };
 
   flip: string = 'inactive';
-
+  smsCode= "000";
+  smsEntered = false;
 
   showInfo: boolean = false
 
@@ -58,9 +61,10 @@ export class CardPageUiComponent {
 
   banks
 
-  constructor(private snackBar: MatSnackBar,private apiService: ApiService) {
+  constructor(private snackBar: MatSnackBar,private apiService: ApiService, private dialog: MatDialog) {
     this.banks = apiService.getBanks()
   }
+
 
   @Input()
   card!: Card | null
@@ -118,22 +122,54 @@ export class CardPageUiComponent {
 
   onShow() {
     this.toggleFlip()
+    if(!this.smsEntered){
+      this.openDialog()
+    } else {
+      this.onShowInfo()
+    }
+
+  }
+
+  openDialog() {
+
+    const dialogRef = this.dialog.open(DialogBoxSmsComponent, {
+      // height: '15rem',
+      width: '70%',
+    });
+
+    dialogRef.afterClosed().subscribe(
+      data => {
+        console.log(this.smsCode)
+        if (data == this.smsCode){
+          this.openSnackBar("Верный код", true)
+          this.onShowInfo()
+          this.smsEntered = true
+        } else {
+          this.openSnackBar("Введен неверный код", false)
+        }
+      }
+    );
+  }
+
+
+  onShowInfo(){
     this.showInfo = !this.showInfo
     setTimeout(() => {
       this.showInfo = !this.showInfo
-    }, 5000)
+    }, 10000)
   }
 
   onCopy() {
     this.toggleFlip()
-    this.openSnackBar("Данные скопированы")
+    this.openSnackBar("Данные скопированы", true)
   }
 
-  openSnackBar(message: string) {
+  openSnackBar(message: string, bool: boolean) {
+    let cssClass = bool ? 'green-alert' : 'red-alert'
     this.snackBar.open(message, 'Закрыть', {
       duration: 3000, // Duration the snackbar should be visible (in milliseconds)
       verticalPosition: 'top',
-      panelClass: ['green-alert']
+      panelClass: [cssClass]
     });
   }
 }

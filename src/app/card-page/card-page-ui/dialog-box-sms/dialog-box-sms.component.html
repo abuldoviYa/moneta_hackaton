@@ -1,0 +1,32 @@
+<div class="dialog-box">
+
+<h1>Код смс</h1>
+<!--<div>-->
+<!--  <label id="favorite-animal">Введите код из СМС</label>-->
+<!--  <input for="favorite-animal" [(ngModel)]="data.code" placeholder="Код">-->
+<!--</div>-->
+<!--<div>-->
+<!--  <button (click)="dialogRef.close(data.code)">OK</button>-->
+<!--  <button (click)="dialogRef.close()">Cancel</button>-->
+<!--</div>-->
+
+
+  <mat-form-field style="width: 100%" >
+    <mat-label>Код</mat-label>
+    <input matInput
+           placeholder="Введите код из СМС"
+           type="tel"
+           (input)="onCode($event)" style="width: 100%">
+  </mat-form-field>
+
+
+
+
+<!--  <button  mat-button color="primary" (click)="enterCode()">Ввод</button>-->
+<!--  <button  mat-button color="basic" (click)="this.dialogRef.close()">Отмена</button>-->
+
+  <mat-button-toggle-group style="width: 100%" name="favoriteColor" aria-label="Favorite Color">
+    <mat-button-toggle style="width: 50%; border-color: #006600; font-size: 1.1rem" (click)="enterCode()">Ввод</mat-button-toggle>
+    <mat-button-toggle style="width: 50%; color: #660000; font-size: 1.1rem" (click)="this.dialogRef.close()">Отмена</mat-button-toggle>
+  </mat-button-toggle-group>
+</div>
