@@ -7,6 +7,7 @@ import {BackapiService} from "../backapi.service";
 import {Bank} from "../entities/bank";
 import {map} from "rxjs";
 
+
 @Component({
   selector: 'app-card-page',
   templateUrl: './card-page.component.html',
@@ -16,7 +17,7 @@ export class CardPageComponent implements OnInit {
   private cardId: number;
   private route;
 
-  constructor(private apiService: ApiService, private titleService:Title, private backApi: BackapiService) {
+  constructor( private apiService: ApiService, private titleService:Title, private backApi: BackapiService) {
     this.titleService.setTitle("Карта " + apiService.title);
    this.route=inject(ActivatedRoute);
    this.cardId = parseInt(this.route.snapshot.paramMap.get('id')!)
@@ -35,7 +36,7 @@ export class CardPageComponent implements OnInit {
         this.backApi.getCard(this.cardId).subscribe(
           x=> {
             this.card = x.data
-            this.card.cardNumber = "** " + this.card.cardNumber;
+            //this.card.cardNumber = this.card.cardNumber;
             let m = x.data.bankName
 
             this.backApi.getBanks().pipe( map(data => {
@@ -44,4 +45,8 @@ export class CardPageComponent implements OnInit {
           })
     }
   }
+
+
+
+
 }

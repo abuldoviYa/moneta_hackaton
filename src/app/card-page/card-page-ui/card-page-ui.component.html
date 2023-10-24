@@ -1,33 +1,106 @@
-<div class="card" (click)="cardClicked()" [@cardFlip]="data.state">
-  <div class="face back">
-    <div class="inner">
-      <div class="info-wrapper">
-        <img class="card-chip" style="pointer-events: none" ngSrc="assets/card-chip.png" width="50" height="50">
-      <div class="left-container">
-        <h1 class="bankName" style="font-size: {{(125 + card?.bankName?.length!/5)}}%;   line-height: {{(125 + card?.bankName?.length!/5)}}%; ">{{banks.get(card?.bankName!)}}</h1>
-<!--        <h2>{{card?.country}}</h2>-->
 
-      </div>
-      <div class="right-container">
-          <div></div>
-        <img style="pointer-events: none" ngSrc="assets/{{card?.paymentSystem}}.svg" width="60" height="60">
-      </div>
-      </div>
-    </div>
-
-  </div>
-  <div class="face front">
-
-    <div class="black-line"></div>
-    <div class="inner">
-      <div class="info-wrapper">
-        <div class="left-container">
+<div class="tp-wrapper">
+  <div class="tp-box" (click)="toggleFlip()" [@flipState]="flip">
+    <div class="tp-box__side tp-box__front">
+      <div class="inner">
+        <div class="info-wrapper">
+          <img class="card-chip" style="pointer-events: none" ngSrc="assets/card-chip.png" width="50" height="50">
+          <div class="left-container">
+            <h1 class="bankName" style="font-size: {{card?.bankName?.length!>30 ? (120 + card?.bankName?.length!/5) : 140}}%;   line-height: {{(140 + card?.bankName?.length!/5)}}%; ">{{banks.get(card?.bankName!)}}</h1>
+            <!--        <h2>{{card?.country}}</h2>-->
 
           </div>
-        <div class="right-container">
-          {{formatFullCardNumber(card?.cardNumber!)}}
+          <div class="right-container">
+            <div></div>
+            <img style="pointer-events: none" ngSrc="assets/{{card?.paymentSystem}}.svg" width="60" height="60">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="tp-box__side tp-box__back">
+      <div class="black-line"></div>
+      <div class="inner">
+        <div class="info-wrapper">
+          <div class="back-right-side">
+            <div class="input-info-header">
+
+              <div>
+              </div>
+            </div>
+          </div>
+          <div class="back-left-side">
+          <div class="right-container">
+            <div class="input-info">
+                <div>
+                <div class="small-input-text">Номер карты</div>
+                  <div *ngIf="!showInfo"><span class="dots">···· ···· ···· </span><span class="shortNumber">{{ formatShortCardNumber(card?.cardNumber!) }}</span>
+
+                  </div>
+                  <div *ngIf="showInfo"><span class="shortNumber">{{formatFullCardNumber(card?.cardNumber!)}}</span></div>
+                </div>
+                <i *ngIf="!showInfo" class="material-icons eye-icon" (click)="onShow()">remove_red_eye</i>
+                <i *ngIf="showInfo" class="material-icons copy-icon" [cdkCopyToClipboard]="card?.cardNumber!" (click)="onCopy()">file_copy</i>
+            </div>
+            <div class="date-cvv">
+                <div class="date">
+                  <div>
+                    <div class="small-input-text">Действует до</div>
+                    <div *ngIf="showInfo"> {{formatExpDate(card?.dateCreated!)}}</div>
+                    <div *ngIf="!showInfo"> <span class="dots">··</span><span class="shortNumber"> / </span><span class="dots">··</span></div>
+                  </div>
+                  <i *ngIf="showInfo" class="material-icons copy-icon" [cdkCopyToClipboard]="formatExpDate(card?.dateCreated!)" (click)="onCopy()">file_copy</i>
+                </div>
+
+              <div class="cvv">
+                <div>
+                  <div class="small-input-text">CVV</div>
+                    <div *ngIf="!showInfo" ><span class="dots">···</span></div>
+                    <div *ngIf="showInfo" class="shortNumber">{{formatCVV()}}</div>
+                  </div>
+                <i *ngIf="showInfo" class="material-icons copy-icon" [cdkCopyToClipboard]="formatCVV()!" (click)="onCopy()">file_copy</i>
+              </div>
+            </div>
+          </div>
+<!--            <input disabled class="input" type="text" value="{{ formatShortCardNumber(card?.cardNumber!) }}">-->
+
+
+            <!--          <p>{{formatFullCardNumber(card?.cardNumber!)}}</p>-->
+          </div>
         </div>
       </div>
     </div>
   </div>
 </div>
+<!--<div class="card" (click)="cardClicked()" [@cardFlip]="data.state">-->
+<!--  <div class="face back">-->
+<!--    <div class="inner">-->
+<!--      <div class="info-wrapper">-->
+<!--        <img class="card-chip" style="pointer-events: none" ngSrc="assets/card-chip.png" width="50" height="50">-->
+<!--        <div class="left-container">-->
+<!--          <h1 class="bankName" style="font-size: {{(125 + card?.bankName?.length!/5)}}%;   line-height: {{(125 + card?.bankName?.length!/5)}}%; ">{{banks.get(card?.bankName!)}}</h1>-->
+<!--          &lt;!&ndash;        <h2>{{card?.country}}</h2>&ndash;&gt;-->
+
+<!--        </div>-->
+<!--        <div class="right-container">-->
+<!--          <div></div>-->
+<!--          <img style="pointer-events: none" ngSrc="assets/{{card?.paymentSystem}}.svg" width="60" height="60">-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
+
+<!--  </div>-->
+<!--  <div class="face front">-->
+
+<!--    <div class="black-line"></div>-->
+<!--    <div class="inner">-->
+<!--      <div class="info-wrapper">-->
+<!--        <div class="left-container">-->
+
+<!--        </div>-->
+<!--        <div class="right-container">-->
+<!--          {{formatFullCardNumber(card?.cardNumber!)}}-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</div>-->

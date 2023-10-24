@@ -1,3 +1,7 @@
+:root {
+  --card-text-color: #b1b9c3;
+}
+
 .card {
   box-shadow: 10px 10px 43px -18px rgba(0, 0, 0, 0.75);
   border-radius: 20px;
@@ -40,8 +44,15 @@ img {
 }
 
 .right-container {
-  font-size: 100%;
+
   color: whitesmoke;
+}
+
+.right-container p{
+  font-size: 1rem;
+  font-weight: 100;
+  margin: 0;
+  padding: 0;
 }
 
 
@@ -49,6 +60,7 @@ img {
   display: flex;
   justify-content: space-between;
   height: 100%;
+
 
 }
 
@@ -96,4 +108,192 @@ img {
   top: 8%;
   background: #252525;
   height: 22%;
+}
+
+
+
+.tp-wrapper {
+  -webkit-perspective: 800px;
+  perspective: 800px;
+}
+
+.tp-box {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 2/1.2;
+  margin: 0 auto;
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+  -webkit-transform         : transform 1s;
+  -ms-transform         : transform 1s;
+  transform         : transform 1s;
+
+  box-shadow: 10px 10px 43px -18px rgba(0, 0, 0, 0.75);
+  border-radius: 20px;
+  cursor: pointer;
+  background: rgb(80,80,80);
+  background: linear-gradient(131deg, rgba(80,80,80,1) 0%, rgba(55,55,55,1) 100%);
+  color: white;
+}
+.tp-box__side {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+
+  //color: #fff;
+  //text-align: center;
+  //line-height: 100px;
+  //font-size: 24px;
+  //font-weight: 700;
+  //cursor: pointer;
+  //-webkit-user-select: none;
+  //-moz-user-select: none;
+  //-ms-user-select: none;
+  //user-select: none;
+}
+.tp-box__front {
+  border-radius: 20px;
+  background: linear-gradient(131deg, rgba(80,80,80,1) 0%, rgba(55,55,55,1) 100%);
+  -webkit-transform : rotateY(0deg);
+  -ms-transform     : rotateY(0deg);
+  transform         : rotateY(0deg);
+}
+.tp-box__back {
+  border-radius: 20px;
+  background: linear-gradient(131deg, rgba(80,80,80,1) 0%, rgba(55,55,55,1) 100%);
+  -webkit-transform : rotateY(-180deg);
+  -ms-transform     : rotateY(-180deg);
+  transform         : rotateY(-180deg);
+}
+
+.tp-box__back .inner {
+  padding: 8% 6%;
+  height: 78%;
+}
+.tp-box__back p {
+  padding: 0 0 0.2rem 0 ;
+  margin: 0;
+}
+
+.tp-box__back .info-wrapper {
+  display: block;
+}
+
+.eye-icon {
+  position: relative;
+  z-index: 10;
+  font-size: 1.3rem;
+}
+
+.copy-icon {
+  position: relative;
+  z-index: 10;
+  font-size: 1.1rem;
+}
+
+
+.tp-box__back .right-container {
+  width: 100%;
+}
+
+
+.tp-box h2 {
+  margin-top: 0;
+  font-size: 100%;
+  color: whitesmoke;
+  line-height: 100%;
+}
+.tp-box h1 {
+  margin-bottom: 0;
+  text-align: left;
+}
+
+input {
+  background-color: #2e3138;
+  color: #b1b9c3;
+  text-align: left;
+  width: 100%;
+  -webkit-text-fill-color: #b1b9c3;
+  border-radius: 10px;
+}
+
+input:disabled {
+  color: #b1b9c3;
+  //-webkit-text-fill-color: #b1b9c3;
+  opacity: 1;
+}
+
+.input-info {
+  background-color: #2e3138;
+  color: var(--card-text-color);
+  text-align: left;
+  width: 100%;
+  -webkit-text-fill-color: var(--card-text-color);
+  border-radius: 10px;
+  box-sizing: border-box;
+  padding: 0.2rem 1.2rem;
+  line-height: 1.7rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+.input-info span{
+
+  line-height: 1.5rem;
+
+}
+
+.input-info p{
+  padding: 0;
+  font-size: 1rem;
+  vertical-align: center;
+}
+
+.shortNumber {
+  vertical-align: middle;
+  font-size: 1rem;
+}
+.dots {
+  vertical-align: middle;
+  font-size: 2rem;
+}
+
+.date-cvv {
+  margin-top: 0.8rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.date, .cvv {
+  background-color: #2e3138;
+  color: var(--card-text-color);
+  text-align: left;
+  width: 48%;
+  -webkit-text-fill-color: var(--card-text-color);
+  border-radius: 10px;
+  box-sizing: border-box;
+  padding: 0.2rem 1.2rem;
+  line-height: 1.7rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.input-info-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.small-input-text {
+  font-size: .8rem;
+  line-height: .8rem;
+  padding: 0.3rem 0 0 0;
+  margin: 0;
 }

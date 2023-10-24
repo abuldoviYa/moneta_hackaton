@@ -21,6 +21,9 @@ $indigo-palette: (
   --main-color-green-light: rgba(201, 255, 196, 0.45);
   --main-color-dark-grey: #595959;
 
+  //Card
+  --card-text-color: #b1b9c3;
+
   //Select transfer
   --mdc-filled-text-field-caret-color: #50b848;
   --mdc-filled-text-field-focus-active-indicator-color: #50b848;
@@ -222,6 +225,7 @@ input[type="submit"]:disabled {
   line-height: 1.5;
   border-radius: 0.7rem;
   margin: 1rem 0;
+  box-sizing: border-box;
 }
 
 .btn-grey:not(:disabled):not(.disabled):active, .show>.btn-secondary.dropdown-toggle {

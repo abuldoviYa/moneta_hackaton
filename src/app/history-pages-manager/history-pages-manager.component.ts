@@ -15,7 +15,7 @@ import {TransactionInfo} from "../entities/transaction-info";
 export class HistoryPagesManagerComponent implements OnInit{
 
   @Input()
-  cardNumber: number | undefined
+  cardNumber: string | undefined
 
   @Input()
   walletNumber: number | undefined
@@ -120,6 +120,7 @@ export class HistoryPagesManagerComponent implements OnInit{
     console.log(this.walletNumber)
     let k
     if (this.cardNumber) {
+      console.log(this.cardNumber)
       k = this.backApi.getTransactionsByCard(this.cardNumber)
     } else if (this.walletNumber) {
       k = this.backApi.getTransactionsByWallet(this.walletNumber)

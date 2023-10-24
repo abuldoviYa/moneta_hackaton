@@ -4,6 +4,9 @@ import {animate, state, style, transition, trigger} from "@angular/animations";
 import {ApiService} from "../../api.service";
 import {Card} from "../../entities/card";
 import {ActivatedRoute} from "@angular/router";
+import {parse} from "@typescript-eslint/parser";
+import {timeout} from "rxjs";
+import {MatSnackBar} from "@angular/material/snack-bar";
 
 @Component({
   selector: 'app-card-page-ui',
@@ -23,22 +26,45 @@ import {ActivatedRoute} from "@angular/router";
       transition('flipped => default', [
         animate('400ms')
       ])
-    ])
+    ]) ,  [
+  trigger('flipState', [
+    state('active', style({
+      transform: 'rotateY(179deg)'
+    })),
+    state('inactive', style({
+      transform: 'rotateY(0)'
+    })),
+    transition('active => inactive', animate('500ms ease-out')),
+    transition('inactive => active', animate('500ms ease-in'))
+  ])
+]
   ]
+
 })
-export class CardPageUiComponent  {
+export class CardPageUiComponent {
   data: CardData = {
     imageId: "pDGNBK9A0sk",
     state: "default",
   };
 
+  flip: string = 'inactive';
+
+
+  showInfo: boolean = false
+
+  toggleFlip() {
+    this.flip = (this.flip == 'inactive') ? 'active' : 'inactive';
+  }
+
   banks
 
-  constructor(private apiService: ApiService) {
+  constructor(private snackBar: MatSnackBar,private apiService: ApiService) {
     this.banks = apiService.getBanks()
   }
+
   @Input()
   card!: Card | null
+
   cardClicked() {
     if (this.data.state === "default") {
       this.data.state = "flipped";
@@ -47,13 +73,14 @@ export class CardPageUiComponent  {
     }
   }
 
-  formatShortCardNumber(s: string){
-    return "·· " + s.substring(s.length-4)
+  formatShortCardNumber(s: string) {
+
+    return s.toString().substring(s.toString().length - 4)
   }
 
   formatFullCardNumber(cardNumber: string): string {
     // Remove any non-numeric characters
-    const cleanedCardNumber = cardNumber.replace(/\D/g, '');
+    const cleanedCardNumber = cardNumber.toString().replace(/\D/g, '');
 
     // Split the string into groups of 4 digits
     const groups = cleanedCardNumber.match(/(\d{1,4})/g);
@@ -64,10 +91,49 @@ export class CardPageUiComponent  {
     return formattedCardNumber;
   }
 
+  formatExpDate(date: string) {
+    let k = this.parseDate(date)
+    let year = (k.getFullYear() + 5).toString().substring(2)
+    let month = k.getMonth().toString().padStart(2, '0')
+    let final = this.showInfo ? month + " / " + year : "·· / ··"
+    return final
+  }
+
+  formatCVV() {
+    return this.card?.cardNumber.toString().substring(3, 6)
+  }
+
+  parseDate(date: string): Date {
+    let dateParts = date.split(/[ :\-]/);
+    return new Date(
+      +dateParts[2],
+      +dateParts[1] - 1,
+      +dateParts[0],
+      +dateParts[3],
+      +dateParts[4],
+      +dateParts[5]
+    )
+  }
 
 
+  onShow() {
+    this.toggleFlip()
+    this.showInfo = !this.showInfo
+    setTimeout(() => {
+      this.showInfo = !this.showInfo
+    }, 5000)
+  }
 
+  onCopy() {
+    this.toggleFlip()
+    this.openSnackBar("Данные скопированы")
+  }
 
-
-
+  openSnackBar(message: string) {
+    this.snackBar.open(message, 'Закрыть', {
+      duration: 3000, // Duration the snackbar should be visible (in milliseconds)
+      verticalPosition: 'top',
+      panelClass: ['green-alert']
+    });
+  }
 }

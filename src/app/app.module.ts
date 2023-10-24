@@ -34,6 +34,7 @@ import {MatButtonToggleModule} from "@angular/material/button-toggle";
 import {MatSelectModule} from "@angular/material/select";
 import {MatButtonModule} from "@angular/material/button";
 import { HistoryPagesManagerComponent } from './history-pages-manager/history-pages-manager.component';
+import {ClipboardModule} from "@angular/cdk/clipboard";
 
 @NgModule({
   declarations: [
@@ -73,6 +74,7 @@ import { HistoryPagesManagerComponent } from './history-pages-manager/history-pa
         MatButtonToggleModule,
         MatSelectModule,
         MatButtonModule,
+        ClipboardModule,
     ],
   providers: [ApiService, MatSnackBar, MatDatepickerModule,MatNativeDateModule, {provide: MAT_DATE_LOCALE, useValue: "ru-RU"} ],
   bootstrap: [AppComponent]
