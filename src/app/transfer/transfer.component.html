@@ -216,18 +216,20 @@
 
     <div *ngIf="targetSecond != null && sourceSecond != null" class="target_second_card">
       <div class="full info">
-        <div class="target width30">
+        <div class="available width100">
           <p>Доступно</p>
           <span>{{mathRoundTwo(sourceWallet.balance)}} {{countries.get(sourceWallet!.country).currencySign}}</span>
         </div>
-        <div class="target width30">
-          <p>Курс перевода</p>
+        <div class="small-targets">
+          <div class="small-target width100">
+            <p>Курс</p>
           <span>0</span>
         </div>
-        <div class="target width30">
+        <div class="small-target width100">
           <p>Комиссия</p>
           <span>0%</span>
         </div>
+          </div>
       </div>
       <!--      <p></p>-->
       <!--      <p *ngIf="targetValue!= null && sourceValue != null">Курс перевода: {{currencyToShow}}</p>-->
@@ -237,12 +239,14 @@
     <hr>
     <div>
       <br>
-      <div class="input-wrapper">
-        <input class="input" type="number" min="1" placeholder="Введите сумму" max="1000000" maxlength="7" (input)="onValueNotEqual($event)">
-      </div>
-      <div class="target">
-        <p>Будет зачислено</p>
-        <span>{{formatNumber(targetCurrency!)}} {{countries.get(targetWallet.country).currencySign}}</span>
+      <div class="input-block">
+        <div class="input-wrapper">
+          <input class="input" type="number" min="1" placeholder="Введите сумму" max="1000000" maxlength="7" (input)="onValueNotEqual($event)">
+        </div>
+        <div class="target">
+          <p>Будет зачислено</p>
+          <span>{{formatNumber(targetCurrency!)}} {{countries.get(targetWallet.country).currencySign}}</span>
+        </div>
       </div>
     </div>
   </div>
@@ -257,18 +261,19 @@
 
     <div *ngIf="targetSecond != null && sourceSecond != null" class="target_second_card">
       <div class="full info">
-      <div class="target width30">
+      <div class="available width100">
         <p>Доступно</p>
         <span>{{formatNumber(sourceWallet.balance)}} {{countries.get(sourceWallet!.country).currencySign}}</span>
-      </div>
-      <div class="target width30">
-        <p>Курс перевода</p>
+      </div><div class="small-targets">
+      <div class="small-target width100">
+        <p>Курс</p>
         <span>{{formatNumber(currencyToShow!)}}</span>
       </div>
-      <div class="target width30">
+      <div class="small-target width100">
         <p>Комиссия</p>
         <span>{{feeToShow! * 100}}%</span>
       </div>
+        </div>
       </div>
 <!--      <p></p>-->
 <!--      <p *ngIf="targetValue!= null && sourceValue != null">Курс перевода: {{currencyToShow}}</p>-->
@@ -276,21 +281,20 @@
     </div>
     <br>
 <hr>
-    <div>
-      <br>
+    <div class="input-block">
       <div class="input-wrapper">
-        <input class="input" type="number" min="1" placeholder="Введите сумму" max="1000000" maxlength="7" (input)="onValue($event)">
+        <input class="input" type="number" min="1" pattern="[0-9]" placeholder="Введите сумму" max="1000000" maxlength="7" (input)="onValue($event)">
       </div>
       <div class="target">
         <p>Будет зачислено</p>
         <span>{{formatNumber(targetCurrency!)}} {{countries.get(targetWallet.country).currencySign}}</span>
       </div>
       <div class="full">
-        <div class="target width47">
+        <div class="target width100">
           <p>Комиссия</p>
           <span>{{formatNumber(fee!)}} {{countries.get(sourceWallet.country).currencySign}}</span>
         </div>
-      <div class="target width47">
+      <div class="target width100">
         <p>Будет списано</p>
         <span>{{targetSum == null || isNaN(targetSum!) ? '' : formatNumber(targetSum!)}} {{countries.get(sourceWallet.country).currencySign}}</span>
       </div>

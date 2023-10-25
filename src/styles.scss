@@ -40,10 +40,11 @@ $indigo-palette: (
   --mat-option-selected-state-label-text-color: #50b848;
   --mat-select-focused-arrow-color: #50b848;
   //--mdc-filled-text-field-container-color: #FFFFFF;
-  --mat-select-trigger-text-size: 1.2rem;
-  --mat-option-label-text-siz:  1.2rem;
-  --mdc-filled-text-field-label-text-size: 1.2rem;
+  --mat-select-trigger-text-size: 1.1rem;
+  --mat-option-label-text-siz:  1.1rem;
+  --mdc-filled-text-field-label-text-size: 1.1rem;
 
+  font-size: 0.93rem;
 
 
   //Dates
@@ -62,6 +63,8 @@ $indigo-palette: (
 html {
   scroll-behavior: smooth;
   font-family: Montserrat,sans-serif;
+
+
 }
 
 body {
@@ -77,7 +80,9 @@ body {
   //height: 100vh;
   //margin: 0;
 }
-
+* {
+  -webkit-tap-highlight-color:  transparent;
+}
 
 
 h2 {
@@ -236,6 +241,7 @@ input[type="submit"]:disabled {
   border-radius: 0.7rem;
   margin: 1rem 0;
   box-sizing: border-box;
+  font-family: 'Montserrat', sans-serif;
 }
 
 .btn-grey:not(:disabled):not(.disabled):active, .show>.btn-secondary.dropdown-toggle {

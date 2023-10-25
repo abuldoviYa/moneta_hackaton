@@ -1,0 +1,85 @@
+.balance {
+  padding: 2rem 0 0 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8rem;
+  font-weight: normal;
+}
+
+.balance p{
+  padding: 0;
+}
+
+.country-logo {
+  width: 100%;
+}
+
+.flag-wrapper {
+  width: 100%;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.flag-wrapper img{
+  width: 40%;
+}
+
+.balance-label {
+  font-size: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--main-color-dark-grey);
+}
+
+.component-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 4% 7% 4% 5%;
+  background-color: white;
+  border-radius: 15px;
+}
+
+.component-item span{
+  font-size: 1.2rem;
+}
+
+.component-item-left span {
+  margin-left: 1rem;
+}
+
+.component-item p{
+  font-size: 0.9rem;
+  color: darkgrey;
+  padding-top: 8%;
+}
+
+.component-item-left p{
+  margin-bottom: 0;
+}
+
+.component-item-left {
+  display: flex;
+  align-items: center;
+}
+
+.component-item-right {
+  display: flex;
+  align-items: center;
+}
+
+.material-icons {
+  color: var(--main-color-green);
+}
+
+.menu {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+
+a {
+  border-radius: 15px;
+}

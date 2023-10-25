@@ -1,12 +1,12 @@
 
-<div class="tp-wrapper">
-  <div class="tp-box"  (click)="toggleFlip()" [@flipState]="flip">
+<div class="tp-wrapper" >
+  <div class="tp-box" (click)="toggleFlip()"  [@flipState]="flip">
     <div class="tp-box__side tp-box__front" [ngClass]="card?.bankName == 'СentrInvest' ? 'centrinvest-card-front' :''">
       <div class="inner">
         <div class="info-wrapper">
           <img class="card-chip" style="pointer-events: none" ngSrc="assets/card-chip.png" width="50" height="50">
           <div class="left-container">
-            <h1 *ngIf="banksLogo.get(card?.bankName!)==null" class="bankName" style="font-size: {{card?.bankName?.length!>30 ? (120 + card?.bankName?.length!/5) : 150}}%;   line-height: {{(140 + card?.bankName?.length!/5)}}%; ">{{banks.get(card?.bankName!)}}</h1>
+            <h1 *ngIf="banksLogo.get(card?.bankName!)==null" class="bankName" style="font-size: {{card?.bankName?.length!>20 ? (125 + card?.bankName?.length!)/1.3 : 150}}%;   line-height: {{(140 + card?.bankName?.length!/5)}}%; ">{{banks.get(card?.bankName!)}}</h1>
             <img *ngIf="banksLogo.get(card?.bankName!), let bankName" src="{{bankName}}" alt="">
             <!--        <h2>{{card?.country}}</h2>-->
             <div>

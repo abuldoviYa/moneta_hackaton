@@ -37,6 +37,11 @@ import { HistoryPagesManagerComponent } from './history-pages-manager/history-pa
 import {ClipboardModule} from "@angular/cdk/clipboard";
 import {MatDialogModule} from "@angular/material/dialog";
 import {DialogBoxSmsComponent} from "./card-page/card-page-ui/dialog-box-sms/dialog-box-sms.component";
+import { ProfilePageComponent } from './profile/profile-page/profile-page.component';
+import { SettingsPageComponent } from './profile/settings-page/settings-page.component';
+import { AppPageComponent } from './profile/app-page/app-page.component';
+import { SupportPageComponent } from './profile/support-page/support-page.component';
+import { ChatComponent } from './profile/support-page/chat/chat.component';
 
 @NgModule({
   declarations: [
@@ -58,7 +63,12 @@ import {DialogBoxSmsComponent} from "./card-page/card-page-ui/dialog-box-sms/dia
     CardSignleComponent,
     TempLoginComponent,
     HistoryPagesManagerComponent,
-    DialogBoxSmsComponent
+    DialogBoxSmsComponent,
+    ProfilePageComponent,
+    SettingsPageComponent,
+    AppPageComponent,
+    SupportPageComponent,
+    ChatComponent
   ],
     imports: [
         BrowserModule,

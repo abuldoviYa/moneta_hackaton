@@ -7,7 +7,6 @@ label {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin: 1rem 0 0 0;
   padding: 1rem 0;
   background-color: white;
   border-radius: 10px;
@@ -19,13 +18,45 @@ label {
 }
 
 .target span{
-  font-size: 2rem;
+  font-size: 1.2rem;
+}
+
+.small-targets{
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.small-target {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0.7rem 1rem;
+  background-color: white;
+  border-radius: 10px;
+  box-sizing: border-box;
+}
+.small-target p{
+  font-size: 1rem;
+  color: grey;
+  margin-bottom: 0.1rem;
 }
 
 .full {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  gap: 1rem;
+}
+
+.input-block {
+  padding-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 1rem;
 }
 
 .info p{
@@ -51,8 +82,29 @@ label {
   border-radius: 10px;
 }
 
-.mat-select-custom .mat-select-panel .mat-option-text {
-  background-color: white;
-  font-size: 2rem;
+
+
+.input {
+  border: 1px solid var(--main-color-green);
+  border-radius: 10px;
+  font-family: 'Montserrat', sans-serif;
 }
 
+
+.available {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem 0;
+  background-color: white;
+  border-radius: 10px;
+}
+
+.available span {
+  font-size: 1.625rem;
+}
+
+.available p {
+  font-size: 1rem;
+}

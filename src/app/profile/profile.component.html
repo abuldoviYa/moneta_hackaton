@@ -1,1 +1,31 @@
-<p>profile works!</p>
+<div>
+  <div class="country-logo">
+    <div class="flag-wrapper">
+      <img src="assets/profile-placeholder.svg" alt="">
+    </div>
+
+  </div>
+  <div class="balance">
+    <p>Иван</p>
+  </div>
+  <div class="balance-label">
+    <p>Профиль</p>
+  </div>
+</div>
+
+<div class="menu">
+  <div *ngFor="let menuItem of menu.keys()">
+    <a [routerLink]="menu.get(menuItem).link">
+      <li class="component-item">
+        <div class="component-item-left">
+          <i class="material-icons">{{menu.get(menuItem).icon}}</i>
+          <span>{{menu.get(menuItem).title}}</span>
+        </div>
+        <div class="component-item-right">
+          <i class="material-icons">keyboard_arrow_right</i>
+        </div>
+      </li>
+    </a>
+  </div>
+
+</div>

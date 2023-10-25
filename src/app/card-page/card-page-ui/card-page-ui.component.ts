@@ -56,6 +56,7 @@ export class CardPageUiComponent {
   showInfo: boolean = false
 
   toggleFlip() {
+    console.log("toggleFlip")
     this.flip = (this.flip == 'inactive') ? 'active' : 'inactive';
   }
 
@@ -123,6 +124,7 @@ export class CardPageUiComponent {
 
 
   onShow() {
+    console.log("onShow")
     this.toggleFlip()
     if(!this.smsEntered){
       this.openDialog()
