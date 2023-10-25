@@ -38,8 +38,23 @@ export class ApiService {
       ['Agricultural Bank of China', 'Сельскохозяйственный Банк Китая'],
       ['China Construction Bank', 'Строительный Банк Китая'],
     ]);
-
   }
+
+    getBanksLogo(): Map<string, string|null> {
+      return new Map([
+        ['Green', null],
+        ['СentrInvest', 'assets/banks_logo/centrinvest.svg'],
+        ['Blue', null],
+        ['Red',null ],
+        ['Bank of China', null],
+        ['Industrial & Commercial Bank of China', null],
+        ['Agricultural Bank of China',null ],
+        ['China Construction Bank', null],
+      ]);
+    }
+
+
+
 
 
 

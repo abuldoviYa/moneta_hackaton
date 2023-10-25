@@ -60,9 +60,11 @@ export class CardPageUiComponent {
   }
 
   banks
+  banksLogo
 
   constructor(private snackBar: MatSnackBar,private apiService: ApiService, private dialog: MatDialog) {
     this.banks = apiService.getBanks()
+    this.banksLogo = apiService.getBanksLogo()
   }
 
 
