@@ -1,6 +1,16 @@
 <div class="check"></div>
+
 <div class="screen">
+  <div class="temp-wrapper">
+    <div class="temp">
+      <div class="title"><img ngSrc="assets/logo_small.png" width="45" height="45"></div>
+      <div class="title"><h1>МОНЕТАРИЙ</h1></div>
+      <div class="title"><img ngSrc="assets/profile-placeholder.svg" width="45" height="45"></div>
+    </div>
+  </div>
   <div class="paddings">
+
+
   <router-outlet *ngIf="consent"></router-outlet>
     <app-consent *ngIf="!consent"></app-consent>
     <div style="height: 5vh"></div>

@@ -30,6 +30,7 @@ export class ApiService {
   getBanks(): Map<string, string> {
     return new Map([
       ['Green', 'Зеленый'],
+      ['Center-invest Bank', 'Центр-инвест'],
       ['СentrInvest', 'Центр-инвест'],
       ['Blue', 'Синий'],
       ['Red', 'Красный'],
@@ -52,6 +53,16 @@ export class ApiService {
         ['China Construction Bank', null],
       ]);
     }
+
+  // formatNumber(balance: number){
+  //   balance = parseFloat(balance.toString())
+  //   if (balance == 0) {return "0"}
+  //   let k = ""
+  //   if (balance){
+  //     k = (Math.round(balance*100)/100).toLocaleString("ru-RU").replaceAll('.', ' ')
+  //   }
+  //   return k
+  // }
 
 
 

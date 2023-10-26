@@ -42,7 +42,7 @@ export class AddCardComponent implements OnInit {
   }
 
   filterBanks(banks: Bank[]): Bank[]{
-    return banks.filter(x=>x.country==this.selectedCountry)
+    return banks.filter(x => x!=undefined).filter(x=>x.country==this.selectedCountry)
   }
 
   updateBanks(event: any): void {

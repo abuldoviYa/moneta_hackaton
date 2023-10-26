@@ -9,6 +9,7 @@ import {Bank} from "../entities/bank";
 import {Card} from "../entities/card";
 import {WalletPost} from "../entities/wallet-post";
 
+
 @Component({
   selector: 'app-add-wallet',
   templateUrl: './add-wallet.component.html',
@@ -18,6 +19,10 @@ export class AddWalletComponent implements OnInit{
 
   constructor(private apiService: ApiService, private snackBar: MatSnackBar,private router: Router, private titleService:Title, private backApi: BackapiService) {
     this.titleService.setTitle("Добавить кошелек" + apiService.title);
+    this.backApi.getBanks().subscribe(x=>{
+
+      this.banksLoaded=x.data
+    })
 
     console.log('AddWalletComponent - ApiService:', apiService);
   }
@@ -42,7 +47,8 @@ export class AddWalletComponent implements OnInit{
   }
 
   filterBanks(banks: Bank[]): Bank[]{
-    return banks.filter(x=>x.country==this.selectedCountry)
+    console.log(banks)
+    return banks.filter(x => x!=undefined).filter(x=>x.country==this.selectedCountry)
   }
   updateBanks(event: any): void {
     this.onCountry(event.value)
@@ -87,9 +93,6 @@ export class AddWalletComponent implements OnInit{
 
   ngOnInit(): void {
     this.countries = this.apiService.getAvailablecountries();
-    this.backApi.getBanks().subscribe(x=>{
-      this.banksLoaded=x.data
-    })
 
     this.selectedCountry = "";
     this.selectedBank= "";

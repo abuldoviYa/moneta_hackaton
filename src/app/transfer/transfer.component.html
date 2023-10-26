@@ -218,7 +218,7 @@
       <div class="full info">
         <div class="available width100">
           <p>Доступно</p>
-          <span>{{mathRoundTwo(sourceWallet.balance)}} {{countries.get(sourceWallet!.country).currencySign}}</span>
+          <span>{{formatNumber(sourceWallet.balance)}} {{countries.get(sourceWallet!.country).currencySign}}</span>
         </div>
         <div class="small-targets">
           <div class="small-target width100">
@@ -238,7 +238,7 @@
     <br>
     <hr>
     <div>
-      <br>
+
       <div class="input-block">
         <div class="input-wrapper">
           <input class="input" type="number" min="1" placeholder="Введите сумму" max="1000000" maxlength="7" (input)="onValueNotEqual($event)">

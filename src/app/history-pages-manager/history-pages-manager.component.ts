@@ -39,12 +39,12 @@ export class HistoryPagesManagerComponent implements OnInit{
     let sourceWallet;
     if(transaction.isSourceWallet){
       sourceWallet = this.wallets!
-        .find(x => x.id = transaction.sourceAccountId)
+        .find(x => x.id == transaction.sourceAccountId)
       let tempString = sourceWallet.digitalWalletNumber.toString();
       sourceWallet.number = "··"+tempString.substring(tempString.length-4)
       sourceWallet.link = "/wallet/" + sourceWallet.id
     } else {
-      sourceWallet = this.cards!.find(x => x.id = transaction.sourceAccountId)
+      sourceWallet = this.cards!.find(x => x.id == transaction.sourceAccountId)
       let tempString = sourceWallet.cardNumber.toString();
       sourceWallet.number = "··"+tempString.substring(tempString.length-4)
       sourceWallet.link = "/card/" + sourceWallet.id
@@ -53,12 +53,12 @@ export class HistoryPagesManagerComponent implements OnInit{
     let targetWallet;
     if(transaction.isTargetWallet){
       targetWallet = this.wallets!
-        .find(x => x.id = transaction.targetAccountId)
+        .find(x => x.id == transaction.targetAccountId)
       let tempString = targetWallet.digitalWalletNumber.toString();
       targetWallet.number = "··"+tempString.substring(tempString.length-4)
       targetWallet.link = "/wallet/" + targetWallet.id
     } else {
-      targetWallet = this.cards!.find(x => x.id = transaction.targetAccountId)
+      targetWallet = this.cards!.find(x => x.id == transaction.targetAccountId)
       let tempString = targetWallet.cardNumber.toString();
       targetWallet.number = "··"+tempString.substring(tempString.length-4)
       targetWallet.link = "/card/" + targetWallet.id
@@ -66,7 +66,14 @@ export class HistoryPagesManagerComponent implements OnInit{
     return [sourceWallet, targetWallet]
   }
 
-
+  formatNumber(balance: number){
+    if (balance == 0) {return "0"}
+    let k = ""
+    if (balance){
+      k = (Math.round(balance*100)/100).toLocaleString("ru-RU").replaceAll('.', ' ')
+    }
+    return k
+  }
 
   parseDate(date: string): Date {
     let dateParts = date.split(/[ :\-]/);
