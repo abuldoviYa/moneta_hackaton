@@ -42,6 +42,7 @@ import { SettingsPageComponent } from './profile/settings-page/settings-page.com
 import { AppPageComponent } from './profile/app-page/app-page.component';
 import { SupportPageComponent } from './profile/support-page/support-page.component';
 import { ChatComponent } from './profile/support-page/chat/chat.component';
+import {ChatService} from "./profile/support-page/chat.service";
 
 @NgModule({
   declarations: [
@@ -90,7 +91,7 @@ import { ChatComponent } from './profile/support-page/chat/chat.component';
         ClipboardModule,
         MatDialogModule
     ],
-  providers: [ApiService, MatSnackBar, MatDatepickerModule,MatNativeDateModule, {provide: MAT_DATE_LOCALE, useValue: "ru-RU"} ],
+  providers: [ApiService, MatSnackBar, MatDatepickerModule,MatNativeDateModule, {provide: MAT_DATE_LOCALE, useValue: "ru-RU"}, ChatService ],
   bootstrap: [AppComponent],
 
 

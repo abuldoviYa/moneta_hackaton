@@ -2,7 +2,7 @@
   width: 100%;
   max-width: 425px;
   min-width: 320px;
-  min-height: 100vh;
+
   //max-height: 950px;
   //align-items: center;
   //justify-content: center;
@@ -15,11 +15,11 @@
 }
 
 .bottom-menu {
-  position: fixed;
   width: 100%;
   max-width: 425px;
   bottom: 0;
   text-align: center;
+  position: fixed;
 }
 
 .check {

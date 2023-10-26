@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, HostListener, OnInit} from '@angular/core';
 import {Router} from "@angular/router";
 
 @Component({
@@ -7,6 +7,7 @@ import {Router} from "@angular/router";
   styleUrls: ['./menu.component.scss']
 })
 export class MenuComponent implements OnInit{
+
 
   constructor(private router: Router) {
   }

@@ -6,7 +6,9 @@
         <div class="info-wrapper">
           <img class="card-chip" style="pointer-events: none" ngSrc="assets/card-chip.png" width="50" height="50">
           <div class="left-container">
-            <h1 *ngIf="banksLogo.get(card?.bankName!)==null" class="bankName" style="font-size: {{card?.bankName?.length!>20 ? (125 + card?.bankName?.length!)/1.3 : 150}}%;   line-height: {{(140 + card?.bankName?.length!/5)}}%; ">{{banks.get(card?.bankName!)}}</h1>
+
+            <h1 *ngIf="banksLogo.get(card?.bankName!)==null" class="bankName" style="font-size: {{banks.get(card?.bankName!)!.length>20 ? (120 + banks.get(card?.bankName!)!.length)/1.4 : 150}}%;   line-height: {{(140 + banks.get(card?.bankName!)!.length/5)}}%; ">{{banks.get(card?.bankName!)}}</h1>
+
             <img *ngIf="banksLogo.get(card?.bankName!), let bankName" src="{{bankName}}" alt="">
             <!--        <h2>{{card?.country}}</h2>-->
             <div>

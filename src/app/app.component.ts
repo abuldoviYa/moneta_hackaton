@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, HostListener, OnInit} from '@angular/core';
 import {ApiService} from "./api.service";
 import {Router} from "@angular/router";
 
@@ -13,6 +13,16 @@ export class AppComponent implements OnInit{
 
   title = 'asasdasdasd';
 
+  isInputFocused = false;
+  @HostListener('window:focusin', ['$event'])
+  onFocusIn(event: FocusEvent): void {
+    this.isInputFocused = true;
+  }
+
+  @HostListener('window:focusout', ['$event'])
+  onFocusOut(event: FocusEvent): void {
+    this.isInputFocused = false;
+  }
 
   consent: boolean = false;
   ngOnInit(): void {
