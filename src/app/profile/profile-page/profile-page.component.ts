@@ -11,4 +11,12 @@ export class ProfilePageComponent {
   constructor(private apiService: ApiService, private titleService:Title) {
     this.titleService.setTitle("Профиль" + apiService.title);
   }
+
+  user = {
+    firstname: "Иван",
+    surname: "Иванов",
+    country: "Россия",
+    phone: "+7 (888) 888-88-88",
+    email: "ivan.ivanov@mail.ru",
+  }
 }

@@ -11,4 +11,10 @@ export class AppPageComponent {
   constructor(private apiService: ApiService, private titleService:Title) {
     this.titleService.setTitle("О приложении" + apiService.title);
   }
+
+  menu: Map<string, any> = new Map([
+    ['profile', {title: "Пользовательское соглашение", link: "agreement", icon: "subject"}],
+    ['support', {title: "Политика конфиденциальности", link: "confidential", icon: "lock"}]
+  ]);
+
 }

@@ -1,0 +1,25 @@
+input {
+  border-radius: 15px;
+}
+
+input:disabled {
+  color: black;
+  -webkit-text-fill-color: black;
+  opacity: 1;
+}
+
+h3 {
+  margin-top: 1rem;
+  margin-bottom: 0;
+  padding-left: 0.4rem;
+}
+
+.profile {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+h1 {
+  margin-bottom: 0;
+}

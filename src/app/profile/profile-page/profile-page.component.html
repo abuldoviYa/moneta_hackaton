@@ -1,1 +1,38 @@
-<p>profile-page works!</p>
+<h1>Профиль</h1>
+<div class="profile">
+  <div class="profile-body">
+    <h3>Имя </h3>
+    <div class="input-wrapper">
+      <input disabled class="input" type="text"
+             value="{{user.firstname}}">
+    </div>
+    <h3>Фамилия </h3>
+    <div class="input-wrapper">
+      <input disabled class="input" type="text"
+             value="{{user.surname}}">
+    </div>
+    <h3>Страна </h3>
+    <div class="input-wrapper">
+      <input disabled class="input" type="text"
+             value="{{user.country}}">
+    </div>
+
+    <h3>Телефон </h3>
+    <div class="input-wrapper">
+      <input disabled class="input" type="text" value="{{user.phone}}">
+    </div>
+
+    <h3>Email </h3>
+    <div class="input-wrapper">
+      <input disabled class="input" type="text"
+             value="{{user.email}}">
+    </div>
+    <br>
+    <br>
+
+
+  </div>
+  <div>
+    <span style="color: darkgrey">*Если данные некорректны, обратитесь в поддержку</span>
+  </div>
+</div>

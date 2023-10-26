@@ -1,1 +1,32 @@
-<p>app-page works!</p>
+<div class="app-page">
+  <div>
+<div class="header-wrapper">
+  <div class="title"><img ngSrc="assets/logo_small.png" width="150" height="150"></div>
+  <h1>МОНЕТАРИЙ</h1>
+  <span class="verions">Версия 2.0.4</span>
+</div>
+
+
+  <div class="menu">
+    <div *ngFor="let menuItem of menu.keys()">
+      <a [routerLink]="menu.get(menuItem).link">
+        <li class="component-item">
+          <div class="component-item-left">
+            <i class="material-icons">{{menu.get(menuItem).icon}}</i>
+            <span>{{menu.get(menuItem).title}}</span>
+          </div>
+          <div class="component-item-right">
+            <i class="material-icons">keyboard_arrow_right</i>
+          </div>
+        </li>
+      </a>
+    </div>
+</div>
+
+
+</div>
+  <div></div>
+
+    <span class="footer">© «Монетарий», 2023</span>
+
+</div>

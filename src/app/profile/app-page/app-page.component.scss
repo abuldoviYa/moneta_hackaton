@@ -1,0 +1,61 @@
+.header-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+}
+
+.app-page {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  min-height: 85vh;
+  gap: 3rem;
+}
+
+.footer {
+  display: flex;
+  justify-content: center;
+  color: var(--main-color-dark-grey);
+}
+
+.component-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 4% 4% 4% 5%;
+  background-color: white;
+  border-radius: 15px;
+}
+
+.component-item span{
+  font-size: 1.2rem;
+}
+
+.component-item-left span {
+  margin-left: 1rem;
+}
+
+.component-item p{
+  font-size: 0.9rem;
+  color: darkgrey;
+  padding-top: 8%;
+}
+
+.component-item-left {
+  display: flex;
+  align-items: center;
+  font-size: 1rem;
+}
+
+.component-item-right {
+  display: flex;
+  align-items: center;
+}
+
+.menu {
+  padding-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}

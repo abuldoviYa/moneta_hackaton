@@ -2,7 +2,7 @@
   <div class="chat-wrapper">
 
   <div class="messages">
-    <div  *ngFor="let message of messages">
+    <div class="message-inner"  *ngFor="let message of messages">
   <div
        [ngClass]="{ 'from': message.author === 'bot',
 'to': message.author === 'user' }">
@@ -12,9 +12,9 @@
   </div>
   </div>
 </div>
-  <div>
+  <div class="input-area" style="margin-top: 1rem">
     <input class="input" type="text"  placeholder="Введите вопрос"  [(ngModel)]="value" (keyup.enter)="sendMessage()">
-
-    <button class="btn btn-grey width47" (click)="sendMessage()">Send</button>
+    <i (click)="sendMessage()" class="material-icons send-button">arrow_upward</i>
+<!--    <button class="btn btn-grey width47" (click)="sendMessage()">Отправить сообщение </button>-->
   </div>
 
