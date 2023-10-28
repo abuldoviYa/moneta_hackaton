@@ -1,15 +1,16 @@
 
 <div class="tp-wrapper" >
   <div class="tp-box" (click)="toggleFlip()"  [@flipState]="flip">
-    <div class="tp-box__side tp-box__front" [ngClass]="card?.bankName == 'СentrInvest' ? 'centrinvest-card-front' :''">
+    <div class="tp-box__side tp-box__front" [ngClass]="banksLogo.get(card?.bankName!)!=null && banksLogo.get(card?.bankName!).classFront!=null ? banksLogo.get(card?.bankName!).classFront :''">
       <div class="inner">
         <div class="info-wrapper">
           <img class="card-chip" style="pointer-events: none" ngSrc="assets/card-chip.png" width="50" height="50">
           <div class="left-container">
 
-            <h1 *ngIf="banksLogo.get(card?.bankName!)==null" class="bankName" style="font-size: {{banks.get(card?.bankName!)!.length>20 ? (120 + banks.get(card?.bankName!)!.length)/1.4 : 150}}%;   line-height: {{(140 + banks.get(card?.bankName!)!.length/5)}}%; ">{{banks.get(card?.bankName!)}}</h1>
-
-            <img *ngIf="banksLogo.get(card?.bankName!), let bankName" src="{{bankName}}" alt="">
+            <h1 *ngIf="banksLogo.get(card?.bankName!)==null || banksLogo.get(card?.bankName!).logo==null" class="bankName" style="font-size: {{banks.get(card?.bankName!)!.length>20 ? (120 + banks.get(card?.bankName!)!.length)/1.4 : 150}}%;   line-height: {{(140 + banks.get(card?.bankName!)!.length/5)}}%; ">{{banks.get(card?.bankName!)}}</h1>
+            <div *ngIf="banksLogo.get(card?.bankName!)!=null">
+            <img *ngIf="banksLogo.get(card?.bankName!).logo, let bankName" src="{{bankName}}" alt="">
+          </div>
             <!--        <h2>{{card?.country}}</h2>-->
             <div>
               <div class="client-name-header">Card Holder</div>
@@ -23,7 +24,7 @@
         </div>
       </div>
     </div>
-    <div class="tp-box__side tp-box__back" [ngClass]="card?.bankName == 'СentrInvest' ? 'centrinvest-card-back' :''">
+    <div class="tp-box__side tp-box__back" [ngClass]="banksLogo.get(card?.bankName!)!=null && banksLogo.get(card?.bankName!).classBack!=null ? banksLogo.get(card?.bankName!).classBack :''">
       <div class="black-line"></div>
       <div class="inner">
         <div class="info-wrapper">

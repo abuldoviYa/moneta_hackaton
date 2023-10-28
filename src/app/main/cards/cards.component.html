@@ -7,7 +7,7 @@
     </div>
     <div *ngIf="!cards" >
       <h3 style="margin-bottom: 0">У вас еще нет карт</h3>
-      <a class="btn btn-grey width100" [routerLink]="['/addCard']">Добавить карту</a>
+      <a class="btn btn-green width100" [routerLink]="['/addCard']">Добавить карту</a>
     </div>
     <div *ngIf="cards && cards.length > 0" class="component-card-list">
 
@@ -28,7 +28,7 @@
     </div>
 
 
-    <button *ngIf="cards && cards.length > 2" class="btn btn-grey width100" (click)="onShowAllCards()">{{ showAllCards ? 'Скрыть карты' : 'Показать все карты'}}</button>
+    <button *ngIf="cards && cards.length > 2" class="btn btn-green width100" (click)="onShowAllCards()">{{ showAllCards ? 'Скрыть карты' : 'Показать все карты'}}</button>
 
   </div>
 </div>

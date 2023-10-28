@@ -11,7 +11,7 @@
           <div *ngIf="!wallets" >
             <h3 style="margin-bottom: 0">У вас еще нет кошельков</h3>
 <!--            <h3 style="margin-bottom: 0">Нажми <i class="material-icons">add_circle_outline</i>, чтобы добавить кошелек</h3>-->
-            <a class="btn btn-grey width100" [routerLink]="['/addWallet']">Добавить кошелек</a>
+            <a class="btn btn-green width100" [routerLink]="['/addWallet']">Добавить кошелек</a>
 
           </div>
             <div *ngIf="wallets && wallets.length > 0" class="component-card-list">
@@ -58,7 +58,7 @@
                 </ul>
             </div>
 
-          <button *ngIf="wallets && wallets.length > 2" class="btn btn-grey width100" (click)="onShowAllWallets()">{{ showAllWallets ? 'Скрыть кошельки' : 'Показать все кошельки'}}</button>
+          <button *ngIf="wallets && wallets.length > 2" class="btn btn-green width100" (click)="onShowAllWallets()">{{ showAllWallets ? 'Скрыть кошельки' : 'Показать все кошельки'}}</button>
 
           </div>
     </div>

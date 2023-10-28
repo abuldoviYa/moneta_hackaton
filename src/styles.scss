@@ -28,7 +28,11 @@ $main-color-green: #50b848;
 $main-color-green-light: rgba(201, 255, 196, 0.45);
 $main-color-dark-grey: #595959;
 
+
+
 :root {
+
+
   --main-bg-grey: #{$main-bg-grey};
   --main-color-green: #{$main-color-green};
   --main-color-green-light: #{$main-color-green-light};
@@ -44,6 +48,7 @@ $main-color-dark-grey: #595959;
   --mdc-filled-text-field-focus-label-text-color: #50b848;
   --mat-option-selected-state-label-text-color: #50b848;
   --mat-select-focused-arrow-color: #50b848;
+  --mdc-filled-text-field-container-color: #ffffff;
   //--mdc-filled-text-field-container-color: #FFFFFF;
   --mat-select-trigger-text-size: 1.1rem;
   --mat-option-label-text-siz:  1.1rem;
@@ -51,6 +56,12 @@ $main-color-dark-grey: #595959;
 
   font-size: 0.93rem;
 
+  .mdc-text-field--filled:hover {
+    background-color: white;
+  }
+  .mat-mdc-text-field-wrapper:hover {
+    background-color: white;
+  }
 
   //Dates
   --mat-datepicker-calendar-date-selected-state-background-color:#50b848;
@@ -193,14 +204,14 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 input[type="submit"], button[type="submit"] {
   /* Your styles here */
-  background-color: #4CAF50; /* Green background */
-  color: white; /* White text color */
-  padding: 1.2rem 1.5rem; /* Padding for better appearance */
-  border: none; /* No border */
-  border-radius: 5px; /* Optional: Rounded corners */
-  cursor: pointer; /* Cursor style */
+  //background-color: #4CAF50; /* Green background */
+  //color: white; /* White text color */
+  //padding: 1.2rem 1.5rem; /* Padding for better appearance */
+  //border: none; /* No border */
+  //border-radius: 5px; /* Optional: Rounded corners */
+  //cursor: pointer; /* Cursor style */
   font-size: 1.2rem;
-  margin-top: 1.5rem;
+  //margin-top: 1.5rem;
 }
 
 /* Optional: Add hover effect */
@@ -209,7 +220,7 @@ input[type="submit"]:hover {
 }
 
 input[type="submit"]:disabled {
-  background-color: #8b9f8b; /* Darker green background on hover */
+  background-color: #a1a1a1; /* Darker green background on hover */
 }
 
 .center {
@@ -255,7 +266,7 @@ input[type="submit"]:disabled {
   border-color: #c8ccd4;
 }
 
-.btn:hover {
+.btn-grey:hover {
   color: #2e3138;
   background: #d9dbe0;
   //box-shadow: 0 0 4px 1px rgba(0, 0, 0, 0.05);
@@ -268,10 +279,22 @@ input[type="submit"]:disabled {
   //border-color: #6c757d;
 }
 
+.btn-green {
+  color: #ffffff;
+  background-color: var(--main-color-green);
+  //border-color: #6c757d;
+}
+
+
+
 input[type="checkbox"] {
   transform: scale(1.4);
   margin-right: 0.5rem;
+  accent-color: var(--main-color-green);
+  color: white;
 }
+
+
 
 .countryFlag {
   font-size: 1.7rem;
@@ -324,3 +347,13 @@ img {
 .centrinvest-card-back {
   background: rgb(0 181 107)  !important;
 }
+
+.bankofchina-card-front {
+
+  background: linear-gradient(144deg, rgba(122,0,0,1) 0%, rgba(199,35,35,1) 28%, rgba(168,7,7,1) 55%, rgb(218, 15, 15) 79%, rgba(199,0,0,1) 100%) !important;
+}
+
+.bankofchina-card-back {
+  background: rgb(168, 7, 7) !important;
+}
+

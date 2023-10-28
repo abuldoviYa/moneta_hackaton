@@ -31,9 +31,15 @@ export class AppComponent implements OnInit{
     localStorage.setItem("wallets", JSON.stringify(wallets))
     if(localStorage.getItem("consent") != null){
       this.consent = true;
-
     }
 
+
+  }
+
+
+
+  onMenuClick(link: any) {
+    this.router.navigate([link])
   }
 
 }

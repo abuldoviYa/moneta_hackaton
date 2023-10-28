@@ -41,13 +41,13 @@ export class ApiService {
     ]);
   }
 
-    getBanksLogo(): Map<string, string|null> {
+    getBanksLogo(): Map<string, any> {
       return new Map([
         ['Green', null],
-        ['СentrInvest', 'assets/banks_logo/centrinvest.svg'],
+        ['СentrInvest', {logo: 'assets/banks_logo/centrinvest.svg', classFront: 'centrinvest-card-front', classBack: 'centrinvest-card-back'}],
         ['Blue', null],
         ['Red',null ],
-        ['Bank of China', null],
+        ['Bank of China', {logo: null, classFront: 'bankofchina-card-front', classBack: 'bankofchina-card-back'}],
         ['Industrial & Commercial Bank of China', null],
         ['Agricultural Bank of China',null ],
         ['China Construction Bank', null],

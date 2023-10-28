@@ -3,9 +3,10 @@
 <div class="screen">
   <div class="temp-wrapper">
     <div class="temp">
-      <div class="title"><img ngSrc="assets/logo_small.png" width="45" height="45"></div>
+      <div class="title" (click)="onMenuClick('/')"><img ngSrc="assets/logo_small.png" width="45" height="45"></div>
       <div class="title"><h1>МОНЕТАРИЙ</h1></div>
-      <div class="title"><img ngSrc="assets/profile-placeholder.svg" width="45" height="45"></div>
+      <div class="title" *ngIf="consent"  (click)="onMenuClick('profile')" ><img ngSrc="assets/profile-placeholder.svg" width="45" height="45"></div>
+      <div class="title"  *ngIf="!consent" style="width: 45px; height: 45px"></div>
     </div>
   </div>
   <div class="paddings">
