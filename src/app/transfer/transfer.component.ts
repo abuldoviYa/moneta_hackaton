@@ -94,7 +94,7 @@ export class TransferComponent implements OnInit{
     if(this.sourceSecond == 'card'){
       this.sourceCountry = this.cards.find(x=>x.cardNumber == this.sourceValue).country
     } else if (this.sourceSecond == 'digitalWallet') {
-      console.log(this.wallets)
+      //console.log(this.wallets)
       this.sourceCountry = this.wallets.find(x=>x.digitalWalletNumber == this.sourceValue).country
     }
     this.targetValue = undefined;
@@ -110,7 +110,7 @@ export class TransferComponent implements OnInit{
     let oldTarget = this.targetWallet
 
     this.targetValue = value.value;
-    console.log(value.value)
+    //console.log(value.value)
 
     if(this.targetSecond == 'card'){
       this.targetCountry = this.cards.find(x=>x.cardNumber == this.targetValue).country
@@ -146,9 +146,9 @@ export class TransferComponent implements OnInit{
 
 
       this.getRates()
-      console.log(this.erAndFee)
-      console.log(this.currencyToShow)
-      console.log(this.feeToShow)
+      //console.log(this.erAndFee)
+     //console.log(this.currencyToShow)
+      //console.log(this.feeToShow)
 
     } else {
       this.currencyToShow = 0
@@ -196,13 +196,13 @@ export class TransferComponent implements OnInit{
   amountTransfered!: number;
 
   onValue(value: any) {
-    console.log(this.sourceWallet)
-    console.log(this.targetWallet)
+    //console.log(this.sourceWallet)
+    //console.log(this.targetWallet)
     let num = value.target.value
     if(num.endsWith(".")) {
       num += "0"
     }
-    console.log(value.target.value)
+    //console.log(value.target.value)
     this.amountTransfered = num
     if(this.sourceSecond==this.targetSecond){
     if ((this.currencyToShow == null && this.feeToShow == null) || this.sourceWallet.walletNumber != this.sourceValue || this.targetWallet.walletNumber != this.targetValue) {
@@ -210,8 +210,8 @@ export class TransferComponent implements OnInit{
       if((this.currencyToShow != null && this.feeToShow != null) && this.sourceWallet.walletNumber == this.sourceValue && this.targetWallet.walletNumber == this.targetValue)
       {this.getRates()}
 
-      console.log(this.currencyToShow)
-      console.log(this.feeToShow)
+      //console.log(this.currencyToShow)
+      //console.log(this.feeToShow)
     }
       this.targetCurrency = Math.round((value.target.value * this.currencyToShow!) * 100) / 100;
       this.fee = Math.round((value.target.value * this.feeToShow!) * 100) / 100;
@@ -232,11 +232,11 @@ export class TransferComponent implements OnInit{
 
 
   onSendTransfer(): void {
-    if(this.sourceWallet.balance - this.amountTransfered >= 0){
+    if(this.sourceWallet.balance - this.targetSum! >= 0){
       let isSourceWallet = this.sourceSecond == "digitalWallet" ? "true" : "false"
       let isTargetWallet = this.targetSecond == "digitalWallet" ? "true" : "false"
       this.makeTransaction(new TransactionPost(-1, this.sourceWallet.id, this.targetWallet.id, this.amountTransfered, this.sourceWallet.currency, isSourceWallet, isTargetWallet));
-      console.log(this.amountTransfered)
+      //console.log(this.amountTransfered)
     } else {
       this.openSnackBar('Недостаточно средств', false);
     }
@@ -288,7 +288,7 @@ export class TransferComponent implements OnInit{
         console.log(this.targetValue)
         x.body.data ? this.handleSuccess() : this.handleSuccess()
       }
-      x.body.data ? this.handleSuccess() : this.handleError()
+      x.body.data ? this.handleSuccess() : this.handleError(x.body.status)
     })
   }
 
@@ -299,8 +299,13 @@ export class TransferComponent implements OnInit{
     }, 500);  //5s
   }
 
-  handleError(): void {
-    this.openSnackBar('Что-то пошло не так', false);
+  handleError(status: string): void {
+    if (status == "502"){
+      this.openSnackBar('Не созданы цифровые кошельки', false);
+    } else {
+      this.openSnackBar('Что-то пошло не так', false);
+    }
+
   }
 
   makeTransferNotEqual(): boolean {

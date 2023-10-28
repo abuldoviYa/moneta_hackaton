@@ -19,7 +19,7 @@ export class AddCardComponent implements OnInit {
   constructor(private apiService: ApiService, private snackBar: MatSnackBar, private router: Router, private titleService:Title, private backApi: BackapiService) {
     this.titleService.setTitle("Добавить карту" + apiService.title);
 
-    console.log('AddCardComponent - ApiService:', apiService);
+    //console.log('AddCardComponent - ApiService:', apiService);
   }
 
   countries = this.apiService.getAvailablecountries();
@@ -38,7 +38,7 @@ export class AddCardComponent implements OnInit {
   onCountry(country: string): void {
     this.selectedCountry = country;
     this.banks = this.filterBanks(this.banksLoaded)
-    console.log(this.banks)
+    //console.log(this.banks)
   }
 
   filterBanks(banks: Bank[]): Bank[]{

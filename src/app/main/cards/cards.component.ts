@@ -27,7 +27,7 @@ export class CardsComponent implements OnInit{
 
   ngOnInit(): void {
     this.backApi.getCards().subscribe(x=>this.cards = x.data);
-    console.log(this.cards)
+    //console.log(this.cards)
   }
 
   truncateString(input: string): string {

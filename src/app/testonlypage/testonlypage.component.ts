@@ -14,7 +14,7 @@ constructor(private apiService: TestApiService) {
 
   ngOnInit(): void {
     this.apiService.getUsers().subscribe(data => this.users=data);
-    console.log(this.users)
+    //console.log(this.users)
   }
 
 

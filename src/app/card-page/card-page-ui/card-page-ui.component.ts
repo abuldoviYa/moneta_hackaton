@@ -56,7 +56,7 @@ export class CardPageUiComponent {
   showInfo: boolean = false
 
   toggleFlip() {
-    console.log("toggleFlip")
+    //console.log("toggleFlip")
     this.flip = (this.flip == 'inactive') ? 'active' : 'inactive';
   }
 

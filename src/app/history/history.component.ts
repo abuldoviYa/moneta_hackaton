@@ -54,7 +54,7 @@ export class HistoryComponent implements OnInit{
   }
 
   getNameAndLink(transaction: any): any[] {
-    console.log(transaction)
+    //console.log(transaction)
     let sourceWallet;
     if(transaction.isSourceWallet){
       sourceWallet = this.wallets!

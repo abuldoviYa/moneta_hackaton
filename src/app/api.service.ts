@@ -22,7 +22,7 @@ export class ApiService {
   }
 
   initializeWallets(): void {
-    console.log("asd" + this.wallets)
+    //console.log("asd" + this.wallets)
     localStorage.setItem("wallets", JSON.stringify(this.wallets))
 
   }
@@ -88,8 +88,8 @@ export class ApiService {
     walletFromLocal = typeFrom == "card"
         ? localCards.find(x => x.cardNumber == walletFrom.cardNumber)
         : localWallets.find(x => {
-        console.log(x.walletNumber)
-        console.log(walletTo.walletNumber)
+        //console.log(x.walletNumber)
+        //console.log(walletTo.walletNumber)
         return x.walletNumber == walletFrom.walletNumber} )
 
 

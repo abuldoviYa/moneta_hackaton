@@ -74,6 +74,6 @@ export class WalletPageComponent implements OnInit {
 
   onTransfer(){
     this.router.navigate(['/transfer'], {queryParams: { sourceWallet: 'true', sourceWalletId: this.wallet.id }});
-    console.log("click")
+    //console.log("click")
   }
 }

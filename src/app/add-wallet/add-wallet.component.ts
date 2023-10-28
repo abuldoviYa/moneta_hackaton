@@ -24,7 +24,7 @@ export class AddWalletComponent implements OnInit{
       this.banksLoaded=x.data
     })
 
-    console.log('AddWalletComponent - ApiService:', apiService);
+    //console.log('AddWalletComponent - ApiService:', apiService);
   }
   countries = this.apiService.getAvailablecountries();
   banksMap = this.apiService.getBanks();
@@ -43,7 +43,7 @@ export class AddWalletComponent implements OnInit{
     this.selectedCountry = country;
     this.selectedBank = "";
     this.banks = this.filterBanks(this.banksLoaded)
-    console.log(this.banks)
+    //console.log(this.banks)
   }
 
   filterBanks(banks: Bank[]): Bank[]{
