@@ -124,7 +124,7 @@ export class CardPageUiComponent {
 
 
   onShow() {
-    console.log("onShow")
+    //console.log("onShow")
     this.toggleFlip()
     if(!this.smsEntered){
       this.openDialog()
@@ -143,7 +143,7 @@ export class CardPageUiComponent {
 
     dialogRef.afterClosed().subscribe(
       data => {
-        console.log(this.smsCode)
+        //console.log(this.smsCode)
         if (data == this.smsCode){
           this.openSnackBar("Верный код", true)
           this.onShowInfo()
