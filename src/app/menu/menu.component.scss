@@ -36,11 +36,16 @@ li:hover {
   border-radius: 50%;
 }
 .active {
-  background-color: var(--main-bg-grey);
-  color: #2f2f2f;
+  background-color: var(--main-color-green);
+  color: white;
   border-radius: 50%;
 }
 
+li:hover.active{
+  background-color: var(--main-color-green);
+  color: white;
+  border-radius: 50%;
+}
 
 /* Customize the styles for icons */
 .material-icons {

@@ -42,6 +42,10 @@ $main-color-dark-grey: #595959;
   //Card
   --card-text-color: #d5dbe0;
 
+  //Button toggle
+  --mat-standard-button-toggle-selected-state-background-color: var(--main-color-green);
+  --mat-standard-button-toggle-selected-state-text-color: #ffffff;
+
   //Select transfer
   --mdc-filled-text-field-caret-color: #50b848;
   --mdc-filled-text-field-focus-active-indicator-color: #50b848;
@@ -61,6 +65,21 @@ $main-color-dark-grey: #595959;
   }
   .mat-mdc-text-field-wrapper:hover {
     background-color: white;
+  }
+
+  .mat-mdc-text-field-wrapper {
+    border-radius: 20px;
+  }
+
+  .cdk-overlay-pane:not(.mat-mdc-select-panel-above) div.mat-mdc-select-panel {
+
+    border-radius: 20px;
+  }
+
+  .mdc-line-ripple::before, .mdc-line-ripple::after {
+
+    width: 0%;
+
   }
 
   //Dates

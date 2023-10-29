@@ -17,7 +17,7 @@
     </div>
   </div>
   <div class="buttons">
-    <mat-button-toggle-group name="fontStyle" id="source" style="width: 100%; font-size: 1.1rem" aria-label="Font Style" [value] = "pageState"  >
+    <mat-button-toggle-group name="fontStyle" id="source" style="width: 100%; font-size: 1.1rem; border-radius: 2rem" aria-label="Font Style" [value] = "pageState"  >
 
       <mat-button-toggle (click)="onState('info')" value="info" style="width: 33.333%; padding: 0.2rem" >
         <!--        <img ngSrc="/assets/custom_icons/cards-icon.svg" width="30" height="30" alt="">-->
@@ -62,7 +62,7 @@
 
     </div>
   </div>
-  <div *ngIf="pageState == 'history'">
+  <div *ngIf="pageState == 'history'" style="margin-top: 1rem">
     <app-history-pages-manager [walletNumber]="wallet.digitalWalletNumber"></app-history-pages-manager>
   </div>
 

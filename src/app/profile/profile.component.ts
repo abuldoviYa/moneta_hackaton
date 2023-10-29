@@ -17,7 +17,7 @@ export class ProfileComponent {
     menu: Map<string, any> = new Map([
                    ['profile', {title: "Профиль", link: "info", icon: "account_circle"}],
                    ['support', {title: "Поддержка", link: "support", icon: "contact_support"}],
-                   ['settings', {title: "Настройки", link: "settings", icon: "settings"}],
+                   ['settings', {title: "Настройки", link: "settingsblocked", icon: "settings"}],
                    ['app', {title: "О приложении", link: "app", icon: "info"}],
                  ]);
              }

@@ -29,15 +29,25 @@ export class ApiService {
 
   getBanks(): Map<string, string> {
     return new Map([
-      ['Green', 'Зеленый'],
-      ['Center-invest Bank', 'Центр-инвест'],
-      ['СentrInvest', 'Центр-инвест'],
-      ['Blue', 'Синий'],
-      ['Red', 'Красный'],
-      ['Bank of China', 'Банк Китая'],
-      ['Industrial & Commercial Bank of China', 'ICBC Банк'],
+      ['Green Bank', 'ПАО «Зеленый банк»'],
+      ['Center-invest Bank', 'ПАО КБ "«Центр-инвест»'],
+      ['СentrInvest', 'ПАО КБ «Центр-инвест»'],
+      ['Blue Bank', 'ПАО «Синий банк»'],
+      ['Red Bank', 'ПАО «Красный банк»'],
+      ['Bank of China', 'АКБ «БЭНК ОФ ЧАЙНА»'],
+      ['Industrial & Commercial Bank of China', 'АО «АйСиБиСи банк»'],
       ['Agricultural Bank of China', 'Сельскохозяйственный Банк Китая'],
       ['China Construction Bank', 'Строительный Банк Китая'],
+      ['KZI Bank', 'KZI Банк'],
+      ['Halyk bank', 'Банк Halyk'],
+      ['Kaspi Bank', 'Банк Kaspi'],
+      ['Ansar Bank', 'Банк Ansar'],
+      ['Mellat Bank', 'Банк Mellat'],
+      ['Allied Bank', 'Банк Allied'],
+      ['Askari Bank', 'Банк Askari'],
+      ['State Bank of India', 'Государственный банк Индии'],
+      ['HDFC Bank', 'HDFC Банк'],
+      ['ICICI Bank', 'Банк ICICI'],
     ]);
   }
 
@@ -163,8 +173,11 @@ export class ApiService {
   getAvailablecountries(): Map<string, any> { return new Map([
     ['CHINA', {name: 'Китай', currencySign: '¥', currencyName: 'Юань', currencyTicker: 'CNY', flag: '/assets/circle_countries/cn.svg', system: "UNION_PAY"}],
     ['RUSSIA', {name: 'Россия', currencySign: '₽', currencyName: 'Рубль',currencyTicker: 'RUB',flag: '/assets/circle_countries/ru.svg', system: "MIR"}],
-    ['UZBEKISTAN', {name: 'Узбекистан', currencySign: 'сўм', currencyName: 'Сўм', currencyTicker: 'UZS', flag: '/assets/circle_countries/uz.svg', system: "UZ_CARD"}]
-    // ['KAZAKHSTAN', {name: 'Казахстан', currencySign: '₸', currencyName: 'Тенге',currencyTicker: 'KZT',flag: '🇰🇿', system: "UZ_CARD"}]
+    // ['UZBEKISTAN', {name: 'Узбекистан', currencySign: 'сўм', currencyName: 'Сўм', currencyTicker: 'UZS', flag: '/assets/circle_countries/uz.svg', system: "UZ_CARD"}]
+    ['KAZAKHSTAN', {name: 'Казахстан', currencySign: '₸', currencyName: 'Тенге',currencyTicker: 'KZT',flag: '/assets/circle_countries/kz.svg', system: "UZ_CARD"}],
+    ['INDIA', { name: 'Индия', currencySign: '₹', currencyName: 'Рупия', currencyTicker: 'INR', flag: '/assets/circle_countries/in.svg', system: "RUPEE" }],
+    ['IRAN', { name: 'Иран', currencySign: '﷼', currencyName: 'Риал', currencyTicker: 'IRR', flag: '/assets/circle_countries/ir.svg', system: "IRAN_PAYMENT" }],
+
   ]);
   }
 

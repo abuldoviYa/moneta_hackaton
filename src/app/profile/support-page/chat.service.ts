@@ -16,7 +16,7 @@ export class ChatService {
 
   conversation = new Subject<Message[]>();
 
-
+  msgCounter = 0
 
   getBotAnswer(msg: string) {
     const userMessage = new Message("user", msg);
@@ -35,8 +35,11 @@ export class ChatService {
 
 
   getBotMessage(question: string) {
-
-    return "Здравствуйте! Мы скоро Вам ответим!";
+    if (this.msgCounter > 0 ){
+      return "Зову оператора..."
+    }
+    this.msgCounter++;
+    return "Здравствуйте! Я виртуальный ассистент Монетария! Пожалуйста, опишите Вашу проблему, а я пока позову оператора.";
   }
 
 }

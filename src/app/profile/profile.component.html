@@ -15,7 +15,7 @@
 
 <div class="menu">
   <div *ngFor="let menuItem of menu.keys()">
-    <a [routerLink]="menu.get(menuItem).link">
+    <a  [routerLink]="menu.get(menuItem).link">
       <li class="component-item">
         <div class="component-item-left">
           <i class="material-icons">{{menu.get(menuItem).icon}}</i>

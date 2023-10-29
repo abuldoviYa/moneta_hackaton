@@ -23,13 +23,16 @@
   <div class="source_first">
     <label for="source">Откуда:</label>
     <br>
-    <mat-button-toggle-group name="fontStyle" id="source" style="width: 100%; font-size: 1.1rem" aria-label="Font Style" (change)="onSource($event)" [value]="sourceSecond" >
+    <mat-button-toggle-group name="fontStyle" id="source" style="width: 100%; font-size: 1.1rem; border-radius: 20px;" aria-label="Font Style" (change)="onSource($event)" [value]="sourceSecond" >
       <mat-button-toggle style="width: 50%; padding: 0.2rem" value="digitalWallet">
-        <img ngSrc="/assets/custom_icons/wallet-icon.svg" width="30" height="30" alt="">
+<!--        <img ngSrc="/assets/custom_icons/wallet-icon.svg" width="30" height="30" alt="">-->
+        <i class="material-icons-outlined">account_balance_wallet</i>
         Кошелек
+
       </mat-button-toggle>
       <mat-button-toggle style="width: 50%; padding: 0.2rem" value="card">
-        <img ngSrc="/assets/custom_icons/cards-icon.svg" width="30" height="30" alt="">
+<!--        <img ngSrc="/assets/custom_icons/cards-icon.svg" width="30" height="30" alt="">-->
+        <i class="material-icons-outlined">credit_card</i>
         Карта</mat-button-toggle>
     </mat-button-toggle-group>
   </div>
@@ -75,7 +78,7 @@
 <!--                value="{{card.cardNumber}}">{{banks.get(card.bankName) + " (" + countries.get(card.country).currencyName + ")"}}</option>-->
 <!--      </select>-->
 <!--    </div>-->
-    <mat-form-field style="width: 100%">
+    <mat-form-field style="width: 100%; border-radius: 20px;">
       <mat-label>Доступные карты</mat-label>
       <mat-select (selectionChange)="onSourceAccount($event)" [value]="sourceValue" panelClass="mat-select-custom" >
         <ng-container *ngFor="let card of cards">
@@ -91,13 +94,15 @@
     <br>
     <label for="target">Куда:</label>
     <br>
-    <mat-button-toggle-group [disabled]="(sourceValue == null)" style="width: 100%; font-size: 1.1rem" name="fontStyle" aria-label="Font Style" id="target" (change)="onTarget($event)" [(ngModel)]="targetSecond">
+    <mat-button-toggle-group [disabled]="(sourceValue == null)" style="width: 100%; font-size: 1.1rem; border-radius: 20px;" name="fontStyle" aria-label="Font Style" id="target" (change)="onTarget($event)" [(ngModel)]="targetSecond">
       <mat-button-toggle style="width: 50%; padding: 0.2rem" value="digitalWallet">
-        <img ngSrc="/assets/custom_icons/wallet-icon.svg" width="30" height="30" alt="">
+        <i class="material-icons-outlined">account_balance_wallet</i>
+<!--        <img ngSrc="/assets/custom_icons/wallet-icon.svg" width="30" height="30" alt="">-->
         Кошелек
       </mat-button-toggle>
       <mat-button-toggle style="width: 50%; padding: 0.2rem" value="card">
-        <img ngSrc="/assets/custom_icons/cards-icon.svg" width="30" height="30" alt="">
+<!--        <img ngSrc="/assets/custom_icons/cards-icon.svg" width="30" height="30" alt="">-->
+        <i class="material-icons-outlined">credit_card</i>
         Карта</mat-button-toggle>
     </mat-button-toggle-group></div>
 

@@ -82,7 +82,7 @@ export class BackapiService {
   makeTransaction(transaction: TransactionPost): Observable<any> {
     transaction.userId = this.id
     //console.log(transaction)
-    if (transaction.isSourceWallet == "false" && transaction.isTargetWallet  == "false") {
+    if (!transaction.isSourceWallet && !transaction.isTargetWallet) {
       return this.httpClient.post<any>(this.host + "/quicktransactions", transaction, {
         observe: "response"
       })
@@ -120,7 +120,7 @@ export class BackapiService {
       observe: "response"
     })
         .subscribe(s => {
-          this.addNewCardAlternative(new CardPost(s.body.data.id, "СentrInvest", 50000)).subscribe()
+          this.addNewCardAlternative(new CardPost(s.body.data.id, "Center-invest Bank", 1000000)).subscribe()
           localStorage.setItem("consent", "true")
           localStorage.setItem("id", s.body.data.id)
           window.location.reload()

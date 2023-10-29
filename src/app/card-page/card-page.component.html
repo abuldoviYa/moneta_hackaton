@@ -1,7 +1,7 @@
 <h1>Карта</h1>
 <div *ngIf="card">
   <app-card-page-ui [card]="card"></app-card-page-ui>
-  <a class="btn btn-grey width100" [routerLink]="['/transfer']" [queryParams]="{ sourceWallet: 'false', sourceWalletId: card.id  }" >Перевести</a>
+  <a class="btn btn-green width100" [routerLink]="['/transfer']" [queryParams]="{ sourceWallet: 'false', sourceWalletId: card.id  }" >Перевести</a>
   <br>
   <app-history-pages-manager [cardNumber]="card.cardNumber"></app-history-pages-manager>
 
