@@ -29,7 +29,7 @@ export class HistoryPagesManagerComponent implements OnInit{
     end: new FormControl<Date | null>(null),
   });
   constructor(private history: HistoryService, private titleService:Title, private apiService: ApiService, private backApi: BackapiService) {
-    console.log(this.walletNumber)
+    //console.log(this.walletNumber)
     this.titleService.setTitle("История" + apiService.title);
 
 
@@ -124,10 +124,10 @@ export class HistoryPagesManagerComponent implements OnInit{
   protected readonly console = console;
 
   ngOnInit(): void {
-    console.log(this.walletNumber)
+    //console.log(this.walletNumber)
     let k
     if (this.cardNumber) {
-      console.log(this.cardNumber)
+      //console.log(this.cardNumber)
       k = this.backApi.getTransactionsByCard(this.cardNumber)
     } else if (this.walletNumber) {
       k = this.backApi.getTransactionsByWallet(this.walletNumber)

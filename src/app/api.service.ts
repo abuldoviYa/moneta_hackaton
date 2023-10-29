@@ -30,7 +30,7 @@ export class ApiService {
   getBanks(): Map<string, string> {
     return new Map([
       ['Green Bank', 'ПАО «Зеленый банк»'],
-      ['Center-invest Bank', 'ПАО КБ "«Центр-инвест»'],
+      ['Center-invest Bank', 'ПАО КБ «Центр-инвест»'],
       ['СentrInvest', 'ПАО КБ «Центр-инвест»'],
       ['Blue Bank', 'ПАО «Синий банк»'],
       ['Red Bank', 'ПАО «Красный банк»'],
@@ -54,7 +54,7 @@ export class ApiService {
     getBanksLogo(): Map<string, any> {
       return new Map([
         ['Green', null],
-        ['СentrInvest', {logo: 'assets/banks_logo/centrinvest.svg', classFront: 'centrinvest-card-front', classBack: 'centrinvest-card-back'}],
+        ['Center-invest Bank', {logo: 'assets/banks_logo/centrinvest.svg', classFront: 'centrinvest-card-front', classBack: 'centrinvest-card-back'}],
         ['Blue', null],
         ['Red',null ],
         ['Bank of China', {logo: null, classFront: 'bankofchina-card-front', classBack: 'bankofchina-card-back'}],
@@ -177,6 +177,7 @@ export class ApiService {
     ['KAZAKHSTAN', {name: 'Казахстан', currencySign: '₸', currencyName: 'Тенге',currencyTicker: 'KZT',flag: '/assets/circle_countries/kz.svg', system: "UZ_CARD"}],
     ['INDIA', { name: 'Индия', currencySign: '₹', currencyName: 'Рупия', currencyTicker: 'INR', flag: '/assets/circle_countries/in.svg', system: "RUPEE" }],
     ['IRAN', { name: 'Иран', currencySign: '﷼', currencyName: 'Риал', currencyTicker: 'IRR', flag: '/assets/circle_countries/ir.svg', system: "IRAN_PAYMENT" }],
+    ['PAKISTAN', { name: 'Пакистан', currencySign: 'Rs', currencyName: 'Пакистанская рупия', currencyTicker: 'PKR', flag: '/assets/circle_countries/pk.svg', system: "RUPEE" }],
 
   ]);
   }

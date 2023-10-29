@@ -38,8 +38,8 @@ export class BackapiService {
   getBanks(): Observable<any> {
     return this.httpClient.get<any>(this.host + "/banks").pipe(
       map(data => {
-        let tempItem = data.data.find((x: { bankName: string; }) => x.bankName == "СentrInvest")
-        data.data = [tempItem, ...data.data.filter((item: { bankName: string; }) => item.bankName !== 'СentrInvest')]
+        let tempItem = data.data.find((x: { bankName: string; }) => x.bankName == "Center-invest Bank")
+        data.data = [tempItem, ...data.data.filter((item: { bankName: string; }) => item.bankName !== 'Center-invest Bank')]
         return data;
       })
     )

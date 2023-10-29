@@ -15,7 +15,7 @@ export class DialogBoxSmsComponent {
   constructor(public dialogRef: MatDialogRef<any>, @Inject(DIALOG_DATA) public data: any) {}
 
   log() {
-    console.log(this.code)
+    //console.log(this.code)
   }
 
   onCode(event: any) {
@@ -23,7 +23,7 @@ export class DialogBoxSmsComponent {
   }
 
   enterCode() {
-    console.log(this.code)
+    //console.log(this.code)
     this.dialogRef.close(this.code);
   }
 }

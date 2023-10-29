@@ -43,6 +43,8 @@ import { AppPageComponent } from './profile/app-page/app-page.component';
 import { SupportPageComponent } from './profile/support-page/support-page.component';
 import { ChatComponent } from './profile/support-page/chat/chat.component';
 import {ChatService} from "./profile/support-page/chat.service";
+import { ConsentTextComponent } from './consent/consent-text/consent-text.component';
+import {MatCheckboxModule} from "@angular/material/checkbox";
 
 @NgModule({
   declarations: [
@@ -69,28 +71,30 @@ import {ChatService} from "./profile/support-page/chat.service";
     SettingsPageComponent,
     AppPageComponent,
     SupportPageComponent,
-    ChatComponent
+    ChatComponent,
+    ConsentTextComponent
   ],
-    imports: [
-        BrowserModule,
-        AppRoutingModule,
-        RouterOutlet,
-        FormsModule,
-        CommonModule,
-        BrowserAnimationsModule,
-        MatDatepickerModule,
-        MatNativeDateModule,
-        MatFormFieldModule,
-        MatInputModule,
-        ReactiveFormsModule,
-        NgOptimizedImage,
-        HttpClientModule,
-        MatButtonToggleModule,
-        MatSelectModule,
-        MatButtonModule,
-        ClipboardModule,
-        MatDialogModule
-    ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    RouterOutlet,
+    FormsModule,
+    CommonModule,
+    BrowserAnimationsModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatFormFieldModule,
+    MatInputModule,
+    ReactiveFormsModule,
+    NgOptimizedImage,
+    HttpClientModule,
+    MatButtonToggleModule,
+    MatSelectModule,
+    MatButtonModule,
+    ClipboardModule,
+    MatDialogModule,
+    MatCheckboxModule
+  ],
   providers: [ApiService, MatSnackBar, MatDatepickerModule,MatNativeDateModule, {provide: MAT_DATE_LOCALE, useValue: "ru-RU"}, ChatService ],
   bootstrap: [AppComponent],
 

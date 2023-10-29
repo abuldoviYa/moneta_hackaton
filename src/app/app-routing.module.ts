@@ -16,6 +16,7 @@ import {ProfilePageComponent} from "./profile/profile-page/profile-page.componen
 import {AppPageComponent} from "./profile/app-page/app-page.component";
 import {SettingsPageComponent} from "./profile/settings-page/settings-page.component";
 import {SupportPageComponent} from "./profile/support-page/support-page.component";
+import {ConsentTextComponent} from "./consent/consent-text/consent-text.component";
 
 const routes: Routes = [
   { path: '', component: MainComponent },
@@ -30,6 +31,7 @@ const routes: Routes = [
   { path: 'profile/settings', component: SettingsPageComponent},
   { path: 'profile/app', component: AppPageComponent},
   { path: 'profile/support', component: SupportPageComponent},
+  { path: 'profile/app/agreement', component: ConsentTextComponent},
   { path: 'eee', component: TestonlypageComponent},
   { path: 'login/:id', component: TempLoginComponent},
 ];

@@ -255,7 +255,7 @@ export class TransferComponent implements OnInit{
     //   }
     // }
 
-    console.log("onSendTransfer")
+    //console.log("onSendTransfer")
   }
     // if (this.sourceSecond == this.targetSecond){
     //   if (this.makeTransfer()) {
@@ -284,8 +284,8 @@ export class TransferComponent implements OnInit{
   makeTransaction(transaction: TransactionPost): void {
     this.backApi.makeTransaction(transaction).subscribe(x => {
       if (this.sourceValue == this.targetValue){
-        console.log(this.sourceValue)
-        console.log(this.targetValue)
+        //console.log(this.sourceValue)
+        //console.log(this.targetValue)
         x.body.data ? this.handleSuccess() : this.handleSuccess()
       }
       x.body.data ? this.handleSuccess() : this.handleError(x.body.status)

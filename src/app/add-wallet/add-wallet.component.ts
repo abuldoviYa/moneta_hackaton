@@ -47,7 +47,7 @@ export class AddWalletComponent implements OnInit{
   }
 
   filterBanks(banks: Bank[]): Bank[]{
-    console.log(banks)
+    //console.log(banks)
     return banks.filter(x => x!=undefined).filter(x=>x.country==this.selectedCountry)
   }
   updateBanks(event: any): void {

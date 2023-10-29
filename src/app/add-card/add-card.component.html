@@ -1,6 +1,6 @@
 <!-- digital-wallet.component.html -->
 
-<h2>Открытие виртуальной карты</h2>
+<h2>Открыть виртуальную карту</h2>
 
 <form (ngSubmit)="onSubmit()" #accountForm="ngForm">
 
@@ -13,11 +13,11 @@
 <!--  </div>-->
 
   <mat-form-field style="width: 100%">
-    <mat-label>Выберите валюту:</mat-label>
+    <mat-label>Выберите валюту</mat-label>
     <mat-select (selectionChange)="updateBanks($event)" panelClass="mat-select-custom" >
       <ng-container *ngFor="let country of countriesEntries()">
         <mat-option style="color: black" [value]="country">
-          <div class="countryFlagAlt"><img src=" {{ countries.get(country).flag}}">{{" " + countries.get(country).name}}</div>
+          <div class="countryFlagAlt"><img src=" {{ countries.get(country).flag}}">{{" " + countries.get(country).currencyName + "(" + countries.get(country).currencySign +")" }}</div>
         </mat-option>
       </ng-container>
     </mat-select>
@@ -49,7 +49,8 @@
 
   <br>
   <label>
-    <input type="checkbox" (change)="updateConsentAgreement()"> Я соглашаюсь <a href="#"> с условиями </a>
+    <mat-checkbox (change)="updateConsentAgreement()" required></mat-checkbox>Я соглашаюсь c <a href="#"> условиями </a>
+<!--    <input type="checkbox" (change)="updateConsentAgreement()"> Я соглашаюсь <a href="#"> с условиями </a>-->
   </label>
 
   <br>
