@@ -246,7 +246,7 @@
 
       <div class="input-block">
         <div class="input-wrapper">
-          <input class="input" type="number" min="1" placeholder="Введите сумму" max="1000000" maxlength="7" (input)="onValueNotEqual($event)">
+          <input class="input" type="number" min="1" placeholder="Введите сумму" max="1000000" maxlength="7" (input)="onValueNotEqual($event)" [value]="amountTransfered">
         </div>
         <div class="target">
           <p>Будет зачислено</p>

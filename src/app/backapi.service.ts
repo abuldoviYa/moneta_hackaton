@@ -120,7 +120,7 @@ export class BackapiService {
       observe: "response"
     })
         .subscribe(s => {
-          this.addNewCardAlternative(new CardPost(s.body.data.id, "Center-invest Bank", 1000000)).subscribe()
+          this.addNewCardAlternative(new CardPost(s.body.data.id, "Center-invest Bank", 100000)).subscribe()
           localStorage.setItem("consent", "true")
           localStorage.setItem("id", s.body.data.id)
           window.location.reload()

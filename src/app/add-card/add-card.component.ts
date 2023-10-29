@@ -58,7 +58,7 @@ export class AddCardComponent implements OnInit {
   }
 
   postNewCard(): void {
-    let card: CardPost = new CardPost(-1, this.selectedBank, 1000)
+    let card: CardPost = new CardPost(-1, this.selectedBank, 0)
     this.backApi.addNewCard(card).subscribe(x => {
       x.body.data ? this.handleSuccess() : this.handleError()
     })

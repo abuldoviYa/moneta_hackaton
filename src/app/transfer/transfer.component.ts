@@ -136,7 +136,7 @@ export class TransferComponent implements OnInit{
     }
 
 
-
+    this.amountTransfered = undefined;
     this.targetCurrency = undefined;
     this.fee = undefined;
     this.targetSum = undefined;
@@ -193,7 +193,7 @@ export class TransferComponent implements OnInit{
     return Math.round(num*100)/100
   }
 
-  amountTransfered!: number;
+  amountTransfered!: number | undefined;
 
   onValue(value: any) {
     //console.log(this.sourceWallet)
@@ -235,7 +235,7 @@ export class TransferComponent implements OnInit{
     if(this.sourceWallet.balance - this.targetSum! >= 0){
       let isSourceWallet = this.sourceSecond == "digitalWallet" ? "true" : "false"
       let isTargetWallet = this.targetSecond == "digitalWallet" ? "true" : "false"
-      this.makeTransaction(new TransactionPost(-1, this.sourceWallet.id, this.targetWallet.id, this.amountTransfered, this.sourceWallet.currency, isSourceWallet, isTargetWallet));
+      this.makeTransaction(new TransactionPost(-1, this.sourceWallet.id, this.targetWallet.id, this.amountTransfered!, this.sourceWallet.currency, isSourceWallet, isTargetWallet));
       //console.log(this.amountTransfered)
     } else {
       this.openSnackBar('Недостаточно средств', false);
