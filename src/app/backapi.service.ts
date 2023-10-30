@@ -53,6 +53,10 @@ export class BackapiService {
     return this.httpClient.get<any>(this.host + "/transactions/cardnumber?id=" + cardnumber)
   }
 
+  getTransactionById(id: number): Observable<any> {
+    return this.httpClient.get<any>(this.host + "/transaction/" + id)
+  }
+
   getRates(currencies: any): Observable<any> {
     return this.httpClient.post<any>(this.host + "/transferrate", currencies, {
       observe: "response"
@@ -138,4 +142,6 @@ export class BackapiService {
 
     return randomString;
   }
+
+
 }

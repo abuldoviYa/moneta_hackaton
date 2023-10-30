@@ -108,7 +108,7 @@ export class TransferComponent implements OnInit{
 
     let oldSource = this.sourceWallet;
     let oldTarget = this.targetWallet
-
+    this.currencyToShow = undefined
     this.targetValue = value.value;
     //console.log(value.value)
 
@@ -158,7 +158,7 @@ export class TransferComponent implements OnInit{
   }
 
   getRates() {
-    this.backApi.getRates({sourceCurrency:  this.targetWallet.currency, targetCurrency: this.sourceWallet.currency}).subscribe(x=>{
+    this.backApi.getRates({sourceCurrency:  this.sourceWallet.currency, targetCurrency: this.targetWallet.currency}).subscribe(x=>{
         this.currencyToShow = x.body.data.exchangeRate;
         this.feeToShow = x.body.data.feeRate;
     })

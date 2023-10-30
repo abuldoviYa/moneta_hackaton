@@ -93,6 +93,14 @@ li {
   gap: 0.4rem;
 }
 
+.info-mini-inner a {
+  z-index: 3;
+}
+
+.transaction a {
+  z-index: 2;
+}
+
 .info-mini-inner label{
   color: grey;
 

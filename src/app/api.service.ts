@@ -175,7 +175,7 @@ export class ApiService {
     ['RUSSIA', {name: 'Россия', currencySign: '₽', currencyName: 'Рубль',currencyTicker: 'RUB',flag: '/assets/circle_countries/ru.svg', system: "MIR"}],
     // ['UZBEKISTAN', {name: 'Узбекистан', currencySign: 'сўм', currencyName: 'Сўм', currencyTicker: 'UZS', flag: '/assets/circle_countries/uz.svg', system: "UZ_CARD"}]
     ['KAZAKHSTAN', {name: 'Казахстан', currencySign: '₸', currencyName: 'Тенге',currencyTicker: 'KZT',flag: '/assets/circle_countries/kz.svg', system: "UZ_CARD"}],
-    ['INDIA', { name: 'Индия', currencySign: '₹', currencyName: 'Рупия', currencyTicker: 'INR', flag: '/assets/circle_countries/in.svg', system: "RUPEE" }],
+    ['INDIA', { name: 'Индия', currencySign: '₹', currencyName: 'Индийская Рупия', currencyTicker: 'INR', flag: '/assets/circle_countries/in.svg', system: "RUPEE" }],
     ['IRAN', { name: 'Иран', currencySign: '﷼', currencyName: 'Риал', currencyTicker: 'IRR', flag: '/assets/circle_countries/ir.svg', system: "IRAN_PAYMENT" }],
     ['PAKISTAN', { name: 'Пакистан', currencySign: 'Rs', currencyName: 'Пакистанская рупия', currencyTicker: 'PKR', flag: '/assets/circle_countries/pk.svg', system: "RUPEE" }],
 

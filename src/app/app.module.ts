@@ -45,6 +45,7 @@ import { ChatComponent } from './profile/support-page/chat/chat.component';
 import {ChatService} from "./profile/support-page/chat.service";
 import { ConsentTextComponent } from './consent/consent-text/consent-text.component';
 import {MatCheckboxModule} from "@angular/material/checkbox";
+import { TransactionPageComponent } from './transaction-page/transaction-page.component';
 
 @NgModule({
   declarations: [
@@ -72,7 +73,8 @@ import {MatCheckboxModule} from "@angular/material/checkbox";
     AppPageComponent,
     SupportPageComponent,
     ChatComponent,
-    ConsentTextComponent
+    ConsentTextComponent,
+    TransactionPageComponent
   ],
   imports: [
     BrowserModule,

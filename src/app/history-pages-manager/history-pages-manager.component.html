@@ -44,7 +44,7 @@
       <li  *ngFor="let transaction of filteredTransactions">
         <div class="datetime">{{ transaction.dateCreated.toLocaleDateString("ru-RU") + " " + transaction.dateCreated.toLocaleTimeString("ru-RU") }}</div>
         <div class="transaction" *ngIf="wallets && cards && getNameAndLink(transaction); let wallets" >
-
+          <a [href]="'transaction/'+transaction.id">
           <div class="transaction-numbers">
             <div class="col-5 info-mini source-block">
               <div class="info-mini-inner">
@@ -53,7 +53,7 @@
               </div>
               <div class="info-mini-inner">
                 <!--                <div><label>Сколько</label></div>-->
-                <div><p class="amount">{{ "-" +   formatNumber(transaction.amountTransferred) + " " +wallets[0].currency }}</p></div>
+                <div><p class="amount">{{ "-" +   formatNumber(transaction.amountCurrencyExchanged) + " " +wallets[0].currency }}</p></div>
               </div>
 
             </div>
@@ -64,10 +64,11 @@
               </div>
               <div class="info-mini-inner">
                 <!--              <label>Сколько</label>-->
-                <div><p class="amount">{{  "+" +  formatNumber(transaction.amountCurrencyExchanged != 0 ? transaction.amountCurrencyExchanged : transaction.amountTransferred) + " " + wallets[1].currency }}</p></div>
+                <div><p class="amount">{{  "+" +  formatNumber(transaction.amountTransferredPlusFee != 0 ? transaction.amountTransferredPlusFee : transaction.amountTransferredPlusFee) + " " + wallets[1].currency }}</p></div>
               </div>
             </div>
           </div>
+          </a>
         </div>
 
       </li>

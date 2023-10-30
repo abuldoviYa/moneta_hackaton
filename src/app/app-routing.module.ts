@@ -17,6 +17,7 @@ import {AppPageComponent} from "./profile/app-page/app-page.component";
 import {SettingsPageComponent} from "./profile/settings-page/settings-page.component";
 import {SupportPageComponent} from "./profile/support-page/support-page.component";
 import {ConsentTextComponent} from "./consent/consent-text/consent-text.component";
+import {TransactionPageComponent} from "./transaction-page/transaction-page.component";
 
 const routes: Routes = [
   { path: '', component: MainComponent },
@@ -26,6 +27,7 @@ const routes: Routes = [
   { path: 'history', component: HistoryComponent },
   { path: 'wallet/:id', component: WalletPageComponent},
   { path: 'card/:id', component: CardPageComponent},
+  { path: 'transaction/:id', component: TransactionPageComponent},
   { path: 'profile', component: ProfileComponent},
   { path: 'profile/info', component: ProfilePageComponent},
   { path: 'profile/settings', component: SettingsPageComponent},

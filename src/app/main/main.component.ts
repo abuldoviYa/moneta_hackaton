@@ -52,7 +52,8 @@ export class MainComponent implements OnInit{
     // if(localStorage.getItem('wallets')==null){
     //   this.apiService.initializeWallets();
     // }
-    this.backApi.getWallets().subscribe(x=>this.wallets = x.data);
+    this.backApi.getWallets().subscribe(x=> {this.wallets = x.data
+    this.wallets = this.wallets?.reverse()});
 
   }
 
