@@ -60,13 +60,14 @@
             </div>
             <div class="col-5 info-mini target-block">
               <div class="info-mini-inner">
-              <label >Куда</label>
-              <a [routerLink]="wallets[1].link"><p class="number">{{ wallets[1].number }}</p></a>
+                <label >Куда</label>
+                <a [routerLink]="wallets[1].link"><p class="number">{{ wallets[1].number }}</p></a>
               </div>
-            <div class="info-mini-inner">
-<!--              <label>Сколько</label>-->
-              <div><p class="amount">{{ formatNumber(transaction.amountCurrencyExchanged != 0 ? transaction.amountCurrencyExchanged : transaction.amountTransferred) + " " + wallets[1].currency }}</p></div>
-          </div>
+
+              <div class="info-mini-inner">
+                <!--              <label>Сколько</label>-->
+                <div><p class="amount">{{  "+" +  formatNumber(transaction.amountTransferredPlusFee != 0 ? transaction.amountTransferredPlusFee : transaction.amountCurrencyExchanged) + " " + wallets[1].currency }}</p></div>
+              </div>
             </div>
           </div>
         </div>
