@@ -11,6 +11,7 @@ import {MatButtonToggleGroup} from "@angular/material/button-toggle";
 import {MatButtonToggle} from "@angular/material/button-toggle";
 import {MatSelect} from "@angular/material/select";
 import {MatOption} from "@angular/material/core";
+import {TranslateService} from "@ngx-translate/core";
 
 @Component({
   selector: 'app-transfer',
@@ -19,8 +20,8 @@ import {MatOption} from "@angular/material/core";
 })
 export class TransferComponent implements OnInit{
 
-  constructor(private apiService: ApiService, private snackBar: MatSnackBar, private router: Router, private history: HistoryService, private titleService:Title, private backApi: BackapiService, private route: ActivatedRoute) {
-    this.titleService.setTitle("Переводы" + apiService.title);
+  constructor(private apiService: ApiService, private snackBar: MatSnackBar, private router: Router, private history: HistoryService, private titleService:Title, private backApi: BackapiService, private route: ActivatedRoute, private translate: TranslateService) {
+    this.titleService.setTitle(this.translate.instant('transfers') + apiService.title);
   }
 
 
@@ -293,7 +294,7 @@ export class TransferComponent implements OnInit{
   }
 
   handleSuccess(): void {
-    this.openSnackBar('Перевод совершен успешно!', true);
+    this.openSnackBar(this.translate.instant("successTransaction"), true);
     setTimeout(() => {
       this.router.navigate(['/']);
     }, 500);  //5s
@@ -301,9 +302,9 @@ export class TransferComponent implements OnInit{
 
   handleError(status: string): void {
     if (status == "502"){
-      this.openSnackBar('Не созданы цифровые кошельки', false);
+      this.openSnackBar(this.translate.instant("walletsNotCreated"), false);
     } else {
-      this.openSnackBar('Что-то пошло не так', false);
+      this.openSnackBar(this.translate.instant("smthWrong"), false);
     }
 
   }
@@ -319,7 +320,7 @@ export class TransferComponent implements OnInit{
 
   openSnackBar(message: string, bool: boolean) {
     let cssClass = bool ? 'green-alert' : 'red-alert'
-    this.snackBar.open(message, 'Закрыть', {
+    this.snackBar.open(message, this.translate.instant("close"), {
       duration: 3000, // Duration the snackbar should be visible (in milliseconds)
       verticalPosition: 'top',
       panelClass: [cssClass]

@@ -1,18 +1,18 @@
 <!-- app.component.html -->
 
 <div>
-  <h2>Создать аккаунт</h2>
+  <h2>{{'createAccount' | translate}}</h2>
 <app-consent-text style="  max-height: 50vh;"></app-consent-text>
   <br>
   <form (ngSubmit)="submitForm()" #accountForm="ngForm">
     <label>
 <!--      <input type="checkbox" id="agreeCheckbox" name="agreeCheckbox" [(ngModel)]="agreed" required>-->
-      <mat-checkbox (change)="agreed = !agreed" required></mat-checkbox> Я согласен с условиями предоставления данных
+      <mat-checkbox (change)="agreed = !agreed" required></mat-checkbox>{{'agreementAlt' | translate}}
 
 
 
     </label>
   <br>
-    <button class="btn btn-green" type="submit" [disabled]="!agreed">Открыть аккаунт</button>
+    <button class="btn btn-green" type="submit" [disabled]="!agreed">{{'openAccount' | translate}}</button>
   </form>
 </div>

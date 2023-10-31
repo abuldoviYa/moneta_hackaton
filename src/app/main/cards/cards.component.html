@@ -2,12 +2,12 @@
   <div >
 
     <div class="component-card-header">
-      <h2>Карты</h2>
+      <h2>{{'cards' | translate}}</h2>
       <a [routerLink]="['/addCard']"><i class="material-icons">add_circle_outline</i></a>
     </div>
     <div *ngIf="!cards" >
-      <h3 style="margin-bottom: 0">У вас еще нет карт</h3>
-      <a class="btn btn-green width100" [routerLink]="['/addCard']">Добавить карту</a>
+      <h3 style="margin-bottom: 0">{{'noCards' | translate}}</h3>
+      <a class="btn btn-green width100" [routerLink]="['/addCard']">{{'addCard' | translate}}</a>
     </div>
     <div *ngIf="cards && cards.length > 0" class="component-card-list">
 
@@ -28,7 +28,7 @@
     </div>
 
 
-    <button *ngIf="cards && cards.length > 2" class="btn btn-green width100" (click)="onShowAllCards()">{{ showAllCards ? 'Скрыть карты' : 'Показать все карты'}}</button>
+    <button *ngIf="cards && cards.length > 2" class="btn btn-green width100" (click)="onShowAllCards()">{{ showAllCards ? ('hideCards' | translate) : ('showCards' | translate)}}</button>
 
   </div>
 </div>

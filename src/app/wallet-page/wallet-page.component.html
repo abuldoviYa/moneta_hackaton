@@ -1,5 +1,5 @@
 <div *ngIf="wallet">
-  <h1>Цифровой кошелек: {{ countries.get(wallet.country).currencyName }}</h1>
+  <h1>{{'digitalWallet'|translate}} {{ countries.get(wallet.country).currencyName }}</h1>
 
 
   <div>
@@ -22,39 +22,39 @@
       <mat-button-toggle (click)="onState('info')" value="info" style="width: 33.333%; padding: 0.2rem" >
         <!--        <img ngSrc="/assets/custom_icons/cards-icon.svg" width="30" height="30" alt="">-->
         <i class="material-icons" >account_balance_wallet</i>
-        <p style="margin: 0">Кошелек</p>
+        <p style="margin: 0">{{'wallet'|translate}}</p>
       </mat-button-toggle>
       <mat-button-toggle (click)="onState('history')" value="history" style="width: 33.333%; padding: 0.2rem" >
         <!--        <img ngSrc="/assets/custom_icons/cards-icon.svg" width="30" height="30" alt="">-->
         <i class="material-icons" >history</i>
-        <p style="margin: 0">История</p>
+        <p style="margin: 0">{{'history'|translate}}</p>
       </mat-button-toggle>
       <mat-button-toggle style="width: 33.333%; padding: 0.2rem" (click)="onTransfer()" >
         <i class="material-icons" >swap_horiz</i>
-        <p style="margin: 0">Перевести</p>
+        <p style="margin: 0">{{'toTransfer'|translate}}</p>
       </mat-button-toggle>
     </mat-button-toggle-group>
   </div>
   <div class="wallet" *ngIf="pageState == 'info'">
     <div class="wallet-body">
-      <h3>Номер кошелька </h3>
+      <h3>{{'walletNumber'|translate}} </h3>
       <div class="input-wrapper">
         <input disabled class="input" type="text"
                value="{{ formatFullWalletNumber(wallet.digitalWalletNumber.toString()) }}">
       </div>
 
-      <h3>Страна </h3>
+      <h3>{{'country'|translate}} </h3>
       <div class="input-wrapper">
         <input disabled class="input" type="text"
                value="{{countries.get(wallet.country).name}}">
       </div>
 
-      <h3>Дата создания </h3>
+      <h3>{{'creationDate'|translate}} </h3>
       <div class="input-wrapper">
         <input disabled class="input" type="text" value="{{ wallet.dateCreated }}">
       </div>
 
-      <h3>Статус </h3>
+      <h3>{{'status'|translate}} </h3>
       <div class="input-wrapper">
         <input disabled class="input" type="text"
                value="{{wallet.state}}">
@@ -71,5 +71,5 @@
 </div>
 
 <div *ngIf="!wallet">
-  <p>Загрузка...</p>
+  <p>{{'loading'|translate}}</p>
 </div>

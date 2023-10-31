@@ -2,17 +2,17 @@
 <div *ngIf="transactions">
 
   <mat-form-field class="width100" style="border-radius: 20px">
-    <mat-label>Введите даты </mat-label>
+    <mat-label>{{'enterDate' | translate}}</mat-label>
     <mat-date-range-input  style="border-radius: 20px"  [formGroup]="range" [rangePicker]="picker">
-      <input matStartDate formControlName="start" (dateChange)="filterTransactions()" placeholder="Начало периода" >
-      <input matEndDate formControlName="end" placeholder="Конец периода" (dateChange)="filterTransactions()">
+      <input matStartDate formControlName="start" (dateChange)="filterTransactions()" placeholder="{{'startPeriod' | translate}}" >
+      <input matEndDate formControlName="end" placeholder="{{'endPeriod' | translate}}" (dateChange)="filterTransactions()">
     </mat-date-range-input>
-    <mat-hint>ДД.ММ.ГГГГ – ДД.ММ.ГГГГ</mat-hint>
+    <mat-hint>{{'dateFormatChoose' | translate}}</mat-hint>
     <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
     <mat-date-range-picker #picker></mat-date-range-picker>
 
-    <mat-error *ngIf="range.controls.start.hasError('matStartDateInvalid')">Ошибка формата</mat-error>
-    <mat-error *ngIf="range.controls.end.hasError('matEndDateInvalid')">Ошибка формата</mat-error>
+    <mat-error *ngIf="range.controls.start.hasError('matStartDateInvalid')">{{'formatError' | translate}}</mat-error>
+    <mat-error *ngIf="range.controls.end.hasError('matEndDateInvalid')">{{'formatError' | translate}}</mat-error>
   </mat-form-field>
 
   <!--  <div>-->
@@ -48,7 +48,7 @@
           <div class="transaction-numbers">
             <div class="col-5 info-mini source-block">
               <div class="info-mini-inner">
-                <div><label >Откуда</label></div>
+                <div><label >{{'from' | translate}}</label></div>
                 <div><a [href]="wallets[0].link"><p class="number">{{ wallets[0].number }}</p></a></div>
               </div>
               <div class="info-mini-inner">
@@ -59,7 +59,7 @@
             </div>
             <div class="col-5 info-mini target-block">
               <div class="info-mini-inner">
-                <label >Куда</label>
+                <label >{{'to' | translate}}</label>
                 <a [href]="wallets[1].link"><p class="number">{{ wallets[1].number }}</p></a>
               </div>
               <div class="info-mini-inner">
@@ -77,6 +77,6 @@
 </div>
 
 <div *ngIf="!transactions">
-  <h2>История транзакций пуста</h2>
+  <h2>{{'historyEmpty' | translate}}</h2>
 </div>
 

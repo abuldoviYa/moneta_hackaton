@@ -1,4 +1,4 @@
-<h1>Перевод</h1>
+<h1>{{'transfer'|translate}}</h1>
 <div  *ngIf="wallets">
 
 <form (ngSubmit)="onSendTransfer()">
@@ -21,19 +21,19 @@
   </div>
 
   <div class="source_first">
-    <label for="source">Откуда:</label>
+    <label for="source">{{'fromSemiColon'|translate}}</label>
     <br>
     <mat-button-toggle-group name="fontStyle" id="source" style="width: 100%; font-size: 1.1rem; border-radius: 20px;" aria-label="Font Style" (change)="onSource($event)" [value]="sourceSecond" >
       <mat-button-toggle style="width: 50%; padding: 0.2rem" value="digitalWallet">
 <!--        <img ngSrc="/assets/custom_icons/wallet-icon.svg" width="30" height="30" alt="">-->
         <i class="material-icons-outlined">account_balance_wallet</i>
-        Кошелек
+        {{'wallet'|translate}}
 
       </mat-button-toggle>
       <mat-button-toggle style="width: 50%; padding: 0.2rem" value="card">
 <!--        <img ngSrc="/assets/custom_icons/cards-icon.svg" width="30" height="30" alt="">-->
         <i class="material-icons-outlined">credit_card</i>
-        Карта</mat-button-toggle>
+        {{'card'|translate}}</mat-button-toggle>
     </mat-button-toggle-group>
   </div>
 <!--  <mat-button-toggle-group name="fontStyle" aria-label="Font Style"  (change)="onSourceAccount($event)" [(ngModel)]="sourceValue">-->
@@ -52,7 +52,7 @@
 <!--              value="{{wallet.digitalWalletNumber}}">{{countries.get(wallet.centralBank).currencyName}}</option>-->
 <!--    </select>     </div>-->
     <mat-form-field style="width: 100%">
-      <mat-label>Доступные кошельки</mat-label>
+      <mat-label>{{'walletsAvailable'|translate}}</mat-label>
       <mat-select (selectionChange)="onSourceAccount($event)" [value]="sourceValue" panelClass="mat-select-custom" >
         <ng-container *ngFor="let wallet of wallets">
           <mat-option style="color: black" [value]="wallet.digitalWalletNumber">
@@ -79,7 +79,7 @@
 <!--      </select>-->
 <!--    </div>-->
     <mat-form-field style="width: 100%; border-radius: 20px;">
-      <mat-label>Доступные карты</mat-label>
+      <mat-label>{{'cardsAvailable'|translate}}</mat-label>
       <mat-select (selectionChange)="onSourceAccount($event)" [value]="sourceValue" panelClass="mat-select-custom" >
         <ng-container *ngFor="let card of cards">
           <mat-option style="color: black" [value]="card.cardNumber">
@@ -92,18 +92,18 @@
 
   <div class="target_first" >
     <br>
-    <label for="target">Куда:</label>
+    <label for="target">{{'toSemiColon'|translate}}</label>
     <br>
     <mat-button-toggle-group [disabled]="(sourceValue == null)" style="width: 100%; font-size: 1.1rem; border-radius: 20px;" name="fontStyle" aria-label="Font Style" id="target" (change)="onTarget($event)" [(ngModel)]="targetSecond">
       <mat-button-toggle style="width: 50%; padding: 0.2rem" value="digitalWallet">
         <i class="material-icons-outlined">account_balance_wallet</i>
 <!--        <img ngSrc="/assets/custom_icons/wallet-icon.svg" width="30" height="30" alt="">-->
-        Кошелек
+        {{'wallet'|translate}}
       </mat-button-toggle>
       <mat-button-toggle style="width: 50%; padding: 0.2rem" value="card">
 <!--        <img ngSrc="/assets/custom_icons/cards-icon.svg" width="30" height="30" alt="">-->
         <i class="material-icons-outlined">credit_card</i>
-        Карта</mat-button-toggle>
+        {{'card'|translate}}</mat-button-toggle>
     </mat-button-toggle-group></div>
 
 
@@ -111,7 +111,7 @@
     <br>
 
     <mat-form-field style="width: 100%">
-      <mat-label>Доступные кошельки</mat-label>
+      <mat-label>{{'walletsAvailable'|translate}}</mat-label>
       <mat-select (selectionChange)="onTargetAccount($event)" panelClass="mat-select-custom" >
         <ng-container *ngFor="let wallet of wallets">
         <mat-option *ngIf="sourceValue != wallet.digitalWalletNumber" style="color: black" [value]="wallet.digitalWalletNumber">
@@ -149,7 +149,7 @@
 <!--      </select>-->
 <!--    </div>-->
     <mat-form-field style="width: 100%">
-      <mat-label>Доступные карты</mat-label>
+      <mat-label>{{'cardsAvailable'|translate}}</mat-label>
       <mat-select (selectionChange)="onTargetAccount($event)" panelClass="mat-select-custom" >
         <ng-container *ngFor="let card of cards">
           <mat-option *ngIf="sourceCountry != card.country" style="color: black" [value]="card.cardNumber">
@@ -175,7 +175,7 @@
 <!--      </select>-->
 <!--    </div>-->
     <mat-form-field style="width: 100%">
-      <mat-label>Доступные кошельки</mat-label>
+      <mat-label>{{'walletsAvailable'|translate}}</mat-label>
       <mat-select (selectionChange)="onTargetAccount($event)" panelClass="mat-select-custom" >
         <ng-container *ngFor="let wallet of wallets">
           <mat-option *ngIf="sourceCountry == wallet.country" style="color: black" [value]="wallet.digitalWalletNumber">
@@ -201,7 +201,7 @@
 <!--      </select>-->
 <!--    </div>-->
     <mat-form-field style="width: 100%">
-      <mat-label>Доступные карты</mat-label>
+      <mat-label>{{'cardsAvailable'|translate}}</mat-label>
       <mat-select (selectionChange)="onTargetAccount($event)" panelClass="mat-select-custom" >
         <ng-container *ngFor="let card of cards">
           <mat-option *ngIf="sourceCountry == card.country" style="color: black" [value]="card.cardNumber">
@@ -222,16 +222,16 @@
     <div *ngIf="targetSecond != null && sourceSecond != null" class="target_second_card">
       <div class="full info">
         <div class="available width100">
-          <p>Доступно</p>
+          <p>{{'moneyAvailable'|translate}}</p>
           <span>{{formatNumber(sourceWallet.balance)}} {{countries.get(sourceWallet!.country).currencySign}}</span>
         </div>
         <div class="small-targets">
           <div class="small-target width100">
-            <p>Курс</p>
+            <p>{{'rate'|translate}}</p>
           <span>0</span>
         </div>
         <div class="small-target width100">
-          <p>Комиссия</p>
+          <p>{{'fee'|translate}}</p>
           <span>0%</span>
         </div>
           </div>
@@ -246,10 +246,10 @@
 
       <div class="input-block">
         <div class="input-wrapper">
-          <input class="input" type="number" min="1" placeholder="Введите сумму" max="1000000" maxlength="7" (input)="onValueNotEqual($event)" [value]="amountTransfered">
+          <input class="input" type="number" min="1" placeholder="{{'enterSum'|translate}}" max="1000000" maxlength="7" (input)="onValueNotEqual($event)" [value]="amountTransfered">
         </div>
         <div class="target">
-          <p>Будет зачислено</p>
+          <p>{{'willDeposit'|translate}}</p>
           <span>{{formatNumber(targetCurrency!)}} {{countries.get(targetWallet.country).currencySign}}</span>
         </div>
       </div>
@@ -267,15 +267,15 @@
     <div *ngIf="targetSecond != null && sourceSecond != null" class="target_second_card">
       <div class="full info">
       <div class="available width100">
-        <p>Доступно</p>
+        <p>{{'moneyAvailable'|translate}}</p>
         <span>{{formatNumber(sourceWallet.balance)}} {{countries.get(sourceWallet!.country).currencySign}}</span>
       </div><div class="small-targets">
       <div class="small-target width100">
-        <p>Курс</p>
+        <p>{{'rate'|translate}}</p>
         <span>{{currencyToShow!}}</span>
       </div>
       <div class="small-target width100">
-        <p>Комиссия</p>
+        <p>{{'fee'|translate}}</p>
         <span>{{feeToShow! * 100}}%</span>
       </div>
         </div>
@@ -288,29 +288,29 @@
 <hr>
     <div class="input-block">
       <div class="input-wrapper">
-        <input class="input" type="number" min="1" pattern="[0-9]" placeholder="Введите сумму" max="1000000" maxlength="7" (input)="onValue($event)">
+        <input class="input" type="number" min="1" pattern="[0-9]" placeholder="{{'enterSum'|translate}}" max="1000000" maxlength="7" (input)="onValue($event)">
       </div>
       <div class="target">
-        <p>Будет зачислено</p>
+        <p>{{'willDeposit'|translate}}</p>
         <span>{{formatNumber(targetCurrency!)}} {{countries.get(targetWallet.country).currencySign}}</span>
       </div>
       <div class="full">
         <div class="target width100">
-          <p>Комиссия</p>
+          <p>{{'fee'|translate}}</p>
           <span>{{formatNumber(fee!)}} {{countries.get(sourceWallet.country).currencySign}}</span>
         </div>
       <div class="target width100">
-        <p>Будет списано</p>
+        <p>{{'willExpense'|translate}}</p>
         <span>{{targetSum == null || isNaN(targetSum!) ? '' : formatNumber(targetSum!)}} {{countries.get(sourceWallet.country).currencySign}}</span>
       </div>
       </div>
     </div>
   </div>
   <input class="btn btn-green" [disabled]="this.targetValue== null || this.sourceValue == null || isNaN(this.targetSum!) || this.targetSum==0 " type="submit"
-         value="Перевести">
+         value="{{'toTransfer'|translate}}">
 
 </form>
 </div>
 <div  *ngIf="!(wallets)">
-  <h3>Отсутствуют кошельки</h3>
+  <h3>{{'noWallets'|translate}}</h3>
 </div>

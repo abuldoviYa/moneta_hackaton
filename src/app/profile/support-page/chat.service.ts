@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import {Subject} from "rxjs";
+import {TranslateService} from "@ngx-translate/core";
 
 export class Message {
   constructor(public author: string, public content: string) {}
@@ -11,7 +12,7 @@ export class ChatService {
     "assets/sounds/success.mp3"
   );
 
-  constructor() {
+  constructor(private translate: TranslateService) {
   }
 
   conversation = new Subject<Message[]>();
@@ -36,10 +37,10 @@ export class ChatService {
 
   getBotMessage(question: string) {
     if (this.msgCounter > 0 ){
-      return "Зову оператора..."
+      return this.translate.instant('callOperator')
     }
     this.msgCounter++;
-    return "Здравствуйте! Я виртуальный ассистент Монетария! Пожалуйста, опишите Вашу проблему, а я пока позову оператора.";
+    return this.translate.instant('welcomeChat')
   }
 
 }

@@ -1,6 +1,6 @@
 <!-- digital-wallet.component.html -->
 
-<h2>Открыть виртуальную карту</h2>
+<h2>{{'openCard' | translate}}</h2>
 
 <form (ngSubmit)="onSubmit()" #accountForm="ngForm">
 
@@ -13,7 +13,7 @@
 <!--  </div>-->
 
   <mat-form-field style="width: 100%">
-    <mat-label>Выберите валюту</mat-label>
+    <mat-label>{{'chooseCurrency' | translate}}</mat-label>
     <mat-select (selectionChange)="updateBanks($event)" panelClass="mat-select-custom" >
       <ng-container *ngFor="let country of countriesEntries()">
         <mat-option style="color: black" [value]="country">
@@ -35,7 +35,7 @@
 
 
   <mat-form-field style="width: 100%">
-    <mat-label>Выберите банк</mat-label>
+    <mat-label>{{'chooseBank' | translate}}</mat-label>
     <mat-select [disabled]="this.selectedCountry == ''" (selectionChange)="onBank($event)" panelClass="mat-select-custom" >
       <ng-container *ngFor="let bank of banks">
         <mat-option style="color: black" [value]="bank.bankName">
@@ -49,10 +49,10 @@
 
   <br>
   <label>
-    <mat-checkbox (change)="updateConsentAgreement()" required></mat-checkbox>Я соглашаюсь c <a href="#"> условиями </a>
+    <mat-checkbox (change)="updateConsentAgreement()" required></mat-checkbox>{{'agreeWith' | translate}} <a href="#"> {{'conditions' | translate}} </a>
 <!--    <input type="checkbox" (change)="updateConsentAgreement()"> Я соглашаюсь <a href="#"> с условиями </a>-->
   </label>
 
   <br>
-  <input class="btn btn-green" [disabled]="this.selectedCountry == '' || this.selectedBank == '' || !consentAgreement" type="submit" value="Создать">
+  <input class="btn btn-green" [disabled]="this.selectedCountry == '' || this.selectedBank == '' || !consentAgreement" type="submit" value="{{'create' | translate}}">
 </form>

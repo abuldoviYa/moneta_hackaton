@@ -1,4 +1,4 @@
-<h1>Карта</h1>
+<h1>{{'card' | translate}}</h1>
 <div *ngIf="card">
   <app-card-page-ui [card]="card"></app-card-page-ui>
   <a class="btn btn-green width100" [routerLink]="['/transfer']" [queryParams]="{ sourceWallet: 'false', sourceWalletId: card.id  }" >Перевести</a>
@@ -13,5 +13,5 @@
 <!--</div>-->
 
 
-<div *ngIf="!card">Такой карты не существует</div>
+<div *ngIf="!card">{{'noCard' | translate}}</div>
 

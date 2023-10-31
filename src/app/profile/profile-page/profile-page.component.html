@@ -1,28 +1,28 @@
-<h1>Профиль</h1>
+<h1>{{'profile'|translate}}</h1>
 <div class="profile">
   <div class="profile-body">
-    <h3>Имя </h3>
+    <h3>{{'userName'|translate}} </h3>
     <div class="input-wrapper">
       <input disabled class="input" type="text"
              value="{{user.firstname}}">
     </div>
-    <h3>Фамилия </h3>
+    <h3>{{'userSurname'|translate}} </h3>
     <div class="input-wrapper">
       <input disabled class="input" type="text"
              value="{{user.surname}}">
     </div>
-    <h3>Страна </h3>
+    <h3>{{'country'|translate}}  </h3>
     <div class="input-wrapper">
       <input disabled class="input" type="text"
              value="{{user.country}}">
     </div>
 
-    <h3>Телефон </h3>
+    <h3>{{'phone'|translate}} </h3>
     <div class="input-wrapper">
       <input disabled class="input" type="text" value="{{user.phone}}">
     </div>
 
-    <h3>Email </h3>
+    <h3>{{'email'|translate}} </h3>
     <div class="input-wrapper">
       <input disabled class="input" type="text"
              value="{{user.email}}">
@@ -33,6 +33,6 @@
 
   </div>
   <div>
-    <span style="color: darkgrey">*Если данные некорректны, обратитесь в поддержку</span>
+    <span style="color: darkgrey">*{{'profileNotCorrectInfo'|translate}}</span>
   </div>
 </div>

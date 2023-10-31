@@ -13,7 +13,7 @@
   </div>
 </div>
   <div class="input-area" style="margin-top: 1rem">
-    <input class="input" type="text"  placeholder="Введите вопрос"  [(ngModel)]="value" (keyup.enter)="sendMessage()">
+    <input class="input" type="text"  placeholder="{{'enterQuery'|translate}}"  [(ngModel)]="value" (keyup.enter)="sendMessage()">
     <i (click)="sendMessage()" class="material-icons send-button">arrow_upward</i>
 <!--    <button class="btn btn-grey width47" (click)="sendMessage()">Отправить сообщение </button>-->
   </div>

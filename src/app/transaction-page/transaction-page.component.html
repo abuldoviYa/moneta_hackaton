@@ -1,4 +1,4 @@
-<h1>Транзакция</h1>
+<h1>{{'transaction'|translate}}</h1>
 <ul *ngIf="transaction!=null">
   <div class="transaction-wrapper">
     <li>
@@ -8,7 +8,7 @@
           <div class="transaction-numbers">
             <div class="col-5 info-mini source-block">
               <div class="info-mini-inner">
-                <div><label >Откуда</label></div>
+                <div><label >{{'from'|translate}}</label></div>
                 <div><a [href]="wallets[0].link"><p class="number">{{ wallets[0].number }}</p></a></div>
               </div>
               <div class="info-mini-inner">
@@ -19,7 +19,7 @@
             </div>
             <div class="col-5 info-mini target-block">
               <div class="info-mini-inner">
-                <label >Куда</label>
+                <label >{{'to'|translate}}</label>
                 <a [href]="wallets[1].link"><p class="number">{{ wallets[1].number }}</p></a>
               </div>
               <div class="info-mini-inner">
@@ -31,11 +31,11 @@
 
         <div class="col-5 info-mini source-block er-fee">
           <div class="info-mini-inner">
-            <div><label>Курс</label></div>
+            <div><label>{{'rate'|translate}}</label></div>
             <div><p class="number">  {{ formatNumber(transaction.amountTransferred/transaction.amountTransferredPlusFee)}}</p></div>
           </div>
           <div class="info-mini-inner">
-            <div><label>Комиссия</label></div>
+            <div><label>{{'fee'|translate}}</label></div>
             <div><p class="number">{{ getFee(transaction.amountCurrencyExchanged, transaction.amountTransferred) + " " + wallets[0].currency}}</p></div>
           </div>
         </div>
@@ -44,7 +44,7 @@
 
     </li>
   </div>
-  <h2>Детализация</h2>
+  <h2>{{'details'|translate}}</h2>
   <div class="transaction-wrapper">
     <li  *ngFor="let transaction of transaction.transactionHistory">
       <div class="datetime">{{ transaction.dateCreated.toLocaleDateString("ru-RU") + " " + transaction.dateCreated.toLocaleTimeString("ru-RU") }}</div>
@@ -53,7 +53,7 @@
           <div class="transaction-numbers">
             <div class="col-5 info-mini source-block">
               <div class="info-mini-inner">
-                <div><label >Откуда</label></div>
+                <div><label >{{'from'|translate}}</label></div>
                 <div><a [href]="wallets[0].link"><p class="number">{{ wallets[0].number }}</p></a></div>
               </div>
 <!--              <div class="info-mini-inner">-->
@@ -67,7 +67,7 @@
             </div>
             <div class="col-5 info-mini target-block">
               <div class="info-mini-inner">
-                <label >Куда</label>
+                <label >{{'to'|translate}}</label>
                 <a [href]="wallets[1].link"><p class="number">{{ wallets[1].number }}</p></a>
               </div>
 
@@ -99,5 +99,5 @@
 </ul>
 
 <div *ngIf="transaction==null">
-  <h3>Такой транзакции не существует</h3>
+  <h3>{{'noTransaction'|translate}}</h3>
 </div>

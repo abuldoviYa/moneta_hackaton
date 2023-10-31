@@ -3,7 +3,7 @@
     <div class="component-item-left">
       <span>{{formatNumber(card.balance)}} </span>
       <span class="countrySign">{{countries?.get(card.country).currencySign}}</span>
-      <p>Карта</p>
+      <p>{{'card' | translate}}</p>
       <p>{{banks.get(card.bankName)}}</p>
     </div>
 

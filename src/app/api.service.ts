@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import {Card} from "./entities/card";
+import {TranslateService} from "@ngx-translate/core";
 
 
 @Injectable({
@@ -7,7 +8,11 @@ import {Card} from "./entities/card";
 })
 export class ApiService {
 
-  title: string = " | Цифровой адаптер"
+  constructor( private translate: TranslateService) {
+
+  }
+
+  title: string = " | " + this.translate.instant('digitalAdapter')
 
   wallets = [
 

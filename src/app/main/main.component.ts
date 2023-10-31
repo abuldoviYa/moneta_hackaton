@@ -3,6 +3,7 @@ import {ApiService} from "../api.service";
 import {Title} from "@angular/platform-browser";
 import {BackapiService} from "../backapi.service";
 import {catchError} from "rxjs";
+import {TranslateService} from "@ngx-translate/core";
 
 
 
@@ -12,8 +13,8 @@ import {catchError} from "rxjs";
   styleUrls: ['./main.component.scss'],
 })
 export class MainComponent implements OnInit{
-  constructor(private apiService: ApiService, private titleService:Title, private backApi: BackapiService) {
-    this.titleService.setTitle("Главная" + apiService.title);
+  constructor(private apiService: ApiService, private titleService:Title, private backApi: BackapiService, private translate: TranslateService) {
+    this.titleService.setTitle(this.translate.instant('main')  + apiService.title);
   }
 
 

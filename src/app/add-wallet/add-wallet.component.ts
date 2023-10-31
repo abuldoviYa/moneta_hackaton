@@ -8,6 +8,7 @@ import {Wallet} from "../entities/wallet";
 import {Bank} from "../entities/bank";
 import {Card} from "../entities/card";
 import {WalletPost} from "../entities/wallet-post";
+import {TranslateService} from "@ngx-translate/core";
 
 
 @Component({
@@ -17,8 +18,8 @@ import {WalletPost} from "../entities/wallet-post";
 })
 export class AddWalletComponent implements OnInit{
 
-  constructor(private apiService: ApiService, private snackBar: MatSnackBar,private router: Router, private titleService:Title, private backApi: BackapiService) {
-    this.titleService.setTitle("Добавить кошелек" + apiService.title);
+  constructor(private apiService: ApiService, private snackBar: MatSnackBar,private router: Router, private titleService:Title, private backApi: BackapiService, private translate: TranslateService) {
+    this.titleService.setTitle(this.translate.instant('addWallet') + apiService.title);
     this.backApi.getBanks().subscribe(x=>{
 
       this.banksLoaded=x.data

@@ -6,6 +6,7 @@ import {Title} from "@angular/platform-browser";
 import {BackapiService} from "../backapi.service";
 import {Bank} from "../entities/bank";
 import {map} from "rxjs";
+import {TranslateService} from "@ngx-translate/core";
 
 
 @Component({
@@ -17,8 +18,8 @@ export class CardPageComponent implements OnInit {
   private cardId: number;
   private route;
 
-  constructor( private apiService: ApiService, private titleService:Title, private backApi: BackapiService) {
-    this.titleService.setTitle("Карта " + apiService.title);
+  constructor( private apiService: ApiService, private titleService:Title, private backApi: BackapiService, private translate: TranslateService) {
+    this.titleService.setTitle(this.translate.instant('card') + apiService.title);
    this.route=inject(ActivatedRoute);
    this.cardId = parseInt(this.route.snapshot.paramMap.get('id')!)
 

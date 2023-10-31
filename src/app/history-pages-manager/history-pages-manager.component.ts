@@ -30,7 +30,7 @@ export class HistoryPagesManagerComponent implements OnInit{
   });
   constructor(private history: HistoryService, private titleService:Title, private apiService: ApiService, private backApi: BackapiService) {
     //console.log(this.walletNumber)
-    this.titleService.setTitle("История" + apiService.title);
+
 
 
   }

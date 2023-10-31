@@ -1,1 +1,9 @@
-<p>settings-page works!</p>
+
+<mat-form-field>
+  <mat-label>{{'appLanguage'|translate}}</mat-label>
+  <mat-select [(ngModel)]="selectedLang" (selectionChange)="onLang($event)">
+    <mat-option [value]="'ru'">Русский</mat-option>
+    <mat-option [value]="'en'">English</mat-option>
+  </mat-select>
+</mat-form-field>
+{{selectedLang}}

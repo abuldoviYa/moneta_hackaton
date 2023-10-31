@@ -6,6 +6,7 @@ import {ApiService} from "../api.service";
 import {BackapiService} from "../backapi.service";
 import {TransactionInfo} from "../entities/transaction-info";
 import {map} from "rxjs";
+import {TranslateService} from "@ngx-translate/core";
 
 
 @Component({
@@ -23,8 +24,8 @@ export class HistoryComponent implements OnInit{
     start: new FormControl<Date | null>(null),
     end: new FormControl<Date | null>(null),
   });
-  constructor(private history: HistoryService, private titleService:Title, private apiService: ApiService, private backApi: BackapiService) {
-    this.titleService.setTitle("История" + apiService.title);
+  constructor(private history: HistoryService, private titleService:Title, private apiService: ApiService, private backApi: BackapiService, private translate: TranslateService) {
+  this.titleService.setTitle(this.translate.instant('history') + apiService.title);
     this.backApi.getTransactions().pipe(
       map((data: any) => {
         let tempTransactions = data.data;

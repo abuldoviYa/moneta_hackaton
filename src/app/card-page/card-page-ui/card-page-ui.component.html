@@ -39,7 +39,7 @@
           <div class="right-container">
             <div class="input-info">
                 <div>
-                <div class="small-input-text">Номер карты</div>
+                <div class="small-input-text">{{'cardNumber' | translate}}</div>
                   <div *ngIf="!showInfo"><span class="dots">···· ···· ···· </span><span class="shortNumber">{{ formatShortCardNumber(card?.cardNumber!) }}</span>
 
                   </div>
@@ -51,7 +51,7 @@
             <div class="date-cvv">
                 <div class="date">
                   <div>
-                    <div class="small-input-text">Действует до</div>
+                    <div class="small-input-text">{{'expires' | translate}}</div>
                     <div *ngIf="showInfo"> {{formatExpDate(card?.dateCreated!)}}</div>
                     <div *ngIf="!showInfo"> <span class="dots">··</span><span class="shortNumber"> / </span><span class="dots">··</span></div>
                   </div>

@@ -8,6 +8,7 @@ import {BackapiService} from "../backapi.service";
 import {Wallet} from "../entities/wallet";
 import {Bank} from "../entities/bank";
 import {CardPost} from "../entities/card-post";
+import {TranslateService} from "@ngx-translate/core";
 
 @Component({
   selector: 'app-add-card',
@@ -16,8 +17,8 @@ import {CardPost} from "../entities/card-post";
 })
 export class AddCardComponent implements OnInit {
 
-  constructor(private apiService: ApiService, private snackBar: MatSnackBar, private router: Router, private titleService:Title, private backApi: BackapiService) {
-    this.titleService.setTitle("Добавить карту" + apiService.title);
+  constructor(private apiService: ApiService, private snackBar: MatSnackBar, private router: Router, private titleService:Title, private backApi: BackapiService, private translate: TranslateService) {
+    this.titleService.setTitle(this.translate.instant('addCard') + apiService.title);
 
     //console.log('AddCardComponent - ApiService:', apiService);
   }

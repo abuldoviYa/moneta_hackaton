@@ -26,7 +26,7 @@ import { CardPageComponent } from './card-page/card-page.component';
 import { WalletPageComponent } from './wallet-page/wallet-page.component';
 import { CardPageUiComponent } from './card-page/card-page-ui/card-page-ui.component';
 import { TestonlypageComponent } from './testonlypage/testonlypage.component';
-import {HttpClientModule} from "@angular/common/http";
+import {HttpClient, HttpClientModule} from "@angular/common/http";
 import { CardsIterationComponent } from './main/cards/cards-iteration/cards-iteration.component';
 import { CardSignleComponent } from './card-page/card-signle/card-signle.component';
 import { TempLoginComponent } from './util/temp-login/temp-login.component';
@@ -46,6 +46,8 @@ import {ChatService} from "./profile/support-page/chat.service";
 import { ConsentTextComponent } from './consent/consent-text/consent-text.component';
 import {MatCheckboxModule} from "@angular/material/checkbox";
 import { TransactionPageComponent } from './transaction-page/transaction-page.component';
+import { TranslateLoader, TranslateModule} from "@ngx-translate/core";
+import {TranslateHttpLoader} from "@ngx-translate/http-loader";
 
 @NgModule({
   declarations: [
@@ -74,7 +76,7 @@ import { TransactionPageComponent } from './transaction-page/transaction-page.co
     SupportPageComponent,
     ChatComponent,
     ConsentTextComponent,
-    TransactionPageComponent
+    TransactionPageComponent,
   ],
   imports: [
     BrowserModule,
@@ -95,7 +97,14 @@ import { TransactionPageComponent } from './transaction-page/transaction-page.co
     MatButtonModule,
     ClipboardModule,
     MatDialogModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: httpTranslateLoader,
+        deps: [HttpClient]
+      }
+    })
   ],
   providers: [ApiService, MatSnackBar, MatDatepickerModule,MatNativeDateModule, {provide: MAT_DATE_LOCALE, useValue: "ru-RU"}, ChatService ],
   bootstrap: [AppComponent],
@@ -104,4 +113,7 @@ import { TransactionPageComponent } from './transaction-page/transaction-page.co
 })
 export class AppModule {
 
+}
+export function httpTranslateLoader(http: HttpClient){
+  return new TranslateHttpLoader(http);
 }

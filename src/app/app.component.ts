@@ -1,6 +1,7 @@
 import {Component, HostListener, OnInit} from '@angular/core';
 import {ApiService} from "./api.service";
 import {Router} from "@angular/router";
+import {TranslateService} from "@ngx-translate/core";
 
 @Component({
   selector: 'app-root',
@@ -8,7 +9,15 @@ import {Router} from "@angular/router";
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit{
-  constructor(private apiService: ApiService, private router: Router) {
+  constructor(private apiService: ApiService, private router: Router, public translate: TranslateService) {
+    translate.addLangs(['en', 'ru']);
+    translate.setDefaultLang('ru')
+    let lang = localStorage.getItem('lang')
+    if (lang == null){
+      localStorage.setItem("lang", translate.getDefaultLang())
+      lang = translate.getDefaultLang()
+    }
+    translate.use(lang)
   }
 
   title = 'asasdasdasd';
