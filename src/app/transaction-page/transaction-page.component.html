@@ -24,7 +24,7 @@
               </div>
               <div class="info-mini-inner">
                 <!--              <label>Сколько</label>-->
-                <div><p class="amount">{{  "+" +  formatNumber(transaction.amountTransferredPlusFee != 0 ? transaction.amountTransferredPlusFee : transaction.amountTransfered) + " " + wallets[1].currency }}</p></div>
+                <div><p class="amount">{{  "+" +  formatNumber(transaction.amountTransferredPlusFee != 0 ? transaction.amountTransferredPlusFee : transaction.amountTransferred) + " " + wallets[1].currency }}</p></div>
               </div>
             </div>
           </div>
@@ -44,6 +44,7 @@
 
     </li>
   </div>
+  <div *ngIf="transaction.transactionHistory.length > 0">
   <h2>{{'details'|translate}}</h2>
   <div class="transaction-wrapper">
     <li  *ngFor="let transaction of transaction.transactionHistory">
@@ -95,6 +96,7 @@
       </div>
 
     </li>
+  </div>
   </div>
 </ul>
 

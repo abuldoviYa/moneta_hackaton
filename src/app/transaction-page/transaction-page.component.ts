@@ -101,7 +101,8 @@ export class TransactionPageComponent {
   }
 
   formatNumber(balance: number){
-    if (balance == 0) {return "0"}
+
+    if (balance == 0 || !isFinite(balance)) {return "0"}
     let k = ""
     if (balance){
       k = (Math.round(balance*100)/100).toLocaleString("ru-RU").replaceAll('.', ' ')
