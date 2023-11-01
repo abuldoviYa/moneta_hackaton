@@ -81,5 +81,41 @@
   "formatError": "Format Error",
   "historyEmpty": "Transaction history is empty",
   "digitalAdapter": "Digital adapter",
-  "main": "Main"
+  "main": "Main",
+
+  "ruCurrency": "Ruble",
+  "cnCurrency": "Yuan",
+  "inCurrency": "Indian Rupee",
+  "irCurrency": "Rial",
+  "pkCurrency": "Pakistani Rupee",
+  "kzCurrency": "Tenge",
+
+
+  "ruCountry": "Russia",
+  "cnCountry": "China",
+  "inCountry": "India",
+  "irCountry": "Iran",
+  "pkCountry": "Pakistan",
+  "kzCountry": "Kazakhstan",
+
+  "Green Bank": "Green Bank",
+  "Center-invest Bank": "Center-Invest Bank",
+  "СentrInvest": "Center-Invest Bank",
+  "Blue Bank": "Blue Bank",
+  "Red Bank": "Red Bank",
+  "Bank of China": "Bank of China",
+  "Industrial & Commercial Bank of China": "Industrial & Commercial Bank of China",
+  "Agricultural Bank of China": "Agricultural Bank of China",
+  "China Construction Bank": "China Construction Bank",
+  "KZI Bank": "KZI Bank",
+  "Halyk bank": "Halyk Bank",
+  "Kaspi Bank": "Kaspi Bank",
+  "Ansar Bank": "Ansar Bank",
+  "Mellat Bank": "Mellat Bank",
+  "Allied Bank": "Allied Bank",
+  "Askari Bank": "Askari Bank",
+  "State Bank of India": "State Bank of India",
+  "HDFC Bank": "HDFC Bank",
+  "ICICI Bank": "ICICI Bank"
+
 }

@@ -4,6 +4,7 @@ import {Title} from "@angular/platform-browser";
 import {BackapiService} from "../backapi.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {Wallet} from "../entities/wallet";
+import {TranslateService} from "@ngx-translate/core";
 
 @Component({
   selector: 'app-wallet-page',
@@ -15,8 +16,8 @@ export class WalletPageComponent implements OnInit {
   private route;
   countries = this.apiService.getAvailablecountries();
 
-  constructor(private apiService: ApiService, private titleService:Title, private backApi: BackapiService, private router: Router) {
-    this.titleService.setTitle("Карта " + apiService.title);
+  constructor(private apiService: ApiService, private titleService:Title, private backApi: BackapiService, private router: Router,private translate: TranslateService ) {
+    this.titleService.setTitle(this.translate.instant('wallet') + " | " + this.translate.instant('digitalAdapter') );
     this.route=inject(ActivatedRoute);
     this.walletId = parseInt(this.route.snapshot.paramMap.get('id')!)
   }

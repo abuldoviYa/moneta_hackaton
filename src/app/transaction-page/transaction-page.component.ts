@@ -6,6 +6,7 @@ import {ActivatedRoute} from "@angular/router";
 import {Bank} from "../entities/bank";
 import {Card} from "../entities/card";
 import {map} from "rxjs";
+import {TranslateService} from "@ngx-translate/core";
 
 @Component({
   selector: 'app-transaction-page',
@@ -20,8 +21,10 @@ export class TransactionPageComponent {
   wallets!: any[]
   transaction!: any
 
-  constructor(private apiService: ApiService, private titleService: Title, private backApi: BackapiService) {
-    this.titleService.setTitle("Карта " + apiService.title);
+  constructor(private apiService: ApiService, private titleService: Title, private backApi: BackapiService, private translate: TranslateService) {
+    this.translate.get('transaction').subscribe(x => {
+      this.titleService.setTitle(x + apiService.title);
+    })
     this.route = inject(ActivatedRoute);
     this.transactionId = parseInt(this.route.snapshot.paramMap.get('id')!)
   }

@@ -1,5 +1,5 @@
 <div *ngIf="wallet">
-  <h1>{{'digitalWallet'|translate}} {{ countries.get(wallet.country).currencyName }}</h1>
+  <h1>{{'digitalWalletSemiColon'|translate}} {{ countries.get(wallet.country).currencyName }}</h1>
 
 
   <div>
@@ -13,7 +13,7 @@
       <p>{{ formatBalance(wallet.balance) }} {{ countries.get(wallet.country).currencySign }}</p>
     </div>
     <div class="balance-label">
-      <p>Баланс</p>
+      <p>{{'balance'|translate}}</p>
     </div>
   </div>
   <div class="buttons">
@@ -71,5 +71,5 @@
 </div>
 
 <div *ngIf="!wallet">
-  <p>{{'loading'|translate}}</p>
+  <p>{{'loading'| translate}}</p>
 </div>

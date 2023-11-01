@@ -81,8 +81,40 @@
   "formatError": "Ошибка формата",
   "historyEmpty": "История транзакций пуста",
   "digitalAdapter": "Цифровой адаптер",
-  "main": "Главная"
+  "main": "Главная",
 
+  "ruCurrency": "Рубль",
+  "cnCurrency": "Юань",
+  "inCurrency": "Индийская Рупия",
+  "irCurrency": "Риал",
+  "pkCurrency": "Пакистанская Рупия",
+  "kzCurrency": "Тенге",
 
+  "ruCountry": "Россия",
+  "cnCountry": "Китай",
+  "inCountry": "Индия",
+  "irCountry": "Иран",
+  "pkCountry": "Пакистан",
+  "kzCountry": "Казахстан",
+
+  "Green Bank": "ПАО «Зеленый банк»",
+  "Center-invest Bank": "ПАО КБ «Центр-инвест»",
+  "СentrInvest": "ПАО КБ «Центр-инвест»",
+  "Blue Bank": "ПАО «Синий банк»",
+  "Red Bank": "ПАО «Красный банк»",
+  "Bank of China": "АКБ «БЭНК ОФ ЧАЙНА»",
+  "Industrial & Commercial Bank of China": "АО «АйСиБиСи банк»",
+  "Agricultural Bank of China": "Сельскохозяйственный Банк Китая",
+  "China Construction Bank": "Строительный Банк Китая",
+  "KZI Bank": "KZI Банк",
+  "Halyk bank": "Банк Halyk",
+  "Kaspi Bank": "Банк Kaspi",
+  "Ansar Bank": "Банк Ansar",
+  "Mellat Bank": "Банк Mellat",
+  "Allied Bank": "Банк Allied",
+  "Askari Bank": "Банк Askari",
+  "State Bank of India": "Государственный банк Индии",
+  "HDFC Bank": "HDFC Банк",
+  "ICICI Bank": "Банк ICICI"
 
 }

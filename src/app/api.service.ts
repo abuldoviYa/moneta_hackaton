@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {Card} from "./entities/card";
 import {TranslateService} from "@ngx-translate/core";
+import {forkJoin} from "rxjs";
 
 
 @Injectable({
@@ -8,11 +9,12 @@ import {TranslateService} from "@ngx-translate/core";
 })
 export class ApiService {
 
-  constructor( private translate: TranslateService) {
+  constructor( private translate: TranslateService, ) {
 
   }
 
   title: string = " | " + this.translate.instant('digitalAdapter')
+
 
   wallets = [
 
@@ -33,7 +35,7 @@ export class ApiService {
   }
 
   getBanks(): Map<string, string> {
-    return new Map([
+    const banks = new Map([
       ['Green Bank', 'ПАО «Зеленый банк»'],
       ['Center-invest Bank', 'ПАО КБ «Центр-инвест»'],
       ['СentrInvest', 'ПАО КБ «Центр-инвест»'],
@@ -54,9 +56,33 @@ export class ApiService {
       ['HDFC Bank', 'HDFC Банк'],
       ['ICICI Bank', 'Банк ICICI'],
     ]);
+
+    // Get an array of observables for each translation
+    const translationObservables = Array.from(banks.keys()).map((bank) => {
+      return this.translate.get(bank);
+    });
+
+    // Use forkJoin to wait for all translations to be ready
+    forkJoin(translationObservables).subscribe((translations: string[]) => {
+      // Iterate over the map and update each bank's value
+      Array.from(banks.entries()).forEach(([key, bank], index) => {
+
+        banks.set(key, translations[index]);
+      });
+
+
+
+    });
+
+    // Return the original map before translations are complete
+    // console.log('Translated Banks Map:', banks);
+    return banks;
   }
 
-    getBanksLogo(): Map<string, any> {
+
+
+
+  getBanksLogo(): Map<string, any> {
       return new Map([
         ['Green', null],
         ['Center-invest Bank', {logo: 'assets/banks_logo/centrinvest.svg', classFront: 'centrinvest-card-front', classBack: 'centrinvest-card-back'}],
@@ -175,16 +201,39 @@ export class ApiService {
   }
 
 
-  getAvailablecountries(): Map<string, any> { return new Map([
-    ['CHINA', {name: 'Китай', currencySign: '¥', currencyName: 'Юань', currencyTicker: 'CNY', flag: '/assets/circle_countries/cn.svg', system: "UNION_PAY"}],
-    ['RUSSIA', {name: 'Россия', currencySign: '₽', currencyName: 'Рубль',currencyTicker: 'RUB',flag: '/assets/circle_countries/ru.svg', system: "MIR"}],
-    // ['UZBEKISTAN', {name: 'Узбекистан', currencySign: 'сўм', currencyName: 'Сўм', currencyTicker: 'UZS', flag: '/assets/circle_countries/uz.svg', system: "UZ_CARD"}]
-    ['KAZAKHSTAN', {name: 'Казахстан', currencySign: '₸', currencyName: 'Тенге',currencyTicker: 'KZT',flag: '/assets/circle_countries/kz.svg', system: "UZ_CARD"}],
-    ['INDIA', { name: 'Индия', currencySign: '₹', currencyName: 'Индийская Рупия', currencyTicker: 'INR', flag: '/assets/circle_countries/in.svg', system: "RUPEE" }],
-    ['IRAN', { name: 'Иран', currencySign: '﷼', currencyName: 'Риал', currencyTicker: 'IRR', flag: '/assets/circle_countries/ir.svg', system: "IRAN_PAYMENT" }],
-    ['PAKISTAN', { name: 'Пакистан', currencySign: 'Rs', currencyName: 'Пакистанская рупия', currencyTicker: 'PKR', flag: '/assets/circle_countries/pk.svg', system: "RUPEE" }],
+  getAvailablecountries(): Map<string, any> {
+    const countries = new Map([
+      ['CHINA', {name: 'cnCountry', currencySign: '¥', currencyName: 'cnCurrency', currencyTicker: 'CNY', flag: '/assets/circle_countries/cn.svg', system: "UNION_PAY"}],
+      ['RUSSIA', {name: 'ruCountry', currencySign: '₽', currencyName: 'ruCurrency',currencyTicker: 'RUB',flag: '/assets/circle_countries/ru.svg', system: "MIR"}],
+      ['KAZAKHSTAN', {name: 'kzCountry', currencySign: '₸', currencyName: 'kzCurrency',currencyTicker: 'KZT',flag: '/assets/circle_countries/kz.svg', system: "UZ_CARD"}],
+      ['INDIA', { name: 'inCountry', currencySign: '₹', currencyName: 'inCurrency', currencyTicker: 'INR', flag: '/assets/circle_countries/in.svg', system: "RUPEE" }],
+      ['IRAN', { name: 'irCountry', currencySign: '﷼', currencyName: 'irCurrency', currencyTicker: 'IRR', flag: '/assets/circle_countries/ir.svg', system: "IRAN_PAYMENT" }],
+      ['PAKISTAN', { name: 'pkCountry', currencySign: 'Rs', currencyName: 'pkCurrency', currencyTicker: 'PKR', flag: '/assets/circle_countries/pk.svg', system: "RUPEE" }],
+    ]);
 
-  ]);
+    // Get an array of observables for each translation
+    const translationObservables = Array.from(countries.values()).map((country) => {
+      return forkJoin([
+        this.translate.get(country.currencyName),
+        this.translate.get(country.name),
+      ]);
+    });
+
+    // Use forkJoin to wait for all translations to be ready
+    forkJoin(translationObservables).subscribe((translations: any[][]) => {
+      // Iterate over the map and update each country's currencyName and name properties
+      Array.from(countries.entries()).forEach(([key, country], index) => {
+        country.currencyName = translations[index][0];
+        country.name = translations[index][1];
+      });
+
+      // Now your countries map has the translated currencyName and name values
+      // console.log('Translated Countries Map:', countries);
+    });
+
+    // Return the original map before translations are complete
+    // console.log('Translated Countries Map:', countries);
+    return countries;
   }
 
 
