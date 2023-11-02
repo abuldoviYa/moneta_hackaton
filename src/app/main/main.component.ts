@@ -14,7 +14,9 @@ import {TranslateService} from "@ngx-translate/core";
 })
 export class MainComponent implements OnInit{
   constructor(private apiService: ApiService, private titleService:Title, private backApi: BackapiService, private translate: TranslateService) {
-    this.titleService.setTitle(this.translate.instant('main')  + apiService.title);
+    this.apiService.translateTitle('main').subscribe((translations: string[]) => {
+      this.titleService.setTitle(translations[0]+ " | " +translations[1])
+    })
   }
 
 

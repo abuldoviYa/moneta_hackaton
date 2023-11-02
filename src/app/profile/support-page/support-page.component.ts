@@ -10,6 +10,8 @@ import {ApiService} from "../../api.service";
 })
 export class SupportPageComponent {
     constructor( private titleService:Title, private translate: TranslateService, private apiService: ApiService) {
-      this.titleService.setTitle(this.translate.instant('support') + apiService.title);
+      this.apiService.translateTitle('support').subscribe((translations: string[]) => {
+        this.titleService.setTitle(translations[0]+ " | " +translations[1])
+      })
     }
 }

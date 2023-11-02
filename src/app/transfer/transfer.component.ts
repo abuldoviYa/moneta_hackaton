@@ -21,7 +21,9 @@ import {TranslateService} from "@ngx-translate/core";
 export class TransferComponent implements OnInit{
 
   constructor(private apiService: ApiService, private snackBar: MatSnackBar, private router: Router, private history: HistoryService, private titleService:Title, private backApi: BackapiService, private route: ActivatedRoute, private translate: TranslateService) {
-    this.titleService.setTitle(this.translate.instant('transfers') + apiService.title);
+    this.apiService.translateTitle('transfers').subscribe((translations: string[]) => {
+      this.titleService.setTitle(translations[0]+ " | " +translations[1])
+    })
   }
 
 

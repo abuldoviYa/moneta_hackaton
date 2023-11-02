@@ -22,8 +22,8 @@ export class TransactionPageComponent {
   transaction!: any
 
   constructor(private apiService: ApiService, private titleService: Title, private backApi: BackapiService, private translate: TranslateService) {
-    this.translate.get('transaction').subscribe(x => {
-      this.titleService.setTitle(x + apiService.title);
+    this.apiService.translateTitle('transaction').subscribe((translations: string[]) => {
+      this.titleService.setTitle(translations[0]+ " | " +translations[1])
     })
     this.route = inject(ActivatedRoute);
     this.transactionId = parseInt(this.route.snapshot.paramMap.get('id')!)

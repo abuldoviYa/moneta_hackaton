@@ -19,7 +19,9 @@ import {TranslateService} from "@ngx-translate/core";
 export class AddWalletComponent implements OnInit{
 
   constructor(private apiService: ApiService, private snackBar: MatSnackBar,private router: Router, private titleService:Title, private backApi: BackapiService, private translate: TranslateService) {
-    this.titleService.setTitle(this.translate.instant('addWallet') + apiService.title);
+    this.apiService.translateTitle('addWallet').subscribe((translations: string[]) => {
+      this.titleService.setTitle(translations[0]+ " | " +translations[1])
+    })
     this.backApi.getBanks().subscribe(x=>{
 
       this.banksLoaded=x.data

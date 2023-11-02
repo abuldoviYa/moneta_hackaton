@@ -25,7 +25,9 @@ export class HistoryComponent implements OnInit{
     end: new FormControl<Date | null>(null),
   });
   constructor(private history: HistoryService, private titleService:Title, private apiService: ApiService, private backApi: BackapiService, private translate: TranslateService) {
-  this.titleService.setTitle(this.translate.instant('history') + apiService.title);
+    this.apiService.translateTitle('history').subscribe((translations: string[]) => {
+      this.titleService.setTitle(translations[0]+ " | " +translations[1])
+    })
     this.backApi.getTransactions().pipe(
       map((data: any) => {
         let tempTransactions = data.data;

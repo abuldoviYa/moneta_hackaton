@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import {Component, Input} from '@angular/core';
+import {TranslateService} from "@ngx-translate/core";
 
 @Component({
   selector: 'app-consent-text',
@@ -6,5 +7,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./consent-text.component.scss']
 })
 export class ConsentTextComponent {
+  @Input()
+  language: string | null
+  constructor(private translate: TranslateService) {
+    this.language = localStorage.getItem('lang')
+  }
 
 }

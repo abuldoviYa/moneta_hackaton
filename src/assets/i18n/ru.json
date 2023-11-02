@@ -48,6 +48,7 @@
   "transfers": "Переводы",
   "userName": "Имя",
   "tempUserName": "Иван",
+  "tempUserSurName": "Иванов",
   "userSurname": "Фамилия",
   "phone": "Телефон",
   "email": "E-mail",
@@ -115,6 +116,7 @@
   "Askari Bank": "Банк Askari",
   "State Bank of India": "Государственный банк Индии",
   "HDFC Bank": "HDFC Банк",
-  "ICICI Bank": "Банк ICICI"
+  "ICICI Bank": "Банк ICICI",
+  "consent": "Согласие"
 
 }

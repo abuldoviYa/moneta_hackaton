@@ -17,7 +17,9 @@ export class WalletPageComponent implements OnInit {
   countries = this.apiService.getAvailablecountries();
 
   constructor(private apiService: ApiService, private titleService:Title, private backApi: BackapiService, private router: Router,private translate: TranslateService ) {
-    this.titleService.setTitle(this.translate.instant('wallet') + " | " + this.translate.instant('digitalAdapter') );
+    this.apiService.translateTitle('wallet').subscribe((translations: string[]) => {
+      this.titleService.setTitle(translations[0]+ " | " +translations[1])
+    })
     this.route=inject(ActivatedRoute);
     this.walletId = parseInt(this.route.snapshot.paramMap.get('id')!)
   }

@@ -46,7 +46,7 @@ import {ChatService} from "./profile/support-page/chat.service";
 import { ConsentTextComponent } from './consent/consent-text/consent-text.component';
 import {MatCheckboxModule} from "@angular/material/checkbox";
 import { TransactionPageComponent } from './transaction-page/transaction-page.component';
-import { TranslateLoader, TranslateModule} from "@ngx-translate/core";
+import {TranslateLoader, TranslateModule, TranslateService} from "@ngx-translate/core";
 import {TranslateHttpLoader} from "@ngx-translate/http-loader";
 
 @NgModule({
@@ -112,6 +112,8 @@ import {TranslateHttpLoader} from "@ngx-translate/http-loader";
 
 })
 export class AppModule {
+
+
 
 }
 export function httpTranslateLoader(http: HttpClient){

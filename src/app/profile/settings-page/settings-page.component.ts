@@ -11,7 +11,9 @@ import {TranslateService} from "@ngx-translate/core";
 export class SettingsPageComponent {
   selectedLang!: string
   constructor(private apiService: ApiService, private titleService:Title,  private translate: TranslateService) {
-    this.titleService.setTitle(this.translate.instant('settings') + apiService.title);
+    this.apiService.translateTitle('settings').subscribe((translations: string[]) => {
+      this.titleService.setTitle(translations[0]+ " | " +translations[1])
+    })
     this.selectedLang = this.translate.currentLang
     if (this.selectedLang == undefined){
       this.selectedLang = this.translate.getDefaultLang();

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {Card} from "./entities/card";
 import {TranslateService} from "@ngx-translate/core";
-import {forkJoin} from "rxjs";
+import {forkJoin, Observable} from "rxjs";
 
 
 @Injectable({
@@ -14,6 +14,15 @@ export class ApiService {
   }
 
   title: string = " | " + this.translate.instant('digitalAdapter')
+
+  translateTitle(string1: string): Observable<string[]> {
+    // Get translations for both strings
+    const translationObservable1 = this.translate.get(string1);
+    const translationObservable2 = this.translate.get('digitalAdapter');
+
+    // Use forkJoin to wait for both translations to be ready
+    return forkJoin([translationObservable1, translationObservable2]);
+  }
 
 
   wallets = [

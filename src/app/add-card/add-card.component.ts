@@ -18,7 +18,9 @@ import {TranslateService} from "@ngx-translate/core";
 export class AddCardComponent implements OnInit {
 
   constructor(private apiService: ApiService, private snackBar: MatSnackBar, private router: Router, private titleService:Title, private backApi: BackapiService, private translate: TranslateService) {
-    this.titleService.setTitle(this.translate.instant('addCard') + apiService.title);
+    this.apiService.translateTitle('addCard').subscribe((translations: string[]) => {
+      this.titleService.setTitle(translations[0]+ " | " +translations[1])
+    })
 
     //console.log('AddCardComponent - ApiService:', apiService);
   }

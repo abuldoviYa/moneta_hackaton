@@ -2,6 +2,7 @@ import {Component, HostListener, OnInit} from '@angular/core';
 import {ApiService} from "./api.service";
 import {Router} from "@angular/router";
 import {TranslateService} from "@ngx-translate/core";
+import {DateAdapter} from "@angular/material/core";
 
 @Component({
   selector: 'app-root',
@@ -9,7 +10,7 @@ import {TranslateService} from "@ngx-translate/core";
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit{
-  constructor(private apiService: ApiService, private router: Router, public translate: TranslateService) {
+  constructor(private apiService: ApiService, private router: Router, public translate: TranslateService, private _adapter:  DateAdapter<any>) {
     translate.addLangs(['en', 'ru']);
     translate.setDefaultLang('ru')
     let lang = localStorage.getItem('lang')
@@ -18,6 +19,7 @@ export class AppComponent implements OnInit{
       lang = translate.getDefaultLang()
     }
     translate.use(lang)
+    this._adapter.setLocale(lang)
   }
 
   title = 'asasdasdasd';

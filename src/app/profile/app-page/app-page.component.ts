@@ -10,7 +10,9 @@ import {TranslateService} from "@ngx-translate/core";
 })
 export class AppPageComponent {
   constructor(private apiService: ApiService, private titleService:Title, private translate: TranslateService) {
-    this.titleService.setTitle(this.translate.instant('aboutApp') + apiService.title);
+    this.apiService.translateTitle('aboutApp').subscribe((translations: string[]) => {
+      this.titleService.setTitle(translations[0]+ " | " +translations[1])
+    })
   }
 
   menu: Map<string, any> = new Map([
