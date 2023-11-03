@@ -47,8 +47,8 @@
   <div *ngIf="transaction.transactionHistory.length > 0">
   <h2>{{'details'|translate}}</h2>
   <div class="transaction-wrapper">
-    <li  *ngFor="let transaction of transaction.transactionHistory">
-      <div class="datetime">{{ transaction.dateCreated.toLocaleDateString("ru-RU") + " " + transaction.dateCreated.toLocaleTimeString("ru-RU") }}</div>
+    <li  *ngFor="let transaction of transaction.transactionHistory; index as i">
+      <div class="datetime">{{ ('transaction' |  translate) + " " + (i+1)}} </div>
       <div class="transaction" *ngIf="wallets && cards && getNameAndLink(transaction); let wallets" >
 
           <div class="transaction-numbers">
@@ -61,8 +61,9 @@
 <!--                <i class="material-icons-outlined">{{transaction.isSourceWallet ? 'account_balance_wallet' : 'credit_card'}}</i>-->
 <!--              </div>-->
               <div class="info-mini-inner">
+
                 <!--                <div><label>Сколько</label></div>-->
-                <div><p class="amount">{{ "-" +   formatNumber(transaction.amountCurrencyExchanged) + " " +wallets[0].currency }}</p></div>
+                <div><p class="amount">{{ "-" +   formatNumber(transaction.amountTransferred) + " " +wallets[0].currency }}</p></div>
               </div>
 
             </div>
@@ -74,7 +75,7 @@
 
               <div class="info-mini-inner">
                 <!--              <label>Сколько</label>-->
-                <div><p class="amount">{{  "+" +  formatNumber(transaction.amountTransferredPlusFee != 0 ? transaction.amountTransferredPlusFee : transaction.amountCurrencyExchanged) + " " + wallets[1].currency }}</p></div>
+                <div><p class="amount">{{  "+" +  formatNumber(transaction.amountCurrencyExchanged != 0 ? transaction.amountCurrencyExchanged : transaction.amountTransferred) + " " + wallets[1].currency }}</p></div>
               </div>
             </div>
           </div>

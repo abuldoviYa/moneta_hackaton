@@ -1,7 +1,7 @@
 export class TransactionPost {
   userId: number
-  sourceAccountId: number
-  targetAccountId: number
+  sourceId: number
+  targetId: number
   amountTransferred: number
   currency: number
   isSourceWallet: boolean
@@ -9,8 +9,8 @@ export class TransactionPost {
 
   constructor(userId: number, sourceAccountId: number, targetAccountId: number, amountTransferred: number, currency: number, isSourceWallet: string, isTargetWallet: string) {
     this.userId = userId;
-    this.sourceAccountId = sourceAccountId;
-    this.targetAccountId = targetAccountId;
+    this.sourceId = sourceAccountId;
+    this.targetId = targetAccountId;
     this.amountTransferred = amountTransferred;
     this.currency = currency;
     this.isSourceWallet = isSourceWallet == "true";

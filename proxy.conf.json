@@ -1,6 +1,6 @@
 {
   "/api": {
-    "target": "http://195.133.196.21:4224",
+    "target": "http://adapter:8080/",
     "secure": false,
     "changeOrigin": true,
     "logLevel": "debug"

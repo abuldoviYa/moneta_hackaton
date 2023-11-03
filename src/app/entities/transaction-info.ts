@@ -1,8 +1,8 @@
 export class TransactionInfo {
   id: number;
   userId: number;
-  sourceAccountId: number;
-  targetAccountId: number;
+  sourceId: number;
+  targetId: number;
   amountTransferred: number;
   mcc: number;
   currency: string;
@@ -16,8 +16,8 @@ export class TransactionInfo {
   constructor(id: number, userId: number, sourceAccountId: number, targetAccountId: number, amountTransferred: number, mcc: number, currency: string, description: string, isSourceWallet: boolean, isTargetWallet: boolean, isSuccessful: boolean, dateCreated: Date) {
     this.id = id;
     this.userId = userId;
-    this.sourceAccountId = sourceAccountId;
-    this.targetAccountId = targetAccountId;
+    this.sourceId = sourceAccountId;
+    this.targetId = targetAccountId;
     this.amountTransferred = amountTransferred;
     this.mcc = mcc;
     this.currency = currency;
