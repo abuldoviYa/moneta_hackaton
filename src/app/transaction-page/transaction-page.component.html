@@ -48,7 +48,7 @@
   <h2>{{'details'|translate}}</h2>
   <div class="transaction-wrapper">
     <li  *ngFor="let transaction of transaction.transactionHistory; index as i">
-      <div class="datetime">{{ ('transaction' |  translate) + " " + (i+1)}} </div>
+      <div class="datetime">{{ ('oneTransaction' |  translate) + " " + (i+1)}} </div>
       <div class="transaction" *ngIf="wallets && cards && getNameAndLink(transaction); let wallets" >
 
           <div class="transaction-numbers">

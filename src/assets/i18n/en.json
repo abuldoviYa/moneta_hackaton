@@ -39,6 +39,7 @@
   "willExpense": "Debited",
   "enterSum": "Enter Amount",
   "transaction": "Transactions",
+  "oneTransaction": "Transaction",
   "details": "Details",
   "noTransaction": "No such transaction exists",
   "successTransaction": "Transaction successful!",

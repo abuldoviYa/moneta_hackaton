@@ -39,6 +39,7 @@
   "willExpense": "Будет списано",
   "enterSum": "Введите сумму",
   "transaction": "Транзакции",
+  "oneTransaction": "Транзакция",
   "details": "Детализация",
   "noTransaction": "Такой транзакции не существует",
   "successTransaction": "Перевод совершен успешно!",
