@@ -102,6 +102,11 @@ export class BackapiService {
   }
 
 
+  getReport(): Observable<any> {
+    return this.httpClient.get<any>(this.host + "/transactions?id=" + this.id, {});
+  }
+
+
 
   setConsent() {
     let bank: any = {

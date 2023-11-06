@@ -11,7 +11,7 @@ import {DateAdapter} from "@angular/material/core";
 })
 export class AppComponent implements OnInit{
   constructor(private apiService: ApiService, private router: Router, public translate: TranslateService, private _adapter:  DateAdapter<any>) {
-    translate.addLangs(['en', 'ru']);
+    translate.addLangs(['en', 'ru', 'zh']);
     translate.setDefaultLang('ru')
     let lang = localStorage.getItem('lang')
     if (lang == null){

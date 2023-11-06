@@ -68,19 +68,19 @@ export class AddCardComponent implements OnInit {
   }
 
   handleSuccess(): void {
-    this.openSnackBar('Карта успешно создана!', true);
+    this.openSnackBar(this.translate.instant("cardCreated"), true);
     setTimeout(() => {
       this.router.navigate(['/']);
     }, 500);  //5s
   }
 
   handleError(): void {
-    this.openSnackBar('Карта в этом банке уже открыта', false);
+    this.openSnackBar(this.translate.instant("cardExistError"), false);
   }
 
   openSnackBar(message: string, bool: boolean) {
     let cssClass = bool ? 'green-alert' : 'red-alert'
-    this.snackBar.open(message, 'Закрыть', {
+    this.snackBar.open(message, this.translate.instant("close"), {
       duration: 3000, // Duration the snackbar should be visible (in milliseconds)
       verticalPosition: 'top',
       panelClass: [cssClass]

@@ -118,6 +118,12 @@
   "State Bank of India": "Государственный банк Индии",
   "HDFC Bank": "HDFC Банк",
   "ICICI Bank": "Банк ICICI",
-  "consent": "Согласие"
+  "consent": "Согласие",
+
+  "notEnoughMoney": "Недостаточно средств",
+  "walletExistError": "Такой кошелек уже существует",
+  "cardExistError": "Карта в этом банке уже существует",
+  "walletCreated": "Кошелек успешно создан!",
+  "cardCreated": "Карта успешно создана!"
 
 }

@@ -75,19 +75,19 @@ export class AddWalletComponent implements OnInit{
   }
 
   handleSuccess(): void {
-    this.openSnackBar('Кошелек успешно создан!', true);
+    this.openSnackBar(this.translate.instant("walletCreated"), true);
     setTimeout(() => {
       this.router.navigate(['/']);
     }, 500);  //5s
   }
 
   handleError(): void {
-    this.openSnackBar('Такой кошелек уже существует', false);
+    this.openSnackBar(this.translate.instant("walletExistError"), false);
   }
 
   openSnackBar(message: string, bool: boolean) {
     let cssClass = bool ? 'green-alert' : 'red-alert'
-    this.snackBar.open(message, 'Закрыть', {
+    this.snackBar.open(message, this.translate.instant("close"), {
       duration: 3000, // Duration the snackbar should be visible (in milliseconds)
       verticalPosition: 'top',
       panelClass: [cssClass]

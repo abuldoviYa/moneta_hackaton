@@ -35,8 +35,8 @@
   "moneyAvailable": "Available",
   "rate": "Rate",
   "fee": "Fee",
-  "willDeposit": "Credited",
-  "willExpense": "Debited",
+  "willDeposit": "Will be credited",
+  "willExpense": "Will be debited",
   "enterSum": "Enter Amount",
   "transaction": "Transactions",
   "oneTransaction": "Transaction",
@@ -119,6 +119,12 @@
   "State Bank of India": "State Bank of India",
   "HDFC Bank": "HDFC Bank",
   "ICICI Bank": "ICICI Bank",
-  "consent": "Consent"
+  "consent": "Consent",
+
+  "notEnoughMoney": "Not enough money",
+  "walletExistError": "Wallet already exists",
+  "cardExistError": "Card in that bank already exists",
+  "walletCreated": "Wallet has been succesfully created!",
+  "cardCreated": "Card has been succesfully created!"
 
 }

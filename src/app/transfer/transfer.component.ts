@@ -241,7 +241,7 @@ export class TransferComponent implements OnInit{
       this.makeTransaction(new TransactionPost(-1, this.sourceWallet.id, this.targetWallet.id, this.amountTransfered!, this.sourceWallet.currency, isSourceWallet, isTargetWallet));
       //console.log(this.amountTransfered)
     } else {
-      this.openSnackBar('Недостаточно средств', false);
+      this.openSnackBar(this.translate.instant("notEnoughMoney"), false);
     }
     // if (this.sourceSecond == this.targetSecond){
     //   let isSourceWallet = this.sourceSecond == "digitalWallet" ? "true" : "false"

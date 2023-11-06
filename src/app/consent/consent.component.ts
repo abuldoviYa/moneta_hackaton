@@ -3,6 +3,7 @@ import {ApiService} from "../api.service";
 import {Title} from "@angular/platform-browser";
 import {BackapiService} from "../backapi.service";
 import {TranslateService} from "@ngx-translate/core";
+import {DateAdapter} from "@angular/material/core";
 
 @Component({
   selector: 'app-consent',
@@ -14,7 +15,7 @@ export class ConsentComponent {
   agreed: boolean = false;
   selectedLang!: string
 
-  constructor(private apiService: ApiService, private titleService:Title, private backApi: BackapiService, private translate: TranslateService) {
+  constructor(private apiService: ApiService, private titleService:Title, private backApi: BackapiService, private translate: TranslateService, private _adapter:  DateAdapter<any>) {
     this.apiService.translateTitle('consent').subscribe((translations: string[]) => {
       this.titleService.setTitle(translations[0]+ " | " +translations[1])
 
@@ -34,5 +35,6 @@ export class ConsentComponent {
     this.selectedLang = event.value
     localStorage.setItem("lang",  this.selectedLang)
     console.log(this.selectedLang)
+    this._adapter.setLocale(this.selectedLang)
   }
 }
